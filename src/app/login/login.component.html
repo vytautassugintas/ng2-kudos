@@ -1,0 +1,39 @@
+<div class="m-x-auto card-login">
+    <h2 class="text-xs-center">Sign in</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input type="email"
+                   class="form-control"
+                   id="inputEmail3"
+                   [(ngModel)]="model.email"
+                   (ngModelChange)="model.email = $event"
+                   name="email"
+                   placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password"
+                   class="form-control"
+                   id="inputPassword3"
+                   [(ngModel)]="model.password"
+                   (ngModelChange)="model.email = $event"
+                   name="password"
+                   placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button type="submit"
+                    class="btn btn-outline-primary btn-block">Login
+            </button>
+        </div>
+
+        <div>
+            <a class="small"
+               href="">Don't have account?</a>
+            <a class="small"
+               href="">Confirm account</a>
+            <a class="small"
+               href="">Forgot password?</a>
+        </div>
+    </form>
+
+</div>

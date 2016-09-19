@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-block">
+        <p>
+            <a href="">{{action.userFullName}}</a>
+            <span *ngIf="action.type == 'COMMENTED'"> commented on </span>
+            <a href="">challenge</a>
+        </p>
+
+        <blockquote *ngIf="action.type == 'COMMENTED'">
+            {{action.commentResponse.text}}
+        </blockquote>
+
+        <p>{{action.timestamp | date:'fullDate'}}</p>
+
+
+    </div>
+</div>

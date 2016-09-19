@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "app/assets/styles/typography";
+@import "app/assets/styles/cards";
+@import "app/assets/styles/buttons";
+@import "app/assets/styles/input";
+@import "app/assets/styles/navs";
+@import "app/assets/styles/variables";
+@import "app/assets/styles/tags";
+
+body {
+  background: $color-bg;
+  padding-top: 70px;
+}

@@ -1,0 +1,29 @@
+@import "variables";
+
+.navbar-light {
+  background: #ffffff;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+.side-nav {
+
+  @media (max-width: 991px) {
+    position: relative;
+  }
+
+  position: fixed;
+
+  .nav-item {
+    padding: 10px;
+    &:hover {
+      background: $color-hover-item;
+      color: $color-primary-lighter;
+    }
+  }
+
+  i {
+    font-size: 20px;
+    width: 36px;
+  }
+
+}

@@ -1,0 +1,7 @@
+@import "variables";
+
+.form-control{
+  &:focus {
+    border-color: $color-primary;
+  }
+}

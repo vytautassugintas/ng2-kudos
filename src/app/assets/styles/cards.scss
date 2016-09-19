@@ -1,0 +1,34 @@
+.card{
+  box-shadow: 1px 1px 5px #888888;
+  border-color: #ffffff;
+}
+
+.main-card{
+  p{
+    line-height: 1;
+    &.name{
+      line-height: 0.5;
+    }
+    &.email{
+      font-size: 12px;
+    }
+  }
+  .tag{
+    line-height: 1;
+  }
+}
+
+.card-login{
+  padding: 10px;
+  border: 1px #bdc3c7 solid;
+  border-radius: 5px;
+  max-width: 380px;
+}
+
+.card-action{
+
+}
+
+.card-fixed{
+  position: fixed;
+}

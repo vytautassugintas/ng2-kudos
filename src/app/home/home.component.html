@@ -1,0 +1,124 @@
+<nav class="navbar navbar-light bg-faded navbar-fixed-top">
+    <button class="navbar-toggler hidden-sm-up"
+            type="button"
+            data-toggle="collapse"
+            data-target="#exCollapsingNavbar2"
+            aria-controls="exCollapsingNavbar2"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        &#9776;
+    </button>
+    <div class="collapse navbar-toggleable-xs"
+         id="exCollapsingNavbar2">
+        <a class="navbar-brand"
+           href="#">Kudos</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link"
+                   routerLink="/home">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-2">
+            <ul class="nav side-nav">
+                <li class="nav-item">
+                    <i class="fa fa-home"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-gamepad"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       href="#">Challenge</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-gift"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       href="#">Kudos</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-users"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       href="#">People</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-7">
+            <div class="row" style="padding-top: 10px; padding-bottom: 10px">
+                <div class="col-sm-6" style="padding-top: 5px; padding-bottom: 5px">
+                    <button class="btn btn-primary btn-block">
+                        <i class="fa fa-gift"
+                           aria-hidden="true"></i> Give
+                    </button>
+                </div>
+                <div class="col-sm-6" style="padding-top: 5px; padding-bottom: 5px">
+                    <button class="btn btn-primary btn-block">
+                        <i class="fa fa-gamepad"
+                           aria-hidden="true"></i> Challenge
+                    </button>
+                </div>
+            </div>
+
+            <app-action-item *ngFor="let action of usersActions;"
+                             [action]="action">
+            </app-action-item>
+
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Profile</h5>
+                </div>
+                <div class="card-block">
+                    <p class="name">{{user?.firstName}} {{user?.lastName}}</p>
+                    <p class="email">{{user?.email}}</p>
+                    <p class="bold">Total Kudos <span class="tag tag-kudos">{{user?.totalKudos}}</span></p>
+                    <p class="bold">Weekly Kudos <span class="tag tag-kudos">{{user?.weeklyKudos}}</span></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Leaderboard</h5>
+                </div>
+                <div class="card-block">
+                    <blockquote>
+                        <p class="breakword">not all black is as dark as the brightness of sun.</p>
+                        <small class="breakword">unknown</small>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Wisdom wall</h5>
+                </div>
+                <div class="card-block">
+                    <blockquote>
+                        <p class="breakword">not all black is as dark as the brightness of sun.</p>
+                        <small class="breakword">unknown</small>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
