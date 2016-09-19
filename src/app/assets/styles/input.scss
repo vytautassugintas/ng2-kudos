@@ -1,6 +1,8 @@
 @import "variables";
 
 .form-control{
+  border-radius: 2px;
+  padding: 10px;
   &:focus {
     border-color: $color-primary;
   }

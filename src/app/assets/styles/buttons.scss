@@ -1,9 +1,13 @@
 @import "variables";
 
+.btn{
+  border-radius: 2px;
+}
+
 .btn-outline-primary{
   color: $color-primary;
   border-color: $color-primary;
-  &:hover,&:active, &:focus{
+  &:hover,&:active,&:focus,&:active:focus{
     color: #ffffff;
     border-color: $color-primary;
     background: $color-primary;
@@ -14,7 +18,7 @@
   color: $color-white;
   background: $color-primary;
   border-color: $color-primary;
-  &:hover,&:active, &:focus{
+  &:hover,&:active,&:focus,&:active:focus{
     color: #ffffff;
     background: $color-primary-dark;
     border-color: $color-primary-dark;

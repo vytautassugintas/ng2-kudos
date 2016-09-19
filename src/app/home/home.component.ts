@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HomeService} from "../shared/home.service";
 import {Response} from "@angular/http";
 import Any = jasmine.Any;
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-home',
@@ -11,7 +12,7 @@ import Any = jasmine.Any;
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private homeService: HomeService) {
+    constructor(private homeService: HomeService, private router: Router) {
     }
 
     user:User;
@@ -32,6 +33,12 @@ export class HomeComponent implements OnInit {
 
     setCurrentUser(resp){
         this.user = new User(resp);
+    }
+
+    logout(){
+        this.homeService.logout().subscribe(
+            resp => this.router.navigate(['login'])
+        )
     }
 
 }

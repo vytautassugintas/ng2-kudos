@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../shared/authentication.service";
 import {Credentials} from "../shared/credentials";
 import {Router} from "@angular/router";
+import {_switch} from "rxjs/operator/switch";
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
     constructor(private authenticationService: AuthenticationService, private router: Router) {
     }
 
-    submitted = false;
+    showErrorMessage = false;
+    errorMessage: string;
+
+    showSignUpErrorMessage = false;
+    signUpErrorMessage: string;
 
     model = new Credentials("vytautas.sugintas@swedbank.lt", "vytautas");
 
@@ -25,7 +30,7 @@ export class LoginComponent implements OnInit {
             )
     }
 
-    onSubmit(){
+    onSubmit() {
         this.login(this.model);
     }
 
@@ -33,15 +38,30 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(credentials.email, credentials.password)
             .subscribe(
                 response => this.success(response),
-                error => console.log(error))
+                error => this.handleErrors(error))
     }
 
-    success(response){
+    success(response) {
         this.router.navigate(['home']);
     }
 
-    navigateHome(isLogged){
-        if (isLogged){
+    handleErrors(error) {
+        this.showErrorMessage = true;
+        switch (error._body) {
+            case "user_not_exist" :
+                this.errorMessage = "User not exist.";
+                break;
+            case "email_password_mismatch" :
+                this.errorMessage = "Email or password is incorrect.";
+                break;
+            default :
+                this.errorMessage = "Something went wrong";
+                break;
+        }
+    }
+
+    navigateHome(isLogged) {
+        if (isLogged) {
             this.router.navigate(['home']);
         }
     }

@@ -1,3 +1,5 @@
+@import "variables";
+
 .card{
   box-shadow: 1px 1px 5px #888888;
   border-color: #ffffff;
@@ -20,9 +22,48 @@
 
 .card-login{
   padding: 10px;
-  border: 1px #bdc3c7 solid;
-  border-radius: 5px;
+  box-shadow: 1px 1px 3px #888888;
+  border-color: #ffffff;
+  background: $color-white;
+  border-radius: 2px;
   max-width: 380px;
+
+  button{
+    height: 50px;
+  }
+
+  .alert{
+    border-radius: 2px;
+  }
+
+  .alert-danger{
+    padding: 15px;
+  }
+
+  strong{
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+.card-login-footer{
+  padding: 20px;
+  max-width: 380px;
+
+  p{
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-create-link{
+    line-height: 0.2;
+  }
+
+  .confirm-block{
+    padding-top: 10px;
+  }
+
 }
 
 .card-action{
