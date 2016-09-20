@@ -1,8 +1,8 @@
 @import "../assets/styles/variables";
 
-@media (max: 544px) {
-  .no-nav-container {
-    padding-top: -3000px;
+@media (max-width: 544px) {
+  body {
+    padding-top: 0;
   }
 }
 
@@ -30,5 +30,5 @@ h2{
 }
 
 .sign-up-button{
-    height: 50px;
+  height: 50px;
 }

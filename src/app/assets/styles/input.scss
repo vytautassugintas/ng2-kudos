@@ -1,9 +1,18 @@
 @import "variables";
 
-.form-control{
+.form-control {
   border-radius: 2px;
   padding: 10px;
   &:focus {
     border-color: $color-primary;
+  }
+}
+
+.input-group-addon {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  &:before, &:after {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   }
 }

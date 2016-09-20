@@ -1,0 +1,62 @@
+<div class="m-x-auto login-title">
+  <h2 class="text-xs-center">Sign Up</h2>
+</div>
+
+<div class="m-x-auto card-login">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="signUpEmail">Email address</label>
+      <input type="email"
+             class="form-control"
+             id="signUpEmail"
+             [(ngModel)]="model.email"
+             (ngModelChange)="model.email = $event"
+             name="signUpEmail">
+    </div>
+    <div class="form-group">
+      <label for="signUpFullName">Full Name</label>
+      <input type="text"
+             class="form-control"
+             id="signUpFullName"
+             [(ngModel)]="model.fullName"
+             (ngModelChange)="model.fullName = $event"
+             name="signUpFullName">
+    </div>
+    <label for="signUpPassword">Password</label>
+    <div class="form-group input-group">
+      <input type="{{!showPassword ? 'password' : 'text'}}"
+             class="form-control"
+             id="signUpPassword"
+             [(ngModel)]="model.password"
+             (ngModelChange)="model.password = $event"
+             name="signUpPassword">
+      <span class="input-group-addon"
+      (click)="showPassword = !showPassword">
+        <i [ngClass]="!showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+           aria-hidden="true"></i></span>
+    </div>
+
+    <div *ngIf="showSignUpErrorMessage"
+         class="alert alert-danger"
+         role="alert">
+      <strong>Oh snap!</strong> {{signUpErrorMessage}}
+    </div>
+
+    <div class="form-group">
+      <button type="submit"
+              class="btn btn-primary sign-up-button btn-block">Sign Up
+      </button>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="m-x-auto card-login-footer">
+  <div class="text-xs-center">
+    <p class="small">Already a member?</p>
+    <a class="login-create-link"
+       href="#"
+       routerLink="/login">Sign In</a>
+  </div>
+</div>

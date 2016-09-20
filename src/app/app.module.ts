@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {routing, appRoutingProviders} from "./app.routing";
 import { ActionItemComponent } from './action-item/action-item.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -17,7 +18,8 @@ import { ActionItemComponent } from './action-item/action-item.component';
         AppComponent,
         LoginComponent,
         HomeComponent,
-        ActionItemComponent
+        ActionItemComponent,
+        SignUpComponent
     ],
     imports: [
         BrowserModule,

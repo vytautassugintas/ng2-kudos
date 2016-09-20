@@ -1,132 +1,68 @@
-<div class="m-x-auto login-title">
-    <h2 style="font-weight: 300" class="text-xs-center">Sign in <i class="fa fa-thumbs-up" style="color: #c0c0c0" aria-hidden="true"></i></h2>
-</div>
+<div class="no-nav-container">
+    <div class="m-x-auto login-title">
+        <h2 class="text-xs-center">Sign In</h2>
+    </div>
 
-<div class="m-x-auto card-login">
-    <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
+    <div class="m-x-auto card-login">
+        <form (ngSubmit)="onSubmit()">
             <label for="inputEmail3">Email address</label>
-            <input type="email"
-                   class="form-control"
-                   id="inputEmail3"
-                   [(ngModel)]="model.email"
-                   (ngModelChange)="model.email = $event"
-                   name="email">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword3">Password</label>
-            <input type="password"
-                   class="form-control"
-                   id="inputPassword3"
-                   [(ngModel)]="model.password"
-                   (ngModelChange)="model.password = $event"
-                   name="password">
-        </div>
+            <div class="form-group">
+                <input type="email"
+                       class="form-control"
+                       id="inputEmail3"
+                       [(ngModel)]="model.email"
+                       (ngModelChange)="model.email = $event"
+                       name="email">
+            </div>
+            <label for="password">Password</label>
+            <div class="form-group input-group">
+                <input type="{{!showPassword ? 'password' : 'text'}}"
+                       class="form-control"
+                       id="password"
+                       [(ngModel)]="model.password"
+                       (ngModelChange)="model.password = $event"
+                       name="password">
+                <span class="input-group-addon"
+                      (click)="showPassword = !showPassword">
+                    <i [ngClass]="!showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                       aria-hidden="true"></i></span>
+            </div>
 
-        <div *ngIf="showErrorMessage"
-             class="alert alert-danger"
-             role="alert">
-            <strong>Oh snap!</strong> {{errorMessage}}
-        </div>
+            <div *ngIf="showErrorMessage"
+                 class="alert alert-danger"
+                 role="alert">
+                <strong>Oh snap!</strong> {{errorMessage}}
+            </div>
 
-        <div class="form-group">
-            <button type="submit"
-                    class="btn btn-primary btn-block">Login
-            </button>
-        </div>
-
-        <div class="text-xs-center">
-            <a href="#forgot-password-modal"
-               data-toggle="modal">Forgot password?</a>
-        </div>
-
-    </form>
-
-</div>
-
-<div class="m-x-auto card-login-footer">
-    <div class="text-xs-center">
-        <p class="small">Don't have an account?</p>
-        <a class="login-create-link"
-           href="#sign-up-modal"
-           data-toggle="modal">Create account</a>
-    </div>
-    <div class="text-xs-center confirm-block">
-        <p class="small">Already signed up, but can't login?</p>
-        <a href="#confirm-account-modal"
-           data-toggle="modal">Confirm account</a>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade"
-     id="sign-up-modal"
-     tabindex="-1"
-     role="dialog"
-     aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog"
-         role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div class="form-group">
+                <button type="submit"
+                        class="btn btn-primary btn-block">Login
                 </button>
-                <h4 class="modal-title"
-                    id="sign-up-modal-title">Sign up</h4>
             </div>
-            <div class="modal-body">
-                <form (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="inputEmail3">Email address</label>
-                        <input type="email"
-                               class="form-control"
-                               id="signUpEmail"
-                               [(ngModel)]="model.email"
-                               (ngModelChange)="model.email = $event"
-                               name="signUpEmail">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3">Full Name</label>
-                        <input type="email"
-                               class="form-control"
-                               id="signUpFullName"
-                               [(ngModel)]="model.email"
-                               (ngModelChange)="model.email = $event"
-                               name="signUpFullName">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3">Password</label>
-                        <input type="password"
-                               class="form-control"
-                               id="signUpPassword"
-                               [(ngModel)]="model.password"
-                               (ngModelChange)="model.password = $event"
-                               name="signUpPassword">
-                    </div>
 
-                    <div *ngIf="showSignUpErrorMessage"
-                         class="alert alert-danger"
-                         role="alert">
-                        <strong>Oh snap!</strong> {{signUpErrorMessage}}
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit"
-                                class="btn btn-primary sign-up-button btn-block">Sign Up
-                        </button>
-                    </div>
-
-                </form>
-
+            <div class="text-xs-center">
+                <a href="#forgot-password-modal"
+                   data-toggle="modal">Forgot password?</a>
             </div>
+
+        </form>
+
+    </div>
+
+    <div class="m-x-auto card-login-footer">
+        <div class="text-xs-center">
+            <p class="small">Don't have an account?</p>
+            <a class="login-create-link"
+               href="#"
+               routerLink="/signup">Create account</a>
+        </div>
+        <div class="text-xs-center confirm-block">
+            <p class="small">Already signed up, but can't login?</p>
+            <a href="#confirm-account-modal"
+               data-toggle="modal">Confirm account</a>
         </div>
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade"
      id="confirm-account-modal"
@@ -148,16 +84,28 @@
                     id="confirm-account-modal-title">Account confirmation</h4>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">Close
-                </button>
-                <button type="button"
-                        class="btn btn-primary">Save changes
-                </button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Please enter account activation code which you have received to your email address.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <form>
+                            <label for="confirmAccount">Activation code</label>
+                            <div class="form-group">
+                                <input type="email"
+                                       class="form-control"
+                                       id="confirmAccount"
+                                       name="confirm-account">
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit"
+                                        class="btn btn-primary">Confirm account
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

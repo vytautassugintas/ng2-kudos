@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
     }
 
     showErrorMessage = false;
+    showPassword = false;
     errorMessage: string;
+    disableEye = "fa-eye-slash";
 
     showSignUpErrorMessage = false;
     signUpErrorMessage: string;
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = "User not exist.";
                 break;
             case "email_password_mismatch" :
-                this.errorMessage = "Email or password is incorrect.";
+                this.errorMessage = "Password is incorrect.";
                 break;
             default :
                 this.errorMessage = "Something went wrong";
@@ -65,5 +67,4 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['home']);
         }
     }
-
 }

@@ -1,0 +1,38 @@
+@import "../assets/styles/variables";
+
+.kudos-date {
+  color: $color-grey-borders;
+  font-size: 12px;
+}
+
+.kudos-comment{
+
+  width: 40px;
+  height: 40px;
+  background: $color-clouds;
+  border-radius: 50%;
+  text-align: center;
+
+  .center {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+  }
+
+  .content {
+
+    i{
+      font-size: 20px;
+    }
+
+  }
+}
+
+.flex-center-vertically {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 50px;
+}
