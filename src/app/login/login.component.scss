@@ -1,11 +1,5 @@
 @import "../assets/styles/variables";
 
-@media (max: 544px) {
-  .no-nav-container {
-    padding-top: -3000px;
-  }
-}
-
 label{
   font-size: 12px;
   padding: 0;
@@ -25,7 +19,7 @@ h2{
 }
 
 .login-title{
-  color: $color-primary-dark;
+ // color: $color-primary-dark;
   padding-bottom: 15px;
 }
 

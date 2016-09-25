@@ -70,10 +70,7 @@
                  style="padding-top: 10px; padding-bottom: 10px">
                 <div class="col-sm-6"
                      style="padding-top: 5px; padding-bottom: 5px">
-                    <button class="btn btn-primary btn-block">
-                        <i class="fa fa-gift"
-                           aria-hidden="true"></i> Give
-                    </button>
+                    <app-give-kudos></app-give-kudos>
                 </div>
                 <div class="col-sm-6"
                      style="padding-top: 5px; padding-bottom: 5px">
@@ -98,8 +95,8 @@
                 <div class="card-block">
                     <p class="name">{{user?.firstName}} {{user?.lastName}}</p>
                     <p class="email">{{user?.email}}</p>
-                    <p class="bold">Total Kudos <span class="tag tag-kudos">{{user?.totalKudos}}</span></p>
-                    <p class="bold">Weekly Kudos <span class="tag tag-kudos">{{user?.weeklyKudos}}</span></p>
+                    <p class="bold">Total Kudos <span class="tag tag-default">{{user?.totalKudos}}</span></p>
+                    <p class="bold">Weekly Kudos <span class="tag tag-default">{{user?.weeklyKudos}}</span></p>
                 </div>
             </div>
 

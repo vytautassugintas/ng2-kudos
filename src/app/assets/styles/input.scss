@@ -9,10 +9,5 @@
 }
 
 .input-group-addon {
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  &:before, &:after {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
+  border-radius: 2px;
 }
