@@ -1,0 +1,90 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Wisdom wall <i class="fa fa-refresh pull-right"
+                           [ngClass]="ideaLoading ? 'fa-spin' : ''"
+                           (click)="getRandomIdea()"
+                           aria-hidden="true"></i></h5>
+    </div>
+    <div class="card-block">
+        <blockquote>
+            <p class="breakword">{{randomIdea?.phrase}}</p>
+            <small class="breakword">{{randomIdea?.author}}</small>
+        </blockquote>
+
+        <button class="btn btn-primary btn-block"
+                type="button"
+                data-toggle="modal"
+                data-target="#newIdeaModal">
+            Add new idea
+        </button>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="newIdeaModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="myModalLabel">Add new Idea</h4>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit()">
+
+                    <label for="author">Author</label>
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="author"
+                               name="author"
+                               maxlength="30"
+                               [(ngModel)]="author"
+                               (ngModelChange)="author = $event">
+                        <p class="characterLeft">{{author.length}} / 30</p>
+                    </div>
+
+
+                    <label for="idea">Idea</label>
+                    <div class="form-group">
+                        <textarea type="text"
+                                  class="form-control"
+                                  id="idea"
+                                  name="idea"
+                                  maxlength="100"
+                                  [(ngModel)]="phrase"
+                                  (ngModelChange)="phrase = $event"></textarea>
+                        <p class="characterLeft">{{phrase.length}} / 100</p>
+                    </div>
+
+                    <div *ngIf="showErrorMessage"
+                         class="alert alert-danger"
+                         role="alert">
+                        <strong>Oh snap!</strong> {{errorMessage}}
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn btn-primary btn-block">Add idea
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

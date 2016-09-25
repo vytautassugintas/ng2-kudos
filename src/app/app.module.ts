@@ -12,6 +12,7 @@ import { ActionItemComponent } from './action-item/action-item.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { GiveKudosComponent } from './shared/give-kudos/give-kudos.component';
 import { LeaderboardComponent } from './shared/leaderboard/leaderboard.component';
+import { WisdomWallComponent } from './shared/wisdom-wall/wisdom-wall.component';
 
 
 
@@ -23,7 +24,8 @@ import { LeaderboardComponent } from './shared/leaderboard/leaderboard.component
         ActionItemComponent,
         SignUpComponent,
         GiveKudosComponent,
-        LeaderboardComponent
+        LeaderboardComponent,
+        WisdomWallComponent
     ],
     imports: [
         BrowserModule,
