@@ -11,6 +11,7 @@ import {routing, appRoutingProviders} from "./app.routing";
 import { ActionItemComponent } from './action-item/action-item.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { GiveKudosComponent } from './shared/give-kudos/give-kudos.component';
+import { LeaderboardComponent } from './shared/leaderboard/leaderboard.component';
 
 
 
@@ -21,7 +22,8 @@ import { GiveKudosComponent } from './shared/give-kudos/give-kudos.component';
         HomeComponent,
         ActionItemComponent,
         SignUpComponent,
-        GiveKudosComponent
+        GiveKudosComponent,
+        LeaderboardComponent
     ],
     imports: [
         BrowserModule,

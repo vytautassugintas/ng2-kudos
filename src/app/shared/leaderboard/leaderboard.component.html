@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Leaderboard</h5>
+    </div>
+
+    <div class="card-block">
+
+        <div style="padding: 10px">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <button class="nav-link"
+                            [ngClass]="topReceiversSelected ? 'active' : ''"
+                            (click)="getTopReceivers('')">Receivers
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link"
+                            [ngClass]="!topReceiversSelected ? 'active' : ''"
+                            (click)="getTopSenders('')">Senders
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div style="padding: 10px">
+            <ul class="list-group">
+                <li *ngFor="let user of topUsers;"
+                    class="list-group-item">
+                    <span class="tag tag-default tag-pill pull-xs-right">{{user.kudosAmount}}</span>
+                    {{user.fullName}}
+                </li>
+            </ul>
+        </div>
+
+        <div style="padding-left: 10px; padding-right: 10px">
+            <nav class="nav nav-inline">
+                <button class="nav-link active"
+                        (click)="getTop('7')">Week
+                </button>
+                <button class="nav-link"
+                        (click)="getTop('30')">Month
+                </button>
+                <button class="nav-link"
+                        (click)="getTop('')">All Time
+                </button>
+            </nav>
+        </div>
+
+    </div>
+</div>
+
