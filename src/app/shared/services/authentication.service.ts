@@ -1,15 +1,17 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
+import {API} from "../api.config";
+import {ResponseExtractor} from "./utils/ResponseExtractor";
 
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) {
     }
 
-    private loginUrl = 'http://test.openkudos.com/api/authentication/login';
-    private registrationUrl = 'http://test.openkudos.com/api/authentication/register';
-    private checkUserUrl = 'http://test.openkudos.com/api/';
+    private loginUrl = API.URL + 'authentication/login';
+    private registrationUrl = API.URL + 'authentication/register';
+    private checkUserUrl = API.URL;
 
     login(email: string, password: string): Observable<string> {
         let body = JSON.stringify({email, password});
@@ -17,8 +19,8 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.loginUrl, body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
     }
 
     register(email: string, fullName: string, password: string): Observable<string> {
@@ -31,8 +33,8 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.registrationUrl, body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
     }
 
 
@@ -42,7 +44,7 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
         return this.http.get(this.checkUserUrl, options)
             .map(this.extractLogged)
-            .catch(this.handleError);
+            .catch(ResponseExtractor.handleError);
     }
 
     private extractLogged(response: Response) {
@@ -51,13 +53,5 @@ export class AuthenticationService {
         } else {
             return response.json().logged;
         }
-    }
-
-    private extractData(res: Response) {
-        return res;
-    }
-
-    private handleError(error: any) {
-        return Observable.throw(error);
     }
 }

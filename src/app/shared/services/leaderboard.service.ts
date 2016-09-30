@@ -1,25 +1,27 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
+import {ResponseExtractor} from "./utils/ResponseExtractor";
+import {API} from "../api.config";
 
 @Injectable()
 export class LeaderboardService {
     constructor(private http: Http) {
     }
 
-    private receiversUrl = "http://test.openkudos.com/api/leaderboard/receivers?";
-    private sendersUrl = "http://test.openkudos.com/api/leaderboard/senders?";
+    private receiversUrl = API.URL + "leaderboard/receivers?";
+    private sendersUrl = API.URL + "leaderboard/senders?";
 
     getTopReceivers(periodInDays: string): Observable<string> {
         return this.http.get(this.receiversUrl, this.getRequestOptions(periodInDays))
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
     }
 
     getTopSenders(periodInDays: string): Observable<string> {
         return this.http.get(this.sendersUrl, this.getRequestOptions(periodInDays))
-            .map(this.extractData)
-            .catch(this.handleError);
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
     }
 
     private getRequestOptions(periodInDays: string): RequestOptions {
@@ -31,13 +33,5 @@ export class LeaderboardService {
         }
 
         return new RequestOptions({headers: headers, withCredentials: true, search: params});
-    }
-
-    private extractData(res: Response) {
-        return res.json();
-    }
-
-    private handleError(error: any) {
-        return Observable.throw(error);
     }
 }
