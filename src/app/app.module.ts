@@ -13,8 +13,10 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { GiveKudosComponent } from './shared/components/give-kudos/give-kudos.component';
 import { LeaderboardComponent } from './shared/components/leaderboard/leaderboard.component';
 import { WisdomWallComponent } from './shared/components/wisdom-wall/wisdom-wall.component';
-
-
+import { KudosComponent } from './views/kudos/kudos.component';
+import { ChallengeComponent } from './views/challenge/challenge.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { PeopleComponent } from './views/people/people.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,11 @@ import { WisdomWallComponent } from './shared/components/wisdom-wall/wisdom-wall
         SignUpComponent,
         GiveKudosComponent,
         LeaderboardComponent,
-        WisdomWallComponent
+        WisdomWallComponent,
+        KudosComponent,
+        ChallengeComponent,
+        ProfileComponent,
+        PeopleComponent
     ],
     imports: [
         BrowserModule,

@@ -34,15 +34,21 @@
 
         <div style="padding-left: 10px; padding-right: 10px">
             <nav class="nav nav-inline">
-                <button class="nav-link active"
-                        (click)="getTop('7')">Week
-                </button>
-                <button class="nav-link"
-                        (click)="getTop('30')">Month
-                </button>
-                <button class="nav-link"
-                        (click)="getTop('')">All Time
-                </button>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       (click)="getTop('7')">Week
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       (click)="getTop('30')">Month
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       (click)="getTop('')">All Time
+                    </a>
+                </li>
             </nav>
         </div>
 
