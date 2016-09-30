@@ -1,7 +1,6 @@
 <button class="btn btn-primary btn-block"
-        (click)="toggleGiveForm()"
-data-toggle="modal"
-data-target="#giveKudosModal">
+        data-toggle="modal"
+        data-target="#giveKudosModal">
     <i class="fa fa-gift"
        aria-hidden="true"></i> Give
 </button>
@@ -34,6 +33,7 @@ data-target="#giveKudosModal">
                                class="form-control"
                                id="receiverEmail"
                                name="receiverEmail"
+                               placeholder="Start typing name..."
                                [(ngModel)]="email"
                                (ngModelChange)="email = $event">
                     </div>
@@ -71,7 +71,7 @@ data-target="#giveKudosModal">
                     </div>
 
                     <div class="form-group">
-                        <button type="submit"
+                        <button type="button"
                                 class="btn btn-primary btn-block">Give
                         </button>
                     </div>
