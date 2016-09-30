@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HomeService} from "../shared/home.service";
 import {Response} from "@angular/http";
 import Any = jasmine.Any;
 import {Router} from "@angular/router";
+import {HomeService} from "../../shared/services/home.service";
 
 @Component({
     selector: 'app-home',

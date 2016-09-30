@@ -2,7 +2,7 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import {AuthenticationService} from "../shared/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import {Router} from "@angular/router";
 
 describe('Component: Login', () => {

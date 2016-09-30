@@ -1,4 +1,10 @@
-@import "../assets/styles/variables";
+@import "../../assets/styles/variables";
+
+@media (max-width: 544px) {
+  body {
+    padding-top: 0;
+  }
+}
 
 label{
   font-size: 12px;
@@ -24,5 +30,5 @@ h2{
 }
 
 .sign-up-button{
-    height: 50px;
+  height: 42px;
 }

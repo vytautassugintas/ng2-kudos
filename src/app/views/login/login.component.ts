@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../shared/authentication.service";
-import {Credentials} from "../shared/credentials";
 import {Router} from "@angular/router";
 import {_switch} from "rxjs/operator/switch";
+import {AuthenticationService} from "../../shared/services/authentication.service";
+import {Credentials} from "../../shared/models/credentials";
 
 @Component({
     selector: 'app-login',

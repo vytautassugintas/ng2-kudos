@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WisdomWallService} from "../wisdom-wall.service";
+import {WisdomWallService} from "../../services/wisdom-wall.service";
 declare var jQuery:any;
 
 @Component({

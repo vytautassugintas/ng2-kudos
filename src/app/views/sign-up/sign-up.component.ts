@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Credentials, RegistrationCredentials} from "../shared/credentials";
-import {AuthenticationService} from "../shared/authentication.service";
+import {AuthenticationService} from "../../shared/services/authentication.service";
+import {RegistrationCredentials} from "../../shared/models/credentials";
+
 
 @Component({
     selector: 'app-sign-up',
