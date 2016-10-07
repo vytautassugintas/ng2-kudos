@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Response} from "@angular/http";
 import Any = jasmine.Any;
 import {Router} from "@angular/router";
 import {HomeService} from "../../shared/services/home.service";
+import {User} from "../../shared/models/user";
 
 @Component({
     selector: 'app-home',
@@ -13,6 +13,7 @@ import {HomeService} from "../../shared/services/home.service";
 export class HomeComponent implements OnInit {
 
     constructor(private homeService: HomeService, private router: Router) {
+
     }
 
     user: User;
@@ -39,27 +40,4 @@ export class HomeComponent implements OnInit {
         )
     }
 
-}
-
-export class User {
-
-    constructor(response: any) {
-        this.birthday = response.birthday;
-        this.completed = response.completed;
-        this.email = response.email;
-        this.firstName = response.firstName;
-        this.lastName = response.lastName;
-        this.id = response.id;
-        this.totalKudos = response.totalKudos;
-        this.weeklyKudos = response.weeklyKudos;
-    }
-
-    birthday: string;
-    completed: boolean;
-    email: string;
-    firstName: string;
-    lastName: string;
-    id: string;
-    totalKudos: number;
-    weeklyKudos: number;
 }
