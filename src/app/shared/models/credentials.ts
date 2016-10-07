@@ -15,3 +15,7 @@ export class RegistrationCredentials extends Credentials {
     }
 
 }
+
+export class ConfirmationCode {
+    constructor(public code){}
+}

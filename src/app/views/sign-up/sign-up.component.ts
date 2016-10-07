@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
     model = new RegistrationCredentials("vytautas.sugintas@swedbank.lt", "vytautas", "vytautas sugintas");
 
     ngOnInit() {
+
     }
 
     onSubmit() {
@@ -33,13 +34,12 @@ export class SignUpComponent implements OnInit {
     signUp(credentials: RegistrationCredentials) {
         this.authenticationService.register(credentials.email, credentials.fullName, credentials.password)
             .subscribe(
-                response => this.handleSuccess(response),
+                response => this.signedUpSuccessfully(),
                 error => this.handleErrors(error))
     }
 
-    handleSuccess(response) {
-        //todo
-        //this.router.navigate(['home']);
+    signedUpSuccessfully() {
+        this.router.navigate(['login']);
     }
 
     handleErrors(error) {
@@ -60,9 +60,9 @@ export class SignUpComponent implements OnInit {
     isFormValid(credentials: RegistrationCredentials): boolean{
         if (credentials.fullName.split(" ")[1] == null){
             return this.showErrorAndReturnFalse("Please enter your surname");
-        } else if(credentials.email.search("swedbank") == -1){
+        } /*else if(credentials.email.search("swedbank") == -1){
             return this.showErrorAndReturnFalse("Please enter Swedbank email address");
-        } else {
+        }*/ else {
             return this.clearErrorsAndReturnTrue();
         }
     }

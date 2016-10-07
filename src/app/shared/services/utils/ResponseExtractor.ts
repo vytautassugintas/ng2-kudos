@@ -23,4 +23,10 @@ export class ResponseExtractor{
         return res;
     }
 
+    static extractSucces(res: Response){
+        if (res.status == 200){
+            return res;
+        }
+    }
+
 }

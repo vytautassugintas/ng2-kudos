@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {_switch} from "rxjs/operator/switch";
 import {AuthenticationService} from "../../shared/services/authentication.service";
-import {Credentials} from "../../shared/models/credentials";
+import {Credentials, ConfirmationCode} from "../../shared/models/credentials";
+declare var jQuery:any;
 
 @Component({
     selector: 'app-login',
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
     showSignUpErrorMessage = false;
     signUpErrorMessage: string;
 
-    model = new Credentials("vytautas.sugintas@swedbank.lt", "vytautas");
+    confirmationCode: string;
+    model = new Credentials("", "");
 
     ngOnInit() {
         this.authenticationService.isLogged()
@@ -33,18 +34,22 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
+        this.showErrorMessage = false;
+        this.errorMessage = null;
         this.login(this.model);
+    }
+
+    onConfirmSubmit(){
+        this.authenticationService.confirmAccount(this.confirmationCode).subscribe(
+            success => jQuery('#confirm-account-modal').modal('hode')
+        );
     }
 
     login(credentials: Credentials) {
         this.authenticationService.login(credentials.email, credentials.password)
             .subscribe(
-                response => this.success(response),
+                success => this.router.navigate(['home']),
                 error => this.handleErrors(error))
-    }
-
-    success(response) {
-        this.router.navigate(['home']);
     }
 
     handleErrors(error) {
@@ -55,6 +60,9 @@ export class LoginComponent implements OnInit {
                 break;
             case "email_password_mismatch" :
                 this.errorMessage = "Password is incorrect.";
+                break;
+            case "user_not_confirmed" :
+                this.errorMessage = "User not confirmed. Check email for confirmation code";
                 break;
             default :
                 this.errorMessage = "Something went wrong";

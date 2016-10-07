@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
     constructor(private homeService: HomeService, private router: Router) {
     }
 
-    user:User;
-    usersActions:any;
+    user: User;
+    usersActions: any;
 
     ngOnInit() {
         this.homeService.home().subscribe(
@@ -27,15 +27,13 @@ export class HomeComponent implements OnInit {
                 )
             }
         );
-
-
     }
 
-    setCurrentUser(resp){
+    setCurrentUser(resp) {
         this.user = new User(resp);
     }
 
-    logout(){
+    logout() {
         this.homeService.logout().subscribe(
             resp => this.router.navigate(['login'])
         )

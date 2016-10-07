@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
-
 import {AppComponent} from './app.component';
 import {LoginComponent} from './views/login/login.component';
 import {HomeComponent} from './views/home/home.component';
@@ -17,6 +16,8 @@ import { KudosComponent } from './views/kudos/kudos.component';
 import { ChallengeComponent } from './views/challenge/challenge.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { PeopleComponent } from './views/people/people.component';
+import {ConfirmationComponent} from "./views/login/partials/confirmation/confirmation.component";
+import {RecoverPasswordComponent} from "./views/login/partials/recover-password/recover-password.component";
 
 @NgModule({
     declarations: [
@@ -31,7 +32,9 @@ import { PeopleComponent } from './views/people/people.component';
         KudosComponent,
         ChallengeComponent,
         ProfileComponent,
-        PeopleComponent
+        PeopleComponent,
+        ConfirmationComponent,
+        RecoverPasswordComponent
     ],
     imports: [
         BrowserModule,

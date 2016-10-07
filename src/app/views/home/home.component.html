@@ -23,7 +23,50 @@
 
 <div>
     <div class="row">
-        <div class="col-lg-8">
+
+        <div class="col-lg-2">
+            <ul class="nav side-nav">
+                <li class="nav-item">
+                    <i class="fa fa-home"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-gamepad"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       routerLink="/challenge">Challenge</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-gift"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       routerLink="/kudos">Kudos</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       routerLink="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-users"
+                       aria-hidden="true"></i>
+                    <a class="nav-link"
+                       routerLink="/people">People</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-power-off"
+                       aria-hidden="true"></i>
+                    <a href
+                       (click)="logout()">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-7">
             <div class="row"
                  style="padding-top: 10px; padding-bottom: 10px">
                 <div class="col-sm-6"
@@ -45,7 +88,7 @@
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="card">
                 <div class="card-header">
                     <h5>Profile</h5>

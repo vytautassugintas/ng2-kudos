@@ -11,6 +11,7 @@ export class AuthenticationService {
 
     private loginUrl = API.URL + 'authentication/login';
     private registrationUrl = API.URL + 'authentication/register';
+    private confirmationUrl = API.URL + 'authentication/confirm/';
     private checkUserUrl = API.URL;
 
     login(email: string, password: string): Observable<string> {
@@ -19,7 +20,7 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.loginUrl, body, options)
-            .map(ResponseExtractor.extractJson)
+            .map(ResponseExtractor.extractSucces)
             .catch(ResponseExtractor.handleError);
     }
 
@@ -33,11 +34,18 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.registrationUrl, body, options)
-            .map(ResponseExtractor.extractJson)
+            .map(ResponseExtractor.extractSucces)
             .catch(ResponseExtractor.handleError);
     }
 
+    confirmAccount(confirmationCode: string): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
+        return this.http.post(this.confirmationUrl + confirmationCode, null, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
+    }
 
     isLogged(): Observable<string> {
         let headers = new Headers();
@@ -54,4 +62,5 @@ export class AuthenticationService {
             return response.json().logged;
         }
     }
+
 }
