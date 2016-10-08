@@ -18,6 +18,10 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { PeopleComponent } from './views/people/people.component';
 import {ConfirmationComponent} from "./views/login/partials/confirmation/confirmation.component";
 import {RecoverPasswordComponent} from "./views/login/partials/recover-password/recover-password.component";
+import { ChallengesPanelComponent } from './views/challenge/challenges-panel/challenges-panel.component';
+import { OngoingChallengesComponent } from './views/challenge/challenges-panel/ongoing-challenges/ongoing-challenges.component';
+import { NewChallengesComponent } from './views/challenge/challenges-panel/new-challenges/new-challenges.component';
+import { ChallengeItemComponent } from './views/challenge/challenges-panel/challenge-item/challenge-item.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +38,11 @@ import {RecoverPasswordComponent} from "./views/login/partials/recover-password/
         ProfileComponent,
         PeopleComponent,
         ConfirmationComponent,
-        RecoverPasswordComponent
+        RecoverPasswordComponent,
+        ChallengesPanelComponent,
+        OngoingChallengesComponent,
+        NewChallengesComponent,
+        ChallengeItemComponent
     ],
     imports: [
         BrowserModule,

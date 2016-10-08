@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingOne">
+    <h5 class="panel-title">
+      <span class="tag tag-default">{{newChallengesTotalSize}}</span>
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        New
+      </a>
+    </h5>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+
+    <div *ngIf="newChallengesList?.length === 0" class="alert alert-info" role="alert">
+      <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+    </div>
+
+    <kudos-challenge-item *ngFor="let challenge of newChallengesList; let chIndex = index"
+                          [challenge]="challenge"
+                          [index]="chIndex"
+                          (removeRequest)="removeChallenge($event)">
+    </kudos-challenge-item>
+
+  </div>
+</div>

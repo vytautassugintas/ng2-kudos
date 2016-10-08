@@ -35,7 +35,6 @@ export class WisdomWallComponent implements OnInit {
           this.randomIdea = randomIdea;
           this.ideaLoading = false
         }
-
     )
   }
 

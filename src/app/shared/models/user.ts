@@ -21,18 +21,5 @@ export class User {
         this.weeklyKudos = response.weeklyKudos;
     }
 
-    constructor(id: string, email: string, firstName: string, lastName: string, birthday: string, startedToWorkDate: string, totalKudos: number, weeklyKudos: number, subscribing: boolean, completed: boolean) {
-        this.id = id;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-        this.startedToWorkDate = startedToWorkDate;
-        this.totalKudos = totalKudos;
-        this.weeklyKudos = weeklyKudos;
-        this.subscribing = subscribing;
-        this.completed = completed;
-    }
-
 }
 
