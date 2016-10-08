@@ -12,6 +12,7 @@ export class HomeService {
     private loginUrl = API.URL + 'user/profile';
     private logoutUrl = API.URL + 'authentication/logout';
     private actionsUrl = API.URL + 'user/actions/';
+    private emailPredicateUrl = API.URL + 'user/email/';
 
     home(): Observable<string> {
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -40,6 +41,15 @@ export class HomeService {
 
         return this.http.get(this.actionsUrl + userId, options)
             .map(ResponseExtractor.extractPage)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    getEmailPredicates(predicate: string){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
+
+        return this.http.get(this.emailPredicateUrl + predicate, options)
+            .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 }

@@ -1,0 +1,8 @@
+@import "../../../assets/styles/variables";
+
+.predicate-box{
+  margin-top: -16px;
+  background:$color-grey-borders;
+  position: absolute;
+  z-index: 1000;
+}

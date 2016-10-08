@@ -1,0 +1,111 @@
+<button class="btn btn-primary btn-block"
+        data-toggle="modal"
+        data-target="#giveChallengeModal">
+    <i class="fa fa-gamepad"
+       aria-hidden="true"></i> Challenge
+</button>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="giveChallengeModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"
+                    id="myModalLabel">New Challenge</h4>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit()">
+
+                    <div class="dropdown open">
+                        <label for="challengeReceiverEmail">Challenge to</label>
+                        <div class="form-group">
+                            <input type="email"
+                                   class="form-control"
+                                   id="challengeReceiverEmail"
+                                   name="challengeReceiverEmail"
+                                   placeholder="Start typing name..."
+                                   [(ngModel)]="challengeReceiverEmail"
+                                   (ngModelChange)="predicateEmail()">
+                        </div>
+                        <div *ngIf="showPredicates" class="predicate-box">
+                            <a *ngFor="let user of predicatedEmails" class="dropdown-item" (click)="selectReceiver(user.email)" href="javascript:;">
+                                <span>{{user.firstName}} {{user.lastName}}</span><br>
+                                <span>{{user.email}}</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <label for="challengeAmount">Amount</label>
+                    <div class="form-group input-group">
+                        <input type="number"
+                               class="form-control"
+                               id="challengeAmount"
+                               name="challengeAmount"
+                               [(ngModel)]="challengeAmount"
+                               (ngModelChange)="challengeAmount = $event">
+                    </div>
+
+                    <label for="challengeTitle">Title</label>
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="challengeTitle"
+                               name="challengeTitle"
+                               [(ngModel)]="title"
+                               (ngModelChange)="title = $event">
+                    </div>
+
+                    <label for="challengeDescription">Description</label>
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="challengeDescription"
+                               name="challengeDescription"
+                               [(ngModel)]="description"
+                               (ngModelChange)="description = $event">
+                    </div>
+
+                    <label for="challengeDueDate">Due date</label>
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="challengeDueDate"
+                               name="challengeDueDate"
+                               [(ngModel)]="dueDate"
+                               (ngModelChange)="dueDate = $event">
+                    </div>
+
+                    <div *ngIf="showErrorMessage"
+                         class="alert alert-danger"
+                         role="alert">
+                        <strong>Oh snap!</strong> {{errorMessage}}
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button"
+                                class="btn btn-primary btn-block">Give
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

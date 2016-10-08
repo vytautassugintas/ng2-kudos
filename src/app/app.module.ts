@@ -22,6 +22,7 @@ import { ChallengesPanelComponent } from './views/challenge/challenges-panel/cha
 import { OngoingChallengesComponent } from './views/challenge/challenges-panel/ongoing-challenges/ongoing-challenges.component';
 import { NewChallengesComponent } from './views/challenge/challenges-panel/new-challenges/new-challenges.component';
 import { ChallengeItemComponent } from './views/challenge/challenges-panel/challenge-item/challenge-item.component';
+import { GiveChallengeComponent } from './shared/components/give-challenge/give-challenge.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { ChallengeItemComponent } from './views/challenge/challenges-panel/chall
         ChallengesPanelComponent,
         OngoingChallengesComponent,
         NewChallengesComponent,
-        ChallengeItemComponent
+        ChallengeItemComponent,
+        GiveChallengeComponent
     ],
     imports: [
         BrowserModule,
