@@ -25,4 +25,14 @@
             class="btn btn-secondary">Cancel
     </button>
 
+    <button (click)="complete()"
+            *ngIf="challenge.actions.markAsCompletedAllowed"
+            class="btn btn-secondary">Cancel
+    </button>
+
+    <button (click)="markAsFailed()"
+            *ngIf="challenge.actions.markAsFailedAllowed"
+            class="btn btn-secondary">Cancel
+    </button>
+
 </div>

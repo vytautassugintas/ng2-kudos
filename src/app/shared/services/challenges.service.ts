@@ -11,6 +11,7 @@ export class ChallengesService {
 
     private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
     private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
+    private challengesUrl = API.URL + 'challenge/';
 
     getNewChallenges(page: number, pageSize: number): Observable<any> {
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -36,31 +37,49 @@ export class ChallengesService {
             .catch(ResponseExtractor.handleError);
     }
 
-    acceptChallenge(id: string){
+    acceptChallenge(challengeId: string){
         let headers = new Headers({'Content-Type': 'application/json'});
-        let params: URLSearchParams = new URLSearchParams();
-        params.set('id', id);
-        let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
-        return this.http.get(this.ongoingChallengesUrl, options)
-            .map(ResponseExtractor.extractPage)
+        return this.http.post(this.challengesUrl + challengeId + "/accept", null, options)
+            .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 
-    declineChallenge(id: string){
+    declineChallenge(challengeId: string){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
+        return this.http.post(this.challengesUrl + challengeId + "/decline", null, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
     }
 
-    cancelChallenge(id: string){
+    cancelChallenge(challengeId: string){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
+        return this.http.post(this.challengesUrl + challengeId + "/cancel", null, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
     }
 
-    completeChallenge(id: string){
+    completeChallenge(challengeId: string){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
+        return this.http.post(this.challengesUrl + challengeId + "/markAsCompleted", null, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
     }
 
-    markAsFailedChallenge(id: string){
+    markAsFailedChallenge(challengeId: string){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
 
+        return this.http.post(this.challengesUrl + challengeId + "/markAsFailed", null, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
     }
 
 }

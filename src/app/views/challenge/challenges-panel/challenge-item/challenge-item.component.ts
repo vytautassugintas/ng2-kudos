@@ -26,17 +26,53 @@ export class ChallengeItemComponent implements OnInit {
   }
 
   accept(){
-    console.log("In ITEM")
-    console.log(this.challenge);
-    this.removeRequest.emit(this.index);
+    this.challengesService.acceptChallenge(this.challenge.id).subscribe(
+        response => {
+          this.notifyUser("accepted");
+          this.removeRequest.emit(this.index);
+        }
+    );
+
   }
 
   decline(){
-
+    this.challengesService.declineChallenge(this.challenge.id).subscribe(
+        response => {
+          this.notifyUser("declined");
+          this.removeRequest.emit(this.index);
+        }
+    );
   }
 
   cancel(){
+    this.challengesService.cancelChallenge(this.challenge.id).subscribe(
+        response => {
+          this.notifyUser("canceled");
+          this.removeRequest.emit(this.index);
+        }
+    );
+  }
 
+  complete(){
+    this.challengesService.completeChallenge(this.challenge.id).subscribe(
+        response => {
+          this.notifyUser("completed");
+          this.removeRequest.emit(this.index);
+        }
+    );
+  }
+
+  markAsFailed(){
+    this.challengesService.markAsFailedChallenge(this.challenge.id).subscribe(
+        response => {
+          this.notifyUser("marked as failed");
+          this.removeRequest.emit(this.index);
+        }
+    );
+  }
+
+  private notifyUser(action: string){
+    console.log("Challenge " + action)
   }
 
 }
