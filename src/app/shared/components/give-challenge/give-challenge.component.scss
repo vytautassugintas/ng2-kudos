@@ -1,8 +1,7 @@
 @import "../../../assets/styles/variables";
 
 .predicate-box{
-  margin-top: -16px;
-  background:$color-grey-borders;
   position: absolute;
+  width: 100%;
   z-index: 1000;
 }

@@ -9,9 +9,20 @@ export class ChallengesService {
     constructor(private http: Http) {
     }
 
+    private sendChallengeUrl = API.URL + 'challenge/give';
     private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
     private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
     private challengesUrl = API.URL + 'challenge/';
+
+    sendChallenge(challengeForm: any): Observable<any>{
+        let body = JSON.stringify(challengeForm);
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
+
+        return this.http.post(this.sendChallengeUrl, body, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
+    }
 
     getNewChallenges(page: number, pageSize: number): Observable<any> {
         let headers = new Headers({'Content-Type': 'application/json'});

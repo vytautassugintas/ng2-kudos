@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeService} from "../../services/home.service";
+import {ChallengesService} from "../../services/challenges.service";
 declare var jQuery: any;
 
 @Component({
     selector: 'kudos-give-challenge',
     templateUrl: './give-challenge.component.html',
     styleUrls: ['./give-challenge.component.scss'],
-    providers: [HomeService]
+    providers: [HomeService, ChallengesService]
 })
 export class GiveChallengeComponent implements OnInit {
 
@@ -15,18 +16,25 @@ export class GiveChallengeComponent implements OnInit {
 
     challengeReceiverEmail: string;
     challengeAmount: number;
+    challengeTitle: string;
+    challengeDescription: string;
 
-    constructor(private homeService: HomeService) {
+    constructor(private homeService: HomeService, private challengesService: ChallengesService) {
     }
 
     ngOnInit() {
         this.showPredicates = false;
         this.challengeReceiverEmail = '';
+        this.challengeTitle = '';
+        this.challengeDescription = '';
         this.challengeAmount = 1;
     }
 
     onSubmit() {
-
+        this.challengesService.sendChallenge(this.getFormValues()).subscribe(
+            resp => console.log(resp),
+            error => console.log(error)
+        )
     }
 
     predicateEmail() {
@@ -40,9 +48,19 @@ export class GiveChallengeComponent implements OnInit {
         }
     }
 
-    selectReceiver(receiver){
+    selectReceiver(receiver) {
         this.challengeReceiverEmail = receiver;
         this.showPredicates = false;
+    }
+
+    getFormValues(): any {
+        return {
+            receiverEmail: this.challengeReceiverEmail,
+            name: this.challengeTitle,
+            description: this.challengeDescription,
+            expirationDate: null,
+            amount: this.challengeAmount
+        }
     }
 
 }
