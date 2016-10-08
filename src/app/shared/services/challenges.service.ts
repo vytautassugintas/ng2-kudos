@@ -1,5 +1,5 @@
 import {Injectable}     from '@angular/core';
-import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
+import {Http, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable, Subject}     from 'rxjs';
 import {ResponseExtractor} from "./utils/ResponseExtractor";
 import {API} from "../api.config";
@@ -7,15 +7,20 @@ import {API} from "../api.config";
 @Injectable()
 export class ChallengesService {
 
-    // Observable string sources
     private missionAnnouncedSource = new Subject<any>();
     private missionConfirmedSource = new Subject<any>();
 
-    // Observable string streams
     missionAnnounced$ = this.missionAnnouncedSource.asObservable();
     missionConfirmed$ = this.missionConfirmedSource.asObservable();
 
-    // Service message commands
+    private sendChallengeUrl = API.URL + 'challenge/give';
+    private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
+    private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
+    private challengesUrl = API.URL + 'challenge/';
+
+    constructor(private http: Http) {
+    }
+
     announceMission(mission: any) {
         this.missionAnnouncedSource.next(mission);
         console.log("Service got new mission: " + mission.name);
@@ -24,14 +29,6 @@ export class ChallengesService {
         this.missionConfirmedSource.next(astronaut);
         console.log("Service got new astronaut: " + astronaut.name);
     }
-
-    constructor(private http: Http) {
-    }
-
-    private sendChallengeUrl = API.URL + 'challenge/give';
-    private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
-    private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
-    private challengesUrl = API.URL + 'challenge/';
 
     sendChallenge(challengeForm: any): Observable<any>{
         let body = JSON.stringify(challengeForm);

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ChallengesService} from "../../../../shared/services/challenges.service";
-import {NotificationsService} from "angular2-notifications";
 import {Subscription} from "rxjs";
 
 declare var jQuery: any;
