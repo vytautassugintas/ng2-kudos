@@ -1,11 +1,30 @@
 import {Injectable}     from '@angular/core';
 import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import {Observable}     from 'rxjs/Observable';
+import {Observable, Subject}     from 'rxjs';
 import {ResponseExtractor} from "./utils/ResponseExtractor";
 import {API} from "../api.config";
 
 @Injectable()
 export class ChallengesService {
+
+    // Observable string sources
+    private missionAnnouncedSource = new Subject<any>();
+    private missionConfirmedSource = new Subject<any>();
+
+    // Observable string streams
+    missionAnnounced$ = this.missionAnnouncedSource.asObservable();
+    missionConfirmed$ = this.missionConfirmedSource.asObservable();
+
+    // Service message commands
+    announceMission(mission: any) {
+        this.missionAnnouncedSource.next(mission);
+        console.log("Service got new mission: " + mission.name);
+    }
+    confirmMission(astronaut: any) {
+        this.missionConfirmedSource.next(astronaut);
+        console.log("Service got new astronaut: " + astronaut.name);
+    }
+
     constructor(private http: Http) {
     }
 
@@ -44,7 +63,7 @@ export class ChallengesService {
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.ongoingChallengesUrl, options)
-            .map(ResponseExtractor.extractPage)
+            .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 

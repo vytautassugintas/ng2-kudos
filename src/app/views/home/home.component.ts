@@ -3,16 +3,17 @@ import Any = jasmine.Any;
 import {Router} from "@angular/router";
 import {HomeService} from "../../shared/services/home.service";
 import {User} from "../../shared/models/user";
+import {ChallengesService} from "../../shared/services/challenges.service";
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    providers: [HomeService]
+    providers: [HomeService, ChallengesService]
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private homeService: HomeService, private router: Router) {
+    constructor(private homeService: HomeService, private challengesService: ChallengesService, private router: Router) {
 
     }
 

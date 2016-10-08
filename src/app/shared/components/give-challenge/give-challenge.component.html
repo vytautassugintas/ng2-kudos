@@ -38,7 +38,9 @@
                                    name="challengeReceiverEmail"
                                    placeholder="Start typing name..."
                                    [(ngModel)]="challengeReceiverEmail"
-                                   (ngModelChange)="predicateEmail()">
+                                   (ngModelChange)="predicateEmail()"
+                                   maxlength="80"
+                                   autocomplete="off">
                         </div>
                         <div *ngIf="showPredicates" class="predicate-box dropdown-menu">
                             <a *ngFor="let user of predicatedEmails" class="dropdown-item" (click)="selectReceiver(user.email)" href="javascript:;">
@@ -65,6 +67,7 @@
                                class="form-control"
                                id="challengeTitle"
                                name="challengeTitle"
+                               maxlength="140"
                                [(ngModel)]="challengeTitle"
                                (ngModelChange)="challengeTitle = $event">
                     </div>
@@ -72,6 +75,7 @@
                     <label for="challengeDescription">Description</label>
                     <div class="form-group">
                         <input type="text"
+                               maxlength="300"
                                class="form-control"
                                id="challengeDescription"
                                name="challengeDescription"

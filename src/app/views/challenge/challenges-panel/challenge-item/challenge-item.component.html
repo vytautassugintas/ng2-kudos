@@ -1,13 +1,19 @@
 <div class="card card-block text-xs-center">
 
-    <h5 *ngIf="challenge.actions.acceptAllowed">You have created challenge</h5>
+    <h5 *ngIf="challenge.actions.acceptAllowed">You have been challenged</h5>
 
-    <h5 *ngIf="challenge.actions.cancelAllowed">You have been challenged</h5>
+    <h5 *ngIf="challenge.actions.cancelAllowed">Waiting for challenge to be accepted</h5>
+
+    <h5 *ngIf="!challenge.actions.acceptAllowed && !challenge.actions.markAsCompletedAllowed && !challenge.actions.cancelAllowed">You have accepted challenge</h5>
+
+    <h5 *ngIf="challenge.actions.markAsCompletedAllowed">Given challenge</h5>
 
     <p *ngIf="challenge.actions.acceptAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
 
+    <p *ngIf="challenge.actions.cancelAllowed || challenge.actions.markAsCompletedAllowed"><span class="bold">{{challenge.name}}</span> given to <a href="">{{challenge.participantFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
 
-    <h6>{{challenge.name}}</h6>
+    <p *ngIf="!challenge.actions.acceptAllowed && !challenge.actions.markAsCompletedAllowed && !challenge.actions.cancelAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
+
     <p>{{challenge.description}}</p>
 
     <button (click)="accept();"
@@ -27,12 +33,12 @@
 
     <button (click)="complete()"
             *ngIf="challenge.actions.markAsCompletedAllowed"
-            class="btn btn-secondary">Cancel
+            class="btn btn-primary">Completed
     </button>
 
     <button (click)="markAsFailed()"
             *ngIf="challenge.actions.markAsFailedAllowed"
-            class="btn btn-secondary">Cancel
+            class="btn btn-secondary">Failed
     </button>
 
 </div>

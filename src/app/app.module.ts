@@ -23,6 +23,7 @@ import { OngoingChallengesComponent } from './views/challenge/challenges-panel/o
 import { NewChallengesComponent } from './views/challenge/challenges-panel/new-challenges/new-challenges.component';
 import { ChallengeItemComponent } from './views/challenge/challenges-panel/challenge-item/challenge-item.component';
 import { GiveChallengeComponent } from './shared/components/give-challenge/give-challenge.component';
+import {SimpleNotificationsModule} from "angular2-notifications";
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import { GiveChallengeComponent } from './shared/components/give-challenge/give-
         FormsModule,
         routing,
         HttpModule,
-        JsonpModule
+        JsonpModule,
+        SimpleNotificationsModule
     ],
     providers: [
         appRoutingProviders

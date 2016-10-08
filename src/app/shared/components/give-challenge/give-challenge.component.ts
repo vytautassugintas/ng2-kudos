@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeService} from "../../services/home.service";
 import {ChallengesService} from "../../services/challenges.service";
+import {NotificationsService} from "angular2-notifications";
 declare var jQuery: any;
 
 @Component({
     selector: 'kudos-give-challenge',
     templateUrl: './give-challenge.component.html',
-    styleUrls: ['./give-challenge.component.scss'],
-    providers: [HomeService, ChallengesService]
+    styleUrls: ['./give-challenge.component.scss']
 })
 export class GiveChallengeComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class GiveChallengeComponent implements OnInit {
     challengeTitle: string;
     challengeDescription: string;
 
-    constructor(private homeService: HomeService, private challengesService: ChallengesService) {
+    constructor(private homeService: HomeService, private challengesService: ChallengesService, private notificationService: NotificationsService) {
     }
 
     ngOnInit() {
@@ -32,7 +32,11 @@ export class GiveChallengeComponent implements OnInit {
 
     onSubmit() {
         this.challengesService.sendChallenge(this.getFormValues()).subscribe(
-            resp => console.log(resp),
+            resp => {
+                jQuery('#giveChallengeModal').modal('hide');
+                this.notificationService.success('Success', 'Challenge sent', true);
+                this.challengesService.confirmMission(resp);
+            },
             error => console.log(error)
         )
     }
@@ -41,7 +45,7 @@ export class GiveChallengeComponent implements OnInit {
         if (this.challengeReceiverEmail.length > 2) {
             this.homeService.getEmailPredicates(this.challengeReceiverEmail).subscribe(
                 resp => this.predicatedEmails = resp
-            )
+            );
             this.showPredicates = true;
         } else {
             this.showPredicates = false;

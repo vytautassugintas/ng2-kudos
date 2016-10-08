@@ -2,77 +2,81 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Input} from "@angular/core/src/metadata/directives";
 import {Challenge} from "../../../../shared/models/challenge";
 import {ChallengesService} from "../../../../shared/services/challenges.service";
+import {Subscription} from "rxjs";
+import {NotificationsService} from "angular2-notifications";
 
 @Component({
-  selector: 'kudos-challenge-item',
-  templateUrl: './challenge-item.component.html',
-  styleUrls: ['./challenge-item.component.scss'],
-  providers: [ChallengesService]
+    selector: 'kudos-challenge-item',
+    templateUrl: './challenge-item.component.html',
+    styleUrls: ['./challenge-item.component.scss']
 })
 export class ChallengeItemComponent implements OnInit {
 
-  @Input() challenge: any;
-  @Input() index: any;
+    @Input() challenge: any;
+    @Input() index: any;
 
-  @Output() removeRequest = new EventEmitter();
+    @Output() removeRequest = new EventEmitter();
 
-  constructor(private challengesService: ChallengesService) {
+    subscription: Subscription;
 
-  }
+    constructor(private challengesService: ChallengesService, private notificationService: NotificationsService) {
+        this.subscription = challengesService.missionAnnounced$.subscribe(
+            mission => {
+                console.log("FROM ITEM")
+            });
+    }
 
-  ngOnInit() {
-    this.challenge = new Challenge(this.challenge);
-    this.challenge.actions.acceptAllowed = true;
-  }
+    ngOnInit() {
+        this.challenge = new Challenge(this.challenge);
+    }
 
-  accept(){
-    this.challengesService.acceptChallenge(this.challenge.id).subscribe(
-        response => {
-          this.notifyUser("accepted");
-          this.removeRequest.emit(this.index);
-        }
-    );
+    accept() {
+        this.challengesService.acceptChallenge(this.challenge.id).subscribe(
+            response => {
+                this.challenge.actions.acceptAllowed = false;
+                this.challenge.actions.declineAllowed = false;
+                this.challengesService.announceMission(this.challenge);
+                this.notifyUserAndRequestRemove('Challenge accepted');
+            }
+        );
+    }
 
-  }
+    decline() {
+        this.challengesService.declineChallenge(this.challenge.id).subscribe(
+            response => {
+                this.notifyUserAndRequestRemove('Challenge declined');
+            }
+        );
+    }
 
-  decline(){
-    this.challengesService.declineChallenge(this.challenge.id).subscribe(
-        response => {
-          this.notifyUser("declined");
-          this.removeRequest.emit(this.index);
-        }
-    );
-  }
+    cancel() {
+        this.challengesService.cancelChallenge(this.challenge.id).subscribe(
+            response => {
+                this.notifyUserAndRequestRemove('Challenge canceled ');
+            }
+        );
+    }
 
-  cancel(){
-    this.challengesService.cancelChallenge(this.challenge.id).subscribe(
-        response => {
-          this.notifyUser("canceled");
-          this.removeRequest.emit(this.index);
-        }
-    );
-  }
+    complete() {
+        this.challengesService.completeChallenge(this.challenge.id).subscribe(
+            response => {
+                this.notifyUserAndRequestRemove('Challenge completed');
+            }
+        );
+    }
 
-  complete(){
-    this.challengesService.completeChallenge(this.challenge.id).subscribe(
-        response => {
-          this.notifyUser("completed");
-          this.removeRequest.emit(this.index);
-        }
-    );
-  }
+    markAsFailed() {
+        this.challengesService.markAsFailedChallenge(this.challenge.id).subscribe(
+            response => {
+                this.notifyUserAndRequestRemove('Failed challenge');
+            }
+        );
+    }
 
-  markAsFailed(){
-    this.challengesService.markAsFailedChallenge(this.challenge.id).subscribe(
-        response => {
-          this.notifyUser("marked as failed");
-          this.removeRequest.emit(this.index);
-        }
-    );
-  }
 
-  private notifyUser(action: string){
-    console.log("Challenge " + action)
-  }
+    private notifyUserAndRequestRemove(action: string) {
+        this.notificationService.success('Success', action, true);
+        this.removeRequest.emit(this.index);
+    }
 
 }

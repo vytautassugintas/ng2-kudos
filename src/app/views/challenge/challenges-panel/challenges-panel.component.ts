@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ChallengesService} from "../../../shared/services/challenges.service";
 
 @Component({
   selector: 'kudos-challenges-panel',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChallengesPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private challengesService: ChallengesService) {
+    challengesService.missionConfirmed$.subscribe(
+        mission => {
+          console.log("RECEIVED In PANEL " + mission)
+        });
+  }
 
   ngOnInit() {
   }
