@@ -10,6 +10,8 @@ declare var jQuery:any;
 })
 export class WisdomWallComponent implements OnInit {
 
+  showLoader: boolean;
+
   randomIdea: any;
 
   phrase: string;
@@ -18,22 +20,21 @@ export class WisdomWallComponent implements OnInit {
   errorMessage: string;
   showError = false;
 
-  ideaLoading = false;
-
   constructor(private wisdomWallService: WisdomWallService) { }
 
   ngOnInit() {
+    this.showLoader = true;
     this.phrase = '';
     this.author = '';
     this.getRandomIdea();
   }
 
   getRandomIdea(){
-    this.ideaLoading = true;
+    this.showLoader = true;
     this.wisdomWallService.getRandomIdea().subscribe(
         randomIdea => {
           this.randomIdea = randomIdea;
-          this.ideaLoading = false
+          this.showLoader = false
         }
     )
   }

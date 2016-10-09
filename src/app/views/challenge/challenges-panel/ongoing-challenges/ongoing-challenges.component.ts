@@ -9,6 +9,8 @@ import {Subscription} from "rxjs";
 })
 export class OngoingChallengesComponent implements OnInit {
 
+    showLoader: boolean;
+
     ongoingChallengesList: any;
     ongoingChallengesTotalSize: number;
 
@@ -31,8 +33,9 @@ export class OngoingChallengesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showLoader = true;
         this.page = 0;
-        this.pageSize = 5;
+        this.pageSize = 3;
         this.loadOngoingChallenges(this.page, this.pageSize);
     }
 
@@ -46,12 +49,14 @@ export class OngoingChallengesComponent implements OnInit {
     }
 
     loadOngoingChallenges(page:number, pageSize:number){
+        this.showLoader = true;
         this.challengesService.getOngoingChallenges(page, pageSize).subscribe(
             resp => {
                 this.ongoingChallengesList = resp.content;
                 this.ongoingChallengesTotalSize = resp.totalElements;
                 this.isFirstPage = resp.first;
                 this.isLastPage = resp.last;
+                this.showLoader = false;
             }
         )
     }
@@ -63,7 +68,7 @@ export class OngoingChallengesComponent implements OnInit {
         }
     }
 
-    loadPreviuosPage(){
+    loadPreviousPage(){
         if (!this.isFirstPage){
             this.page--;
             this.loadOngoingChallenges(this.page, this.pageSize);

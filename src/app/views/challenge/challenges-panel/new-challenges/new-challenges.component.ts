@@ -11,6 +11,8 @@ declare var jQuery: any;
 })
 export class NewChallengesComponent implements OnInit {
 
+    showLoader: boolean;
+
     subscription: Subscription;
 
     newChallengesList: any;
@@ -33,8 +35,9 @@ export class NewChallengesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showLoader = false;
         this.page = 0;
-        this.pageSize = 5;
+        this.pageSize = 3;
 
         this.loadNewChallenges(this.page, this.pageSize);
     }
@@ -44,12 +47,14 @@ export class NewChallengesComponent implements OnInit {
     }
 
     loadNewChallenges(page:number, pageSize:number){
+        this.showLoader = true;
         this.challengesService.getNewChallenges(page, pageSize).subscribe(
             resp => {
                 this.newChallengesList = resp.content;
                 this.newChallengesTotalSize = resp.totalElements;
                 this.isFirstPage = resp.first;
                 this.isLastPage = resp.last;
+                this.showLoader = false;
             }
         )
     }
