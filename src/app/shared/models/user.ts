@@ -19,6 +19,7 @@ export class User {
         this.id = response.id;
         this.totalKudos = response.totalKudos;
         this.weeklyKudos = response.weeklyKudos;
+        this.subscribing = response.subscribing;
     }
 
 }

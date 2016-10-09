@@ -77,7 +77,7 @@ export class NewChallengesComponent implements OnInit {
         this.newChallengesTotalSize--;
         this.newChallengesList.splice(index, 1);
 
-        if (this.newChallengesTotalSize > 5){
+        if (this.newChallengesTotalSize > 3){
             this.loadNewChallenges(this.page, this.pageSize);
         }
     }

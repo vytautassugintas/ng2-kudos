@@ -6,6 +6,7 @@ import {User} from "../../shared/models/user";
 import {ChallengesService} from "../../shared/services/challenges.service";
 import {AuthGuard} from "../../shared/auth-guard.service";
 import {AuthenticationService} from "../../shared/services/authentication.service";
+import {NotificationsService} from "angular2-notifications";
 
 @Component({
     selector: 'app-home',
@@ -15,13 +16,20 @@ import {AuthenticationService} from "../../shared/services/authentication.servic
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private homeService: HomeService, private challengesService: ChallengesService, private router: Router) {
+    constructor(private homeService: HomeService, private challengesService: ChallengesService, private notificationService: NotificationsService, private authService: AuthenticationService, private router: Router) {
 
     }
 
     user: User;
     usersActions: any;
-    userLoading:boolean;
+    userLoading: boolean;
+
+    isSubscribing: boolean = false;
+
+    userNewPassword: string = '';
+    showPasswordError: boolean = false;
+    passwordError: string = '';
+    showPassword: boolean = false;
 
     ngOnInit() {
         this.userLoading = true;
@@ -38,6 +46,29 @@ export class HomeComponent implements OnInit {
 
     setCurrentUser(resp) {
         this.user = new User(resp);
+        this.isSubscribing = this.user.subscribing;
+    }
+
+    changeSubscription() {
+        this.homeService.changeSubscription(this.isSubscribing).subscribe(
+            resp => this.notificationService.success('Success', 'Saved', true)
+        )
+    }
+
+    changePassword() {
+        console.log(this.userNewPassword);
+        if (this.userNewPassword.length > 4) {
+            this.showPasswordError = false;
+            this.authService.changePassword(this.userNewPassword).subscribe(
+                resp => {
+                    this.notificationService.success('Success', 'Password changed', true);
+                    this.userNewPassword = '';
+                }
+            )
+        } else {
+            this.showPasswordError = true;
+            this.passwordError = 'Password too short. Enter more than 5 symbols'
+        }
     }
 
     logout() {

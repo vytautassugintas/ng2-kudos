@@ -1,11 +1,20 @@
 <div class="card">
     <div class="card-block">
+
         <p>
-            <i class="fa fa-gamepad"
-               aria-hidden="true"></i>
+            <i *ngIf="action.type == 'ACCEPTED_CHALLENGE'" class="fa fa-gamepad" aria-hidden="true"></i>
+            <i *ngIf="action.type == 'CREATED_CHALLENGE'" class="fa fa-gamepad" aria-hidden="true"></i>
+            <i *ngIf="action.type == 'ADDED_NEW_IDEA'" class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <i *ngIf="action.type == 'KUDOS_GIVEN'" class="fa fa-gift" aria-hidden="true"></i>
+
             <a href="">{{action.userFullName}}</a>
+
             <span *ngIf="action.type == 'COMMENTED'"> commented on </span>
-            <span class="bold">challenge</span>
+            <span *ngIf="action.type == 'ACCEPTED_CHALLENGE'"> accepted challenge from <a href="javascript:">{{action.challengeResponse.creatorFullName}}</a></span>
+            <span *ngIf="action.type == 'CREATED_CHALLENGE'"> challenged <a href="javascript:">{{action.challengeResponse.participantFullName}}</a> </span>
+            <span *ngIf="action.type == 'ADDED_NEW_IDEA'"> added new idea to wisdom wall</span>
+            <span *ngIf="action.type == 'KUDOS_GIVEN'"> given kudos to <a href="javascript:">{{action.transactionResponse.receiverFullName}}</a></span>
+
             <span class="kudos-date">{{action.timestamp | date:'fullDate'}}</span>
         </p>
 
@@ -13,14 +22,14 @@
             {{action.commentResponse.text}}
         </blockquote>
 
-        <div class="actions-holder">
+        <!--<div class="actions-holder">
             <div class="kudos-comment pull-right">
                 <div class="content center">
                     <i class="fa fa-commenting-o"
                        aria-hidden="true"></i>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
 </div>

@@ -15,6 +15,8 @@ export class HomeService {
     private userActionsUrl = API.URL + 'user/actions/';
     private actionsUrl = API.URL + 'relation/feed';
     private emailPredicateUrl = API.URL + 'user/email/';
+    private subscribeUrl = API.URL + 'user/subscribe/';
+    private unsubscribeUrl = API.URL + 'user/unsubscribe/';
 
     home(): Observable<string> {
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -65,5 +67,20 @@ export class HomeService {
         return this.http.get(this.emailPredicateUrl + predicate, options)
             .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
+    }
+
+    changeSubscription(subscribe: boolean){
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
+
+        if (subscribe){
+            return this.http.post(this.subscribeUrl, null, options)
+                .map(ResponseExtractor.extractString)
+                .catch(ResponseExtractor.extractString)
+        } else {
+            return this.http.post(this.unsubscribeUrl, null, options)
+                .map(ResponseExtractor.extractString)
+                .catch(ResponseExtractor.extractString)
+        }
     }
 }

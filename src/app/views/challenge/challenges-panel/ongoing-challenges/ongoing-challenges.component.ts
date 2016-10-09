@@ -43,7 +43,7 @@ export class OngoingChallengesComponent implements OnInit {
         this.ongoingChallengesTotalSize--;
         this.ongoingChallengesList.splice(index, 1);
 
-        if (this.ongoingChallengesTotalSize > 5){
+        if (this.ongoingChallengesTotalSize > 3){
             this.loadOngoingChallenges(this.page, this.pageSize);
         }
     }

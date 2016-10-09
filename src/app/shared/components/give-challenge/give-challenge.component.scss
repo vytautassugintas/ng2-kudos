@@ -1,5 +1,11 @@
 @import "../../../assets/styles/variables";
 
+label{
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
 .predicate-box{
   position: absolute;
   width: 100%;
