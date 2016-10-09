@@ -19,11 +19,14 @@ export class HomeComponent implements OnInit {
 
     user: User;
     usersActions: any;
+    userLoading:boolean;
 
     ngOnInit() {
+        this.userLoading = true;
         this.homeService.home().subscribe(
             resp => {
                 this.setCurrentUser(resp);
+                this.userLoading = false;
                 this.homeService.actions(this.user.id, 0, 5).subscribe(
                     resp => this.usersActions = resp
                 )

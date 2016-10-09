@@ -55,6 +55,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card">
+                <div *ngIf="userLoading" class="card-loader">Loading...</div>
                 <div class="card-header">
                     <h5><i class="fa fa-user" aria-hidden="true"></i> {{user?.firstName}} {{user?.lastName}}</h5>
                 </div>
