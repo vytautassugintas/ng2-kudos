@@ -6,6 +6,9 @@ import {ResponseExtractor} from "./utils/ResponseExtractor";
 
 @Injectable()
 export class AuthenticationService {
+
+    isAuthenticated:boolean;
+
     constructor(private http: Http) {
     }
 
@@ -14,7 +17,7 @@ export class AuthenticationService {
     private confirmationUrl = API.URL + 'authentication/confirm/';
     private checkUserUrl = API.URL;
 
-    login(email: string, password: string): Observable<string> {
+    login(email: string, password: string): Observable<any> {
         let body = JSON.stringify({email, password});
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers, withCredentials: true});
@@ -47,7 +50,7 @@ export class AuthenticationService {
             .catch(ResponseExtractor.handleError);
     }
 
-    isLogged(): Observable<string> {
+    isLogged(): Observable<boolean> {
         let headers = new Headers();
         let options = new RequestOptions({headers: headers, withCredentials: true});
         return this.http.get(this.checkUserUrl, options)

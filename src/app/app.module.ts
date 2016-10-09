@@ -24,6 +24,8 @@ import { NewChallengesComponent } from './views/challenge/challenges-panel/new-c
 import { ChallengeItemComponent } from './views/challenge/challenges-panel/challenge-item/challenge-item.component';
 import { GiveChallengeComponent } from './shared/components/give-challenge/give-challenge.component';
 import {SimpleNotificationsModule} from "angular2-notifications";
+import {AuthGuard} from "./shared/auth-guard.service";
+import {AuthenticationService} from "./shared/services/authentication.service";
 
 @NgModule({
     declarations: [
@@ -56,6 +58,8 @@ import {SimpleNotificationsModule} from "angular2-notifications";
         SimpleNotificationsModule
     ],
     providers: [
+        AuthenticationService,
+        AuthGuard,
         appRoutingProviders
     ],
     bootstrap: [AppComponent]

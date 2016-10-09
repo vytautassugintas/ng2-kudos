@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {HomeService} from "../../shared/services/home.service";
 import {User} from "../../shared/models/user";
 import {ChallengesService} from "../../shared/services/challenges.service";
+import {AuthGuard} from "../../shared/auth-guard.service";
+import {AuthenticationService} from "../../shared/services/authentication.service";
 
 @Component({
     selector: 'app-home',
