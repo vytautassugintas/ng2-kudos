@@ -51,6 +51,15 @@
   </div>
 </nav>
 
-<p>
-  challenge works!
-</p>
+<div class="container-fluid">
+  <div *ngIf="showLoader" class="card-loader">Loading...</div>
+
+  <div class="card" *ngFor="let challenge of challengesList; let chIndex = index">
+    <div class="card-block">
+      <p>{{challenge.name}} received from {{challenge.creatorFullName}} for <span class="tag tag-default">{{challenge.amount}}</span>
+        and was <span class="bold" *ngIf="challenge.status === 'ACCOMPLISHED'">accomplished</span>
+      </p>
+    </div>
+  </div>
+
+</div>

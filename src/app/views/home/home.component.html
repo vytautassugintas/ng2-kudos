@@ -88,9 +88,18 @@
 
             <kudos-challenges-panel></kudos-challenges-panel>
 
-            <app-action-item *ngFor="let action of usersActions;"
-                             [action]="action">
-            </app-action-item>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Your recent actions</h5>
+                </div>
+                <div class="card-block">
+                    <app-action-item *ngFor="let action of usersActions;"
+                                     [action]="action">
+                    </app-action-item>
+                </div>
+            </div>
+
 
         </div>
 

@@ -17,6 +17,9 @@ export class ChallengesService {
     private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
     private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
     private challengesUrl = API.URL + 'challenge/';
+    private challengesHistoryUrl = API.URL + 'challenge/history';
+    private challengesAccomplishedHistoryUrl = API.URL + 'challenge/history/accomplished';
+    private challengesFailedHistoryUrl = API.URL + 'challenge/history/failed';
 
     constructor(private http: Http) {
     }
@@ -60,6 +63,42 @@ export class ChallengesService {
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.ongoingChallengesUrl, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    getHistory(page: number, pageSize: number): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('page', page.toString());
+        params.set('size', pageSize.toString());
+        let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+
+        return this.http.get(this.challengesHistoryUrl, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    getAccomplishedHistory(page: number, pageSize: number): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('page', page.toString());
+        params.set('size', pageSize.toString());
+        let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+
+        return this.http.get(this.challengesAccomplishedHistoryUrl, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    getFailedHistory(page: number, pageSize: number): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('page', page.toString());
+        params.set('size', pageSize.toString());
+        let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+
+        return this.http.get(this.challengesFailedHistoryUrl, options)
             .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }

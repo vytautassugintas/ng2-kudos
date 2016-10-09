@@ -12,7 +12,7 @@ export class KudosService {
 
     private giveUrl = API.URL + 'kudos/give';
 
-    private historyUrl = API.URL + 'history';
+    private historyUrl = API.URL + 'kudos/history';
     private historyGivenUrl = API.URL + 'kudos/history/given';
     private historyReceivedUrl = API.URL + 'kudos/history/received';
 
@@ -27,7 +27,7 @@ export class KudosService {
 
     public getHistory(page: number, pageSize: number): Observable<any> {
         return this.http.get(this.historyUrl, RequestHelper.getPageableRequestOptions(page, pageSize))
-            .map(ResponseExtractor.extractPage)
+            .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 

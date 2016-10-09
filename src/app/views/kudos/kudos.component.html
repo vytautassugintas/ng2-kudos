@@ -51,6 +51,21 @@
   </div>
 </nav>
 
-<p>
-  kudos works!
-</p>
+<div class="container">
+  <div *ngIf="showLoader" class="card-loader">Loading...</div>
+
+  <div class="card" *ngFor="let item of kudosList; let chIndex = index">
+    <div class="card-block">
+      <div *ngIf="item.type == 'GIVEN'">
+         <p>You have sent <span class="tag tag-default">{{item.amount}} kudos</span> to <a href="javascript:">{{item.receiverFullName}}</a></p>
+          <p><em>{{item.message}}</em></p>
+      </div>
+      <div *ngIf="item.type == 'RECEIVED'">
+         <p>You received <span class="tag tag-default">{{item.amount}} kudos</span> from <a href="javascript:">{{item.senderFullName}}</a></p>
+          <p><em>{{item.message}}</em></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
