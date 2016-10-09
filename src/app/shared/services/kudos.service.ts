@@ -17,11 +17,11 @@ export class KudosService {
     private historyReceivedUrl = API.URL + 'kudos/history/received';
 
     private userHistory = API.URL + 'kudos/history/'; // {{userId}}
-    private historyGivenUrl = API.URL + 'kudos/history/given/'; // {{userId}}
-    private historyReceivedUrl = API.URL + 'kudos/history/received/'; // {{userId}}
+    private userHistoryGivenUrl = API.URL + 'kudos/history/given/'; // {{userId}}
+    private userHistoryReceivedUrl = API.URL + 'kudos/history/received/'; // {{userId}}
 
-    public giveKudos(email: string, amount: number): Observable<any> {
-        let body = JSON.stringify({email, amount});
+    public giveKudos(receiverEmail: string, amount: number, message: string): Observable<any> {
+        let body = JSON.stringify({receiverEmail, amount, message});
         return this.http.post(this.giveUrl, body, RequestHelper.getBasicRequestOptions());
     }
 
@@ -50,13 +50,13 @@ export class KudosService {
     }
 
     public getUserGivenHistory(userId: string, page: number, pageSize: number): Observable<any> {
-        return this.http.get(this.historyGivenUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
+        return this.http.get(this.userHistoryGivenUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
             .map(ResponseExtractor.extractPage)
             .catch(ResponseExtractor.handleError);
     }
 
     public getUserReceivedHistory(userId: string, page: number, pageSize: number): Observable<any> {
-        return this.http.get(this.historyReceivedUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
+        return this.http.get(this.userHistoryReceivedUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
             .map(ResponseExtractor.extractPage)
             .catch(ResponseExtractor.handleError);
     }

@@ -39,6 +39,10 @@ export class OngoingChallengesComponent implements OnInit {
     removeChallenge(index: any) {
         this.ongoingChallengesTotalSize--;
         this.ongoingChallengesList.splice(index, 1);
+
+        if (this.ongoingChallengesTotalSize > 5){
+            this.loadOngoingChallenges(this.page, this.pageSize);
+        }
     }
 
     loadOngoingChallenges(page:number, pageSize:number){

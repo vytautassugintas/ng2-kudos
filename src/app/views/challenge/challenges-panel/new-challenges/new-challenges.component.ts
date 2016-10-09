@@ -47,7 +47,9 @@ export class NewChallengesComponent implements OnInit {
         this.challengesService.getNewChallenges(page, pageSize).subscribe(
             resp => {
                 this.newChallengesList = resp.content;
-                this.newChallengesTotalSize = resp.totalElements
+                this.newChallengesTotalSize = resp.totalElements;
+                this.isFirstPage = resp.first;
+                this.isLastPage = resp.last;
             }
         )
     }
@@ -59,7 +61,7 @@ export class NewChallengesComponent implements OnInit {
         }
     }
 
-    loadPreviuosPage(){
+    loadPreviousPage(){
         if (!this.isFirstPage){
             this.page--;
             this.loadNewChallenges(this.page, this.pageSize);
@@ -69,6 +71,10 @@ export class NewChallengesComponent implements OnInit {
     removeChallenge(index: any) {
         this.newChallengesTotalSize--;
         this.newChallengesList.splice(index, 1);
+
+        if (this.newChallengesTotalSize > 5){
+            this.loadNewChallenges(this.page, this.pageSize);
+        }
     }
 
 }

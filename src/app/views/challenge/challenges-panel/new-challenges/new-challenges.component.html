@@ -19,5 +19,9 @@
                           (removeRequest)="removeChallenge($event)">
     </kudos-challenge-item>
 
+
+      <a *ngIf="!isFirstPage" (click)="loadPreviousPage()" href="javascript:">Previous</a>
+      <a *ngIf="!isLastPage" (click)="loadNextPage()" href="javascript:">Next</a>
+
   </div>
 </div>

@@ -27,15 +27,30 @@
             </div>
             <div class="modal-body">
                 <form (ngSubmit)="onSubmit()">
-                    <label for="receiverEmail">Email address</label>
-                    <div class="form-group">
-                        <input type="email"
-                               class="form-control"
-                               id="receiverEmail"
-                               name="receiverEmail"
-                               placeholder="Start typing name..."
-                               [(ngModel)]="email"
-                               (ngModelChange)="email = $event">
+
+                    <div class="dropdown open">
+                        <label for="receiverEmail">Challenge to</label>
+                        <div class="form-group">
+                            <input type="email"
+                                   class="form-control"
+                                   id="receiverEmail"
+                                   name="receiverEmail"
+                                   placeholder="Start typing name..."
+                                   [(ngModel)]="receiverEmail"
+                                   (ngModelChange)="predicateEmail()"
+                                   maxlength="80"
+                                   autocomplete="off">
+                        </div>
+                        <div *ngIf="showPredicates"
+                             class="predicate-box dropdown-menu">
+                            <a *ngFor="let user of predicatedEmails"
+                               class="dropdown-item"
+                               (click)="selectReceiver(user.email)"
+                               href="javascript:;">
+                                <i class="fa fa-user"></i> <span>{{user.firstName}} {{user.lastName}}</span><br>
+                                <span>{{user.email}}</span>
+                            </a>
+                        </div>
                     </div>
 
                     <label for="kudosAmount">Amount</label>
@@ -47,8 +62,8 @@
                                class="form-control"
                                id="kudosAmount"
                                name="kudosAmount"
-                               [(ngModel)]="email"
-                               (ngModelChange)="email = $event">
+                               [(ngModel)]="amount"
+                               (ngModelChange)="amount = $event">
                         <span class="input-group-addon">
                     <i class="fa fa-plus"
                        aria-hidden="true"></i></span>
@@ -71,7 +86,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button"
+                        <button type="submit"
                                 class="btn btn-primary btn-block">Give
                         </button>
                     </div>
