@@ -26,6 +26,7 @@ import { GiveChallengeComponent } from './shared/components/give-challenge/give-
 import {SimpleNotificationsModule} from "angular2-notifications";
 import {AuthGuard} from "./shared/auth-guard.service";
 import {AuthenticationService} from "./shared/services/authentication.service";
+import { GlobalFeedComponent } from './views/home/global-feed/global-feed.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import {AuthenticationService} from "./shared/services/authentication.service";
         OngoingChallengesComponent,
         NewChallengesComponent,
         ChallengeItemComponent,
-        GiveChallengeComponent
+        GiveChallengeComponent,
+        GlobalFeedComponent
     ],
     imports: [
         BrowserModule,
