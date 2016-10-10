@@ -27,6 +27,8 @@ import {SimpleNotificationsModule} from "angular2-notifications";
 import {AuthGuard} from "./shared/auth-guard.service";
 import {AuthenticationService} from "./shared/services/authentication.service";
 import { GlobalFeedComponent } from './views/home/global-feed/global-feed.component';
+import { UserComponent } from './views/user/user.component';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +51,9 @@ import { GlobalFeedComponent } from './views/home/global-feed/global-feed.compon
         NewChallengesComponent,
         ChallengeItemComponent,
         GiveChallengeComponent,
-        GlobalFeedComponent
+        GlobalFeedComponent,
+        UserComponent,
+        NavBarComponent
     ],
     imports: [
         BrowserModule,

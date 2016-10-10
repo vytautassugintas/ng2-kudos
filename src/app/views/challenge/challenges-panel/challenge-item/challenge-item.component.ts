@@ -35,7 +35,7 @@ export class ChallengeItemComponent implements OnInit {
             response => {
                 this.challenge.actions.acceptAllowed = false;
                 this.challenge.actions.declineAllowed = false;
-                this.challengesService.acceptChallenge(this.challenge);
+                this.challengesService.challengeAccepted(this.challenge);
                 this.notifyUserAndRequestRemove('Challenge accepted');
             }
         );

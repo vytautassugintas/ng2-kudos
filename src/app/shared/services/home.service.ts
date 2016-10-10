@@ -10,7 +10,8 @@ export class HomeService {
     constructor(private http: Http) {
     }
 
-    private loginUrl = API.URL + 'user/profile';
+    private currentUserProfileUrl = API.URL + 'user/profile';
+    private userProfileUrl = API.URL + 'user/profile/';
     private logoutUrl = API.URL + 'authentication/logout';
     private userActionsUrl = API.URL + 'user/actions/';
     private actionsUrl = API.URL + 'relation/feed';
@@ -22,7 +23,16 @@ export class HomeService {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
-        return this.http.get(this.loginUrl, options)
+        return this.http.get(this.currentUserProfileUrl, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    userProfile(userId: string): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
+
+        return this.http.get(this.userProfileUrl + userId, options)
             .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }

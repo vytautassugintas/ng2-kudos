@@ -8,6 +8,7 @@ import {ChallengeComponent} from "./views/challenge/challenge.component";
 import {ProfileComponent} from "./views/profile/profile.component";
 import {PeopleComponent} from "./views/people/people.component";
 import {AuthGuard} from "./shared/auth-guard.service";
+import {UserComponent} from "./views/user/user.component";
 
 const appRoutes: Routes = [
     {
@@ -36,6 +37,11 @@ const appRoutes: Routes = [
         path: 'kudos',
         canActivate: [AuthGuard],
         component: KudosComponent
+    },
+    {
+        path: 'user/:id',
+        canActivate: [AuthGuard],
+        component: UserComponent
     },
     {
         path: 'profile',

@@ -24,7 +24,7 @@ export class ChallengesService {
     constructor(private http: Http) {
     }
 
-    acceptChallenge(mission: any) {
+    challengeAccepted(mission: any) {
         this.challengeAcceptedSource.next(mission);
         console.log("Service got new mission: " + mission.name);
     }
