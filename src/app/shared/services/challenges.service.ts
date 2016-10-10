@@ -7,11 +7,11 @@ import {API} from "../api.config";
 @Injectable()
 export class ChallengesService {
 
-    private missionAnnouncedSource = new Subject<any>();
-    private missionConfirmedSource = new Subject<any>();
+    private challengeAcceptedSource = new Subject<any>();
+    private challengeSentSource = new Subject<any>();
 
-    missionAnnounced$ = this.missionAnnouncedSource.asObservable();
-    missionConfirmed$ = this.missionConfirmedSource.asObservable();
+    challengeAccepted$ = this.challengeAcceptedSource.asObservable();
+    challengeSent$ = this.challengeSentSource.asObservable();
 
     private sendChallengeUrl = API.URL + 'challenge/give';
     private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
@@ -24,12 +24,12 @@ export class ChallengesService {
     constructor(private http: Http) {
     }
 
-    announceMission(mission: any) {
-        this.missionAnnouncedSource.next(mission);
+    acceptChallenge(mission: any) {
+        this.challengeAcceptedSource.next(mission);
         console.log("Service got new mission: " + mission.name);
     }
-    confirmMission(astronaut: any) {
-        this.missionConfirmedSource.next(astronaut);
+    challengeSent(astronaut: any) {
+        this.challengeSentSource.next(astronaut);
         console.log("Service got new astronaut: " + astronaut.name);
     }
 

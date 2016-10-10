@@ -35,7 +35,7 @@ export class GiveChallengeComponent implements OnInit {
             resp => {
                 jQuery('#giveChallengeModal').modal('hide');
                 this.notificationService.success('Success', 'Challenge sent', true);
-                this.challengesService.confirmMission(resp);
+                this.challengesService.challengeSent(resp);
             },
             error => console.log(error)
         )

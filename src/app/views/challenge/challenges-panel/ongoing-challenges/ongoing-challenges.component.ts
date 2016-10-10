@@ -22,7 +22,7 @@ export class OngoingChallengesComponent implements OnInit {
     subscription: Subscription;
 
     constructor(private challengesService: ChallengesService) {
-        this.subscription = challengesService.missionAnnounced$.subscribe(
+        this.subscription = challengesService.challengeAccepted$.subscribe(
             mission => {
                 this.ongoingChallengesTotalSize++;
                 this.ongoingChallengesList.unshift(mission);

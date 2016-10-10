@@ -20,7 +20,7 @@ export class ChallengeItemComponent implements OnInit {
     subscription: Subscription;
 
     constructor(private challengesService: ChallengesService, private notificationService: NotificationsService) {
-        this.subscription = challengesService.missionAnnounced$.subscribe(
+        this.subscription = challengesService.challengeAccepted$.subscribe(
             mission => {
                 console.log("FROM ITEM")
             });
@@ -35,7 +35,7 @@ export class ChallengeItemComponent implements OnInit {
             response => {
                 this.challenge.actions.acceptAllowed = false;
                 this.challenge.actions.declineAllowed = false;
-                this.challengesService.announceMission(this.challenge);
+                this.challengesService.acceptChallenge(this.challenge);
                 this.notifyUserAndRequestRemove('Challenge accepted');
             }
         );
@@ -72,7 +72,6 @@ export class ChallengeItemComponent implements OnInit {
             }
         );
     }
-
 
     private notifyUserAndRequestRemove(action: string) {
         this.notificationService.success('Success', action, true);

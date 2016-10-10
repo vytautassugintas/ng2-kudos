@@ -24,7 +24,7 @@ export class NewChallengesComponent implements OnInit {
     isLastPage: boolean;
 
     constructor(private challengesService: ChallengesService) {
-        this.subscription = challengesService.missionConfirmed$.subscribe(
+        this.subscription = challengesService.challengeSent$.subscribe(
             mission => {
                 this.newChallengesTotalSize++;
                 this.newChallengesList.unshift(mission);

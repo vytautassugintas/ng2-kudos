@@ -8,20 +8,11 @@ import {ChallengesService} from "../../../shared/services/challenges.service";
 })
 export class ChallengesPanelComponent implements OnInit {
 
-    newChallengesSize: number;
-
     constructor(private challengesService: ChallengesService) {
-        challengesService.missionConfirmed$.subscribe(
-            mission => {
-                console.log("RECEIVED In PANEL " + mission)
-            });
+
     }
 
     ngOnInit() {
     }
-
-    updateNewChallengeSize(size: number) {
-        this.newChallengesSize = size;
-    }
-
+    
 }
