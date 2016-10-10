@@ -12,25 +12,22 @@ declare var jQuery: any;
 })
 export class GiveKudosComponent implements OnInit {
 
-    showGiveForm = false;
-    showErrorMessage = false;
+    showErrorMessage: boolean;
     errorMessage: string;
 
     predicatedEmails = [];
     showPredicates: boolean;
 
     receiverEmail: string;
-    kudosAmount: number;
     kudosMessage: string;
+    kudosAmount: number;
 
     constructor(private homeService: HomeService, private kudosService: KudosService, private notificationService: NotificationsService) {
     }
 
     ngOnInit() {
+        this.showErrorMessage = false;
         this.showPredicates = false;
-        this.receiverEmail = '';
-        this.kudosAmount = 1;
-        this.kudosMessage = '';
     }
 
     onSubmit() {
@@ -38,23 +35,25 @@ export class GiveKudosComponent implements OnInit {
             response => {
                 this.notificationService.success('Success', 'Kudos sent', true);
                 jQuery('#giveKudosModal').modal('hide');
+                this.clearForm();
             },
-            error => this.notificationService.error('Error', 'Kudos was not sent', true)
-        )
-    }
-
-    toggleGiveForm() {
-        this.showGiveForm = !this.showGiveForm;
+            error => {
+                this.notificationService.error('Error', 'Kudos was not sent', true);
+                this.handleFormError(error);
+            })
     }
 
     predicateEmail() {
-        if (this.receiverEmail.length > 2) {
-            this.homeService.getEmailPredicates(this.receiverEmail).subscribe(
-                resp => this.predicatedEmails = resp
-            );
-            this.showPredicates = true;
-        } else {
+        if (this.receiverEmail.length < 2) {
             this.showPredicates = false;
+        } else {
+            this.homeService.getEmailPredicates(this.receiverEmail).subscribe(
+                resp => {
+                    this.predicatedEmails = resp;
+                    this.showPredicates = this.predicatedEmails.length > 0;
+                },
+                error => this.showPredicates = false
+            );
         }
     }
 
@@ -63,12 +62,29 @@ export class GiveKudosComponent implements OnInit {
         this.showPredicates = false;
     }
 
-    getFormValues(): any {
-        return {
-            receiverEmail: this.receiverEmail,
-            amount: this.kudosAmount,
-            message: this.kudosMessage
+    handleFormError(error: any) {
+        if (error === 'invalid_kudos_amount') {
+            this.showError("You don't have enough kudos");
+        } else {
+            this.showError("Something went wrong");
         }
+    }
+
+    showError(message: string) {
+        this.showErrorMessage = true;
+        this.errorMessage = message;
+    }
+
+    clearForm() {
+        this.receiverEmail = null;
+        this.kudosMessage = null;
+        this.kudosAmount = null;
+        this.clearErrors();
+    }
+
+    clearErrors() {
+        this.showErrorMessage = false;
+        this.errorMessage = '';
     }
 
 }

@@ -24,7 +24,7 @@
         <a class="nav-link"
            routerLink="/challenge">
           <i class="fa fa-gamepad"
-             aria-hidden="true"></i> Challenge
+             aria-hidden="true"></i> Challenges
         </a>
       </li>
       <li class="nav-item active">
@@ -64,6 +64,12 @@
          <p>You received <span class="tag tag-default">{{item.amount}} kudos</span> from <a href="javascript:">{{item.senderFullName}}</a></p>
           <p><em>{{item.message}}</em></p>
       </div>
+
+      <div *ngIf="item.type == 'UNKNOWN'">
+        <p>You received <span class="tag tag-default">{{item.amount}} kudos</span> from <a href="javascript:">{{item.senderFullName}}</a></p>
+        <p><em>{{item.message}}</em></p>
+      </div>
+
     </div>
   </div>
 

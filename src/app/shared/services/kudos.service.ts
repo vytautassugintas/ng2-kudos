@@ -22,7 +22,9 @@ export class KudosService {
 
     public giveKudos(receiverEmail: string, amount: number, message: string): Observable<any> {
         let body = JSON.stringify({receiverEmail, amount, message});
-        return this.http.post(this.giveUrl, body, RequestHelper.getBasicRequestOptions());
+        return this.http.post(this.giveUrl, body, RequestHelper.getBasicRequestOptions())
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleSimpleError);
     }
 
     public getHistory(page: number, pageSize: number): Observable<any> {

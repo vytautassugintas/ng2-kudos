@@ -19,6 +19,10 @@ export class ResponseExtractor{
         return Observable.throw(error);
     }
 
+    static handleSimpleError(error: any){
+        return Observable.throw(error._body);
+    }
+
     static extractCallback(res: Response) {
         return res;
     }

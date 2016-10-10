@@ -46,7 +46,7 @@ export class GiveChallengeComponent implements OnInit {
             this.homeService.getEmailPredicates(this.challengeReceiverEmail).subscribe(
                 resp => this.predicatedEmails = resp
             );
-            this.showPredicates = true;
+            this.showPredicates = this.predicatedEmails.length > 0;
         } else {
             this.showPredicates = false;
         }
