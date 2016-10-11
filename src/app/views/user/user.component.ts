@@ -14,8 +14,7 @@ import {KudosService} from "../../shared/services/kudos.service";
 export class UserComponent implements OnInit {
 
     user: User;
-
-    userKudosCollection = [];
+    userId: any;
 
     showLoader: boolean;
     page: number;
@@ -30,10 +29,8 @@ export class UserComponent implements OnInit {
         this.pageSize = 10;
 
         this.route.params.forEach((params: Params) => {
-            let id = params['id'];
-            this.getUserProfile(id);
-            this.getUserKudosHistory(id);
-
+            this.userId = params['id'];
+            this.getUserProfile(this.userId);
         });
 
     }
@@ -48,11 +45,6 @@ export class UserComponent implements OnInit {
         )
     }
 
-    getUserKudosHistory(userId) {
-        this.kudosService.getUserHistory(userId, this.page, this.pageSize).subscribe(
-            response => this.userKudosCollection = response.content,
-            error => this.userKudosCollection = []
-        )
-    }
+
 
 }

@@ -26,11 +26,9 @@ export class ChallengesService {
 
     challengeAccepted(mission: any) {
         this.challengeAcceptedSource.next(mission);
-        console.log("Service got new mission: " + mission.name);
     }
     challengeSent(astronaut: any) {
         this.challengeSentSource.next(astronaut);
-        console.log("Service got new astronaut: " + astronaut.name);
     }
 
     sendChallenge(challengeForm: any): Observable<any>{

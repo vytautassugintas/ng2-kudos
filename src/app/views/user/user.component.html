@@ -16,29 +16,8 @@
 
         <div class="col-md-6">
 
-            <div class="card">
-                <div class="card-header">
-                    <h5>Recent transactions</h5>
-                </div>
-                <div class="card-block">
-                    <div *ngFor="let item of userKudosCollection; let chIndex = index">
+            <kudos-user-kudos-history [id]="userId"></kudos-user-kudos-history>
 
-                        <p *ngIf="item.type === 'RECEIVED'">Received
-                            <span class="tag tag-default in">{{item.amount}} kudos</span> from
-                            <a href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
-                            <span class="message"><br>{{item.message}}</span>
-                        </p>
-
-                        <p *ngIf="item.type === 'GIVEN'">Given
-                            <span class="tag tag-default">{{item.amount}} kudos</span> to
-                            <a href="javascript:" routerLink="/user/{{item.receiverId}}">{{item.receiverFullName}}</a>
-                            <span class="message"><br>{{item.message}}</span>
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
         </div>
 
         <div class="col-md-6">

@@ -19,7 +19,7 @@ export class HomeService {
     private subscribeUrl = API.URL + 'user/subscribe/';
     private unsubscribeUrl = API.URL + 'user/unsubscribe/';
 
-    home(): Observable<string> {
+    home(): Observable<any> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 

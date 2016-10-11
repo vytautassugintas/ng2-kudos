@@ -29,6 +29,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 import { GlobalFeedComponent } from './views/home/global-feed/global-feed.component';
 import { UserComponent } from './views/user/user.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { UserKudosHistoryComponent } from './shared/components/user-kudos-history/user-kudos-history.component';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
         GiveChallengeComponent,
         GlobalFeedComponent,
         UserComponent,
-        NavBarComponent
+        NavBarComponent,
+        UserKudosHistoryComponent
     ],
     imports: [
         BrowserModule,
