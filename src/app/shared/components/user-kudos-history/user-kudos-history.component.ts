@@ -62,6 +62,12 @@ export class UserKudosHistoryComponent implements OnInit {
         }
     }
 
+    changePageSize(size){
+        this.page = 0;
+        this.pageSize = size;
+        this.getUserKudosHistory(this._id, this.page, this.pageSize);
+    }
+
     initHistory(userId) {
         this.showLoader = true;
         this.page = 0;

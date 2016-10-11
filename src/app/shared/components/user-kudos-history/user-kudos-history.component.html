@@ -6,8 +6,20 @@
 
     <div *ngIf="showLoader" class="loader">Loading...</div>
 
-    <div *ngFor="let item of userKudosCollection; let chIndex = index">
+    <span class="pull-xs-right hidden-xs-down">
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-list" aria-hidden="true"></i> {{pageSize}}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="javascript:" (click)="changePageSize(10)">10</a>
+            <a class="dropdown-item" href="javascript:" (click)="changePageSize(20)">20</a>
+            <a class="dropdown-item" href="javascript:" (click)="changePageSize(50)">50</a>
+          </div>
+        </div>
+      </span>
 
+    <div *ngFor="let item of userKudosCollection; let chIndex = index">
       <p *ngIf="item.type === 'RECEIVED'">Received
         <span class="tag tag-default in">{{item.amount}} kudos</span> from
         <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>

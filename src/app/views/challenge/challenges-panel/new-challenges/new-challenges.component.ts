@@ -42,10 +42,6 @@ export class NewChallengesComponent implements OnInit {
         this.loadNewChallenges(this.page, this.pageSize);
     }
 
-    getNewChallenges() {
-
-    }
-
     loadNewChallenges(page:number, pageSize:number){
         this.showLoader = true;
         this.challengesService.getNewChallenges(page, pageSize).subscribe(
