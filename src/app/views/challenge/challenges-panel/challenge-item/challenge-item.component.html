@@ -8,11 +8,11 @@
 
     <h5 *ngIf="challenge.actions.markAsCompletedAllowed">Given challenge</h5>
 
-    <p *ngIf="challenge.actions.acceptAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
+    <p *ngIf="challenge.actions.acceptAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="" routerLink="/user/{{challenge.creatorId}}">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
 
-    <p *ngIf="challenge.actions.cancelAllowed || challenge.actions.markAsCompletedAllowed"><span class="bold">{{challenge.name}}</span> given to <a href="">{{challenge.participantFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
+    <p *ngIf="challenge.actions.cancelAllowed || challenge.actions.markAsCompletedAllowed"><span class="bold">{{challenge.name}}</span> given to <a href="" routerLink="/user/{{challenge.participantId}}">{{challenge.participantFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
 
-    <p *ngIf="!challenge.actions.acceptAllowed && !challenge.actions.markAsCompletedAllowed && !challenge.actions.cancelAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
+    <p *ngIf="!challenge.actions.acceptAllowed && !challenge.actions.markAsCompletedAllowed && !challenge.actions.cancelAllowed"><span class="bold">{{challenge.name}}</span> received from <a href="" routerLink="/user/{{challenge.creatorId}}">{{challenge.creatorFullName}}</a> for <span class="tag tag-default">{{challenge.amount}} Kudos</span></p>
 
     <p>{{challenge.description}}</p>
 

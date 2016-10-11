@@ -1,5 +1,16 @@
 @import "variables";
 
+.tag-default {
+  background: #e67e22;
+
+  &.in {
+    background: #1abc9c;
+  }
+
+}
+
+
+
 /*
 .tag-kudos{
   color: $color-white;

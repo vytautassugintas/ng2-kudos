@@ -27,7 +27,7 @@
                 <li *ngFor="let user of topUsers;"
                     class="list-group-item">
                     <span class="tag tag-default tag-pill pull-xs-right">{{user.kudosAmount}}</span>
-                    {{user.fullName}}
+                    <a href="javascript:" routerLink="/user/{{user.userId}}">{{user.fullName}}</a>
                 </li>
             </ul>
         </div>

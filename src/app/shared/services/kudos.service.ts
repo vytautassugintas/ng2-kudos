@@ -47,7 +47,7 @@ export class KudosService {
 
     public getUserHistory(userId: string, page: number, pageSize: number): Observable<any> {
         return this.http.get(this.userHistory + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
-            .map(ResponseExtractor.extractPage)
+            .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 

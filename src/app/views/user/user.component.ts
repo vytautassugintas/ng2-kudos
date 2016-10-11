@@ -1,31 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 import {HomeService} from "../../shared/services/home.service";
 import {User} from "../../shared/models/user";
+import {ChallengesService} from "../../shared/services/challenges.service";
+import {KudosService} from "../../shared/services/kudos.service";
 
 @Component({
-  selector: 'kudos-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
-  providers: [HomeService]
+    selector: 'kudos-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.scss'],
+    providers: [HomeService, ChallengesService, KudosService]
 })
 export class UserComponent implements OnInit {
 
-  user: User;
+    user: User;
 
-  constructor(private homeService: HomeService, private router: Router, private route: ActivatedRoute) { }
+    userKudosCollection = [];
 
-  ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      let id = params['id']; // (+) converts string 'id' to a number
-      this.getUserProfile(id);
-    });
-  }
+    showLoader: boolean;
+    page: number;
+    pageSize: number;
 
-  getUserProfile(userId){
-    this.homeService.userProfile(userId).subscribe(
-        user => this.user = new User(user)
-    )
-  }
+    constructor(private homeService: HomeService, private challengesService: ChallengesService, private kudosService: KudosService, private router: Router, private route: ActivatedRoute) {
+    }
+
+    ngOnInit() {
+        this.showLoader = true;
+        this.page = 0;
+        this.pageSize = 10;
+
+        this.route.params.forEach((params: Params) => {
+            let id = params['id'];
+            this.getUserProfile(id);
+            this.getUserKudosHistory(id);
+
+        });
+
+    }
+
+    getUserProfile(userId) {
+        this.showLoader = true;
+        this.homeService.userProfile(userId).subscribe(
+            user => {
+                this.user = new User(user);
+                this.showLoader = false;
+            }
+        )
+    }
+
+    getUserKudosHistory(userId) {
+        this.kudosService.getUserHistory(userId, this.page, this.pageSize).subscribe(
+            response => this.userKudosCollection = response.content,
+            error => this.userKudosCollection = []
+        )
+    }
 
 }
