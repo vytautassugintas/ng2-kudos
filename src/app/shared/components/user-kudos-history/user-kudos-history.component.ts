@@ -20,8 +20,12 @@ export class UserKudosHistoryComponent implements OnInit {
     userKudosCollection = [];
 
     showLoader: boolean;
+
     page: number;
     pageSize: number;
+    totalPages: number;
+    isFirstPage: boolean;
+    isLastPage: boolean;
 
     constructor(private kudosService: KudosService) {
     }
@@ -30,21 +34,42 @@ export class UserKudosHistoryComponent implements OnInit {
         this.initHistory(this._id);
     }
 
-    getUserKudosHistory(userId) {
-        this.kudosService.getUserHistory(userId, this.page, this.pageSize).subscribe(
+    getUserKudosHistory(userId, page, pageSize) {
+        this.showLoader = true;
+        this.kudosService.getUserHistory(userId, page, pageSize).subscribe(
             response => {
                 this.userKudosCollection = response.content;
                 this.showLoader = false;
+                this.isFirstPage = response.first;
+                this.isLastPage = response.last;
+                this.totalPages = response.totalPages;
             },
             error => this.userKudosCollection = []
         )
+    }
+
+    loadNextPage(){
+        if (!this.isLastPage){
+            this.page++;
+            this.getUserKudosHistory(this._id, this.page, this.pageSize);
+        }
+    }
+
+    loadPreviousPage(){
+        if (!this.isFirstPage){
+            this.page--;
+            this.getUserKudosHistory(this._id, this.page, this.pageSize);
+        }
     }
 
     initHistory(userId) {
         this.showLoader = true;
         this.page = 0;
         this.pageSize = 10;
-        this.getUserKudosHistory(userId);
+        this.isFirstPage = false;
+        this.isLastPage = false;
+        this.totalPages = 0;
+        this.getUserKudosHistory(userId, this.page, this.pageSize);
     }
 
     get id(): string {

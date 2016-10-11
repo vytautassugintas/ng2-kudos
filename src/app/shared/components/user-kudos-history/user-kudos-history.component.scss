@@ -1,6 +1,15 @@
 @import "../../../assets/styles/variables";
 
+.user-name {
+  text-overflow: ellipsis;
+}
+
 .message{
   color: #7f7f7f;
   font-size: 14px;
+}
+
+.page-indicator {
+  padding-left: 10px;
+  padding-right: 10px;
 }

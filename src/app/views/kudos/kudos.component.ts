@@ -20,7 +20,7 @@ export class KudosComponent implements OnInit {
 
   getKudosHistory(){
     this.homeService.home().subscribe(
-        user => this.id = user.id;
+        user => this.id = user.id
     )
   }
 

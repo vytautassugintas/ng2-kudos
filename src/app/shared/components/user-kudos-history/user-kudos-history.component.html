@@ -10,22 +10,34 @@
 
       <p *ngIf="item.type === 'RECEIVED'">Received
         <span class="tag tag-default in">{{item.amount}} kudos</span> from
-        <a href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
+        <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
         <span class="message"><br>{{item.message}}</span>
       </p>
 
       <p *ngIf="item.type === 'GIVEN'">Given
         <span class="tag tag-default">{{item.amount}} kudos</span> to
-        <a href="javascript:" routerLink="/user/{{item.receiverId}}">{{item.receiverFullName}}</a>
+        <a class="user-name" href="javascript:" routerLink="/user/{{item.receiverId}}">{{item.receiverFullName}}</a>
         <span class="message"><br>{{item.message}}</span>
       </p>
 
       <p *ngIf="item.type === 'UNKNOWN'">Received
         <span class="tag tag-default in">{{item.amount}} kudos</span> from
-        <a href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
+        <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
         <span class="message"><br>{{item.message}}</span>
       </p>
 
+    </div>
+
+    <div class="m-x-auto text-xs-center">
+      <ul class="nav nav-inline">
+        <li class="nav-item">
+          <a class="nav-link active" [ngClass]="isFirstPage ? 'disabled' : ''" (click)="loadPreviousPage()" href="javascript:">Previous</a>
+        </li>
+        <span class="message page-indicator">Page {{page + 1}} of {{totalPages}}</span>
+        <li class="nav-item" [ngClass]="isLastPage ? 'disabled' : ''" >
+          <a class="nav-link" (click)="loadNextPage()" href="javascript:">Next</a>
+        </li>
+      </ul>
     </div>
 
   </div>
