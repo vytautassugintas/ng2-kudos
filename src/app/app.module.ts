@@ -30,6 +30,7 @@ import { GlobalFeedComponent } from './views/home/global-feed/global-feed.compon
 import { UserComponent } from './views/user/user.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { UserKudosHistoryComponent } from './shared/components/user-kudos-history/user-kudos-history.component';
+import { UserChallengesHistoryComponent } from './shared/components/user-challenges-history/user-challenges-history.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { UserKudosHistoryComponent } from './shared/components/user-kudos-histor
         GlobalFeedComponent,
         UserComponent,
         NavBarComponent,
-        UserKudosHistoryComponent
+        UserKudosHistoryComponent,
+        UserChallengesHistoryComponent
     ],
     imports: [
         BrowserModule,

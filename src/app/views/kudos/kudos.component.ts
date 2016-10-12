@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KudosService} from "../../shared/services/kudos.service";
 import {HomeService} from "../../shared/services/home.service";
+import {User} from "../../shared/models/user";
 
 @Component({
   selector: 'app-kudos',
@@ -10,7 +11,7 @@ import {HomeService} from "../../shared/services/home.service";
 })
 export class KudosComponent implements OnInit {
 
-  id: string;
+  user: User;
 
   constructor(private homeService: HomeService) { }
 
@@ -20,7 +21,7 @@ export class KudosComponent implements OnInit {
 
   getKudosHistory(){
     this.homeService.home().subscribe(
-        user => this.id = user.id
+        user => this.user = new User(user)
     )
   }
 

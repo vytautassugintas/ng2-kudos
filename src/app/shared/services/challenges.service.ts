@@ -21,14 +21,42 @@ export class ChallengesService {
     private challengesAccomplishedHistoryUrl = API.URL + 'challenge/history/accomplished';
     private challengesFailedHistoryUrl = API.URL + 'challenge/history/failed';
 
+    private userChallengesHistoryUrl = API.URL + 'challenge/history/';
+    private userChallengesAccomplishedHistoryUrl = API.URL + 'challenge/history/accomplished/';
+    private userChallengesFailedHistoryUrl = API.URL + 'challenge/history/failed/';
+
+
     constructor(private http: Http) {
     }
 
     challengeAccepted(mission: any) {
         this.challengeAcceptedSource.next(mission);
     }
+
     challengeSent(astronaut: any) {
         this.challengeSentSource.next(astronaut);
+    }
+
+    getUserChallengesHistory(id: string, page: number, pageSize: number, type: string){
+        let url;
+
+        if (type == 'ACCOMPLISHED'){
+            url = this.userChallengesAccomplishedHistoryUrl;
+        } else if (type == 'FAILED'){
+            url = this.userChallengesFailedHistoryUrl;
+        } else {
+            url = this.userChallengesHistoryUrl;
+        }
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('page', page.toString());
+        params.set('size', pageSize.toString());
+        let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+
+        return this.http.get(url + id, options)
+            .map(ResponseExtractor.extractJson)
+            .catch(ResponseExtractor.handleError);
     }
 
     sendChallenge(challengeForm: any): Observable<any>{

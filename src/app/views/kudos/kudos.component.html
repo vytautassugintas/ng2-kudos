@@ -53,7 +53,7 @@
 
 <div class="container">
 
-  <kudos-user-kudos-history [id]="id"></kudos-user-kudos-history>
+  <kudos-user-kudos-history *ngIf="user" [id]="user?.id"></kudos-user-kudos-history>
 
 </div>
 

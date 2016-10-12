@@ -1,12 +1,8 @@
 <div class="card">
-  <div class="card-header">
-    <h5>Recent transactions</h5>
-  </div>
   <div class="card-block">
 
-    <div *ngIf="showLoader" class="loader">Loading...</div>
-
-    <span class="pull-xs-right hidden-xs-down">
+    <h4 class="card-title">Recent transactions
+      <span class="pull-xs-right hidden-xs-down">
         <div class="btn-group">
           <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-list" aria-hidden="true"></i> {{pageSize}}
@@ -18,6 +14,11 @@
           </div>
         </div>
       </span>
+    </h4>
+
+    <div *ngIf="showLoader" class="loader">Loading...</div>
+
+
 
     <div *ngFor="let item of userKudosCollection; let chIndex = index">
       <p *ngIf="item.type === 'RECEIVED'">Received
