@@ -1,58 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChallengesService} from "../../shared/services/challenges.service";
+import {HomeService} from "../../shared/services/home.service";
+import {User} from "../../shared/models/user";
 
 @Component({
-  selector: 'app-challenge',
-  templateUrl: './challenge.component.html',
-  styleUrls: ['./challenge.component.scss'],
-  providers: [ChallengesService]
+    selector: 'app-challenge',
+    templateUrl: './challenge.component.html',
+    styleUrls: ['./challenge.component.scss'],
+    providers: [ChallengesService, HomeService]
 })
 export class ChallengeComponent implements OnInit {
 
-  page: number;
-  pageSize: number;
+    user: User;
 
-  showLoader: boolean;
+    page: number;
+    pageSize: number;
 
-  challengesList: any;
+    showLoader: boolean;
 
-  constructor(private challengesService: ChallengesService) { }
+    challengesList: any;
 
-  ngOnInit() {
-    this.page = 0;
-    this.pageSize = 5;
-    this.showLoader = false;
-    this.loadChallengesHistory();
-  }
+    constructor(private challengesService: ChallengesService, private homeService: HomeService) {
+    }
 
-  loadChallengesHistory(){
-    this.showLoader = true;
-    this.challengesService.getHistory(this.page, this.pageSize).subscribe(
-        resp => {
-          this.challengesList = resp.content;
-          this.showLoader = false;
-        }
-    )
-  }
+    ngOnInit() {
+        this.page = 0;
+        this.pageSize = 5;
+        this.showLoader = false;
+        this.loadChallengesHistory();
+        this.loadUser();
+    }
 
-  loadAccomplishedChallengesHistory(){
-    this.showLoader = true;
-    this.challengesService.getAccomplishedHistory(this.page, this.pageSize).subscribe(
-        resp => {
-          this.challengesList = resp.content;
-          this.showLoader = false;
-        }
-    )
-  }
+    loadUser() {
+        this.homeService.home().subscribe(
+            user => this.user = new User(user)
+        )
+    }
 
-  loadFailedChallengesHistory(){
-    this.showLoader = true;
-    this.challengesService.getFailedHistory(this.page, this.pageSize).subscribe(
-        resp => {
-          this.challengesList = resp.content;
-          this.showLoader = false;
-        }
-    )
-  }
+    loadChallengesHistory() {
+        this.showLoader = true;
+        this.challengesService.getHistory(this.page, this.pageSize).subscribe(
+            resp => {
+                this.challengesList = resp.content;
+                this.showLoader = false;
+            }
+        )
+    }
+
+    loadAccomplishedChallengesHistory() {
+        this.showLoader = true;
+        this.challengesService.getAccomplishedHistory(this.page, this.pageSize).subscribe(
+            resp => {
+                this.challengesList = resp.content;
+                this.showLoader = false;
+            }
+        )
+    }
+
+    loadFailedChallengesHistory() {
+        this.showLoader = true;
+        this.challengesService.getFailedHistory(this.page, this.pageSize).subscribe(
+            resp => {
+                this.challengesList = resp.content;
+                this.showLoader = false;
+            }
+        )
+    }
 
 }

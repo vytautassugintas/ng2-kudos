@@ -1,3 +1,25 @@
-<p>
-  user-challenges-history works!
-</p>
+<div class="card">
+  <div class="card-block">
+
+    <div *ngIf="showLoader" class="loader">Loading...</div>
+
+    <h4 class="card-title">Challenges</h4>
+
+    <div *ngFor="let challenge of userChallengesCollection; let chIndex = index">
+
+      <p *ngIf="challenge.status === 'ACCOMPLISHED'">
+        Accomplished challenge from {{challenge.creatorFullName}} and received <span class="tag tag-default">{{challenge.amount}} kudos</span>
+        <span class="message"><br>{{challenge.name}}</span>
+        <span class="message"><br>{{challenge.description}}</span>
+      </p>
+
+      <p *ngIf="challenge.status === 'FAILED'">
+        Failed challenge from {{challenge.creatorFullName}}
+        <span class="message"><br>{{challenge.name}}</span>
+        <span class="message"><br>{{challenge.description}}</span>
+      </p>
+    </div>
+
+
+  </div>
+</div>

@@ -38,23 +38,13 @@ export class ChallengesService {
     }
 
     getUserChallengesHistory(id: string, page: number, pageSize: number, type: string){
-        let url;
-
-        if (type == 'ACCOMPLISHED'){
-            url = this.userChallengesAccomplishedHistoryUrl;
-        } else if (type == 'FAILED'){
-            url = this.userChallengesFailedHistoryUrl;
-        } else {
-            url = this.userChallengesHistoryUrl;
-        }
-
         let headers = new Headers({'Content-Type': 'application/json'});
         let params: URLSearchParams = new URLSearchParams();
         params.set('page', page.toString());
         params.set('size', pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
-        return this.http.get(url + id, options)
+        return this.http.get(this.getUserHistoryUrl(type) + id, options)
             .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
@@ -172,6 +162,16 @@ export class ChallengesService {
         return this.http.post(this.challengesUrl + challengeId + "/markAsFailed", null, options)
             .map(ResponseExtractor.extractSucces)
             .catch(ResponseExtractor.handleError);
+    }
+
+    private getUserHistoryUrl(type:string){
+        if (type == 'ACCOMPLISHED'){
+            return this.userChallengesAccomplishedHistoryUrl;
+        } else if (type == 'FAILED'){
+            return this.userChallengesFailedHistoryUrl;
+        } else {
+            return this.userChallengesHistoryUrl;
+        }
     }
 
 }

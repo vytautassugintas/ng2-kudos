@@ -14,14 +14,14 @@ export class UserChallengesHistoryComponent implements OnInit {
   @Input()
   set id(value: string) {
     this._id = value;
-    //initDataHere
+    this.initHistory(this._id);
   }
 
   get id(): string {
     return this._id;
   }
 
-  userKudosCollection = [];
+  userChallengesCollection = [];
 
   showLoader: boolean;
 
@@ -34,11 +34,29 @@ export class UserChallengesHistoryComponent implements OnInit {
   constructor(private challengesService: ChallengesService) { }
 
   ngOnInit() {
-
+    this.initHistory(this._id);
   }
 
-  getUserKudosHistory(userId: string, page: number, pageSize: number){
+  getUserChallengesHistory(userId: string, page: number, pageSize: number, type: string){
+    this.challengesService.getUserChallengesHistory(userId, page, pageSize, type).subscribe(
+        response => {
+          this.userChallengesCollection = response.content;
+          this.showLoader = false;
+          this.isFirstPage = response.first;
+          this.isLastPage = response.last;
+          this.totalPages = response.totalPages;
+        }
+    )
+  }
 
+  initHistory(userId) {
+    this.showLoader = true;
+    this.page = 0;
+    this.pageSize = 10;
+    this.isFirstPage = false;
+    this.isLastPage = false;
+    this.totalPages = 0;
+    this.getUserChallengesHistory(userId, this.page, this.pageSize, 'all');
   }
 
 }
