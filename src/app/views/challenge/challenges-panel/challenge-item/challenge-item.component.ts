@@ -21,8 +21,8 @@ export class ChallengeItemComponent implements OnInit {
 
     constructor(private challengesService: ChallengesService, private notificationService: NotificationsService) {
         this.subscription = challengesService.challengeAccepted$.subscribe(
-            mission => {
-                console.log("FROM ITEM")
+            challenge => {
+                // DO STUFF
             });
     }
 

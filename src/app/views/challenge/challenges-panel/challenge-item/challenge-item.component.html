@@ -16,6 +16,8 @@
 
     <p>{{challenge.description}}</p>
 
+    <kudos-comments-holder [id]="challenge.id"></kudos-comments-holder>
+
     <button (click)="accept();"
             *ngIf="challenge.actions.acceptAllowed"
             class="btn btn-primary">Accept

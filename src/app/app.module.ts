@@ -31,6 +31,7 @@ import { UserComponent } from './views/user/user.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { UserKudosHistoryComponent } from './shared/components/user-kudos-history/user-kudos-history.component';
 import { UserChallengesHistoryComponent } from './shared/components/user-challenges-history/user-challenges-history.component';
+import { CommentsHolderComponent } from './shared/components/comments-holder/comments-holder.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { UserChallengesHistoryComponent } from './shared/components/user-challen
         UserComponent,
         NavBarComponent,
         UserKudosHistoryComponent,
-        UserChallengesHistoryComponent
+        UserChallengesHistoryComponent,
+        CommentsHolderComponent
     ],
     imports: [
         BrowserModule,

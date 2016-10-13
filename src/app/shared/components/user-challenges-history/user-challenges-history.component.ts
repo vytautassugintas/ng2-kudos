@@ -45,6 +45,8 @@ export class UserChallengesHistoryComponent implements OnInit {
           this.isFirstPage = response.first;
           this.isLastPage = response.last;
           this.totalPages = response.totalPages;
+        }, error =>{
+          this.userChallengesCollection = [];
         }
     )
   }
@@ -53,9 +55,9 @@ export class UserChallengesHistoryComponent implements OnInit {
     this.showLoader = true;
     this.page = 0;
     this.pageSize = 10;
+    this.totalPages = 0;
     this.isFirstPage = false;
     this.isLastPage = false;
-    this.totalPages = 0;
     this.getUserChallengesHistory(userId, this.page, this.pageSize, 'all');
   }
 
