@@ -15,7 +15,8 @@ export class AuthenticationService {
     private loginUrl = API.URL + 'authentication/login';
     private registrationUrl = API.URL + 'authentication/register';
     private confirmationUrl = API.URL + 'authentication/confirm/';
-    private changePasswordUrl = API.URL + 'authentication//change/password';
+    private resetUrl = API.URL + 'authentication/reset';
+    private changePasswordUrl = API.URL + 'authentication/change/password';
     private checkUserUrl = API.URL;
 
     login(email: string, password: string): Observable<any> {
@@ -57,6 +58,16 @@ export class AuthenticationService {
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.changePasswordUrl, body, options)
+            .map(ResponseExtractor.extractSucces)
+            .catch(ResponseExtractor.handleError);
+    }
+
+    reset(email: string): Observable<any> {
+        let body = JSON.stringify({email});
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers, withCredentials: true});
+
+        return this.http.post(this.resetUrl, body, options)
             .map(ResponseExtractor.extractSucces)
             .catch(ResponseExtractor.handleError);
     }

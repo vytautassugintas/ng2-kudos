@@ -8,18 +8,22 @@
     <div *ngFor="let challenge of userChallengesCollection; let chIndex = index">
 
       <p *ngIf="challenge.status === 'ACCOMPLISHED'">
-        Accomplished challenge from {{challenge.creatorFullName}} and received <span class="tag tag-default">{{challenge.amount}} kudos</span>
+        Accomplished challenge from
+        <a class="user-name" href="javascript:" routerLink="/user/{{challenge.creatorId}}">{{challenge.creatorFullName}}</a> and received
+        <span class="tag tag-default">{{challenge.amount}} kudos</span>
         <span class="message"><br>{{challenge.name}}</span>
         <span class="message"><br>{{challenge.description}}</span>
       </p>
 
       <p *ngIf="challenge.status === 'FAILED'">
-        Failed challenge from {{challenge.creatorFullName}}
+        Failed challenge from
+        <a class="user-name" href="javascript:" routerLink="/user/{{challenge.creatorId}}">{{challenge.creatorFullName}}</a>
         <span class="message"><br>{{challenge.name}}</span>
         <span class="message"><br>{{challenge.description}}</span>
       </p>
+
+      <kudos-comments-holder [id]="challenge.id"></kudos-comments-holder>
+
     </div>
-
-
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../../../../shared/services/authentication.service";
 
 @Component({
   selector: 'recover-password',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+
+  constructor(private authService: AuthenticationService) {
+  }
 
   ngOnInit() {
+    this.email = '';
+  }
+
+  onSubmit(){
+    this.authService.reset(this.email).subscribe(
+        response => {
+          this.email = '';
+        },
+        error => {
+
+        }
+    )
   }
 
 }

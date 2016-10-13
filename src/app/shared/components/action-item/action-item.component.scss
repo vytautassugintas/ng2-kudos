@@ -36,3 +36,11 @@
   flex-direction: column;
   height: 50px;
 }
+
+.no-shadow{
+  box-shadow: none;
+
+  .card-block{
+    padding: 0px;
+  }
+}

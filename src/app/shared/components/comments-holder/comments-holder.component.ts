@@ -10,6 +10,7 @@ import {ChallengesService} from "../../services/challenges.service";
 export class CommentsHolderComponent implements OnInit {
 
   @Input() id;
+  @Input() index;
 
   page: number;
   pageSize: number;

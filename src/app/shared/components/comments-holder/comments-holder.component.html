@@ -1,3 +1,10 @@
-<p>
-  {{commentsList.length}}
-</p>
+<div class="comments-holder">
+  <a data-toggle="collapse" href="#comments{{id}}" aria-expanded="false" aria-controls="comments">
+    <i class="fa fa-comments" style="color: #2c3e50" aria-hidden="true"></i> Comments ({{commentsList.length}})
+  </a>
+  <div class="collapse" id="comments{{id}}">
+    <div>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import {Input} from "@angular/core/src/metadata/directives";
 export class ActionItemComponent implements OnInit {
 
     @Input() action: any;
+    @Input() noShadow: boolean;
 
     constructor() {
     }
