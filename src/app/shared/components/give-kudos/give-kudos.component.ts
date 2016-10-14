@@ -63,10 +63,14 @@ export class GiveKudosComponent implements OnInit {
     }
 
     handleFormError(error: any) {
-        if (error === 'invalid_kudos_amount') {
-            this.showError("You don't have enough kudos");
-        } else {
-            this.showError("Something went wrong");
+        let errorJson = JSON.parse(error);
+
+        if (errorJson.fieldError){
+            this.showError(errorJson.fieldError.message);
+        }
+
+        if (errorJson.fieldErrors){
+            this.showError(errorJson.fieldErrors[0].message);
         }
     }
 

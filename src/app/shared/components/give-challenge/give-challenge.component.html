@@ -30,20 +30,24 @@
                 <form (ngSubmit)="onSubmit()">
 
                     <div class="dropdown open">
-                        <label for="challengeReceiverEmail">Challenge to</label>
+                        <label for="receiverEmail">Challenge to</label>
                         <div class="form-group">
                             <input type="email"
                                    class="form-control"
-                                   id="challengeReceiverEmail"
-                                   name="challengeReceiverEmail"
+                                   id="receiverEmail"
+                                   name="receiverEmail"
                                    placeholder="Start typing name..."
-                                   [(ngModel)]="challengeReceiverEmail"
+                                   [(ngModel)]="receiverEmail"
                                    (ngModelChange)="predicateEmail()"
                                    maxlength="80"
                                    autocomplete="off">
                         </div>
-                        <div *ngIf="showPredicates" class="predicate-box dropdown-menu">
-                            <a *ngFor="let user of predicatedEmails" class="dropdown-item" (click)="selectReceiver(user.email)" href="javascript:;">
+                        <div *ngIf="showPredicates"
+                             class="predicate-box dropdown-menu">
+                            <a *ngFor="let user of predicatedEmails"
+                               class="dropdown-item"
+                               (click)="selectReceiver(user.email)"
+                               href="javascript:;">
                                 <i class="fa fa-user"></i> <span>{{user.firstName}} {{user.lastName}}</span><br>
                                 <span>{{user.email}}</span>
                             </a>

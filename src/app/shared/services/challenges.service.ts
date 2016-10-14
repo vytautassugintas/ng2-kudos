@@ -70,7 +70,7 @@ export class ChallengesService {
 
         return this.http.post(this.sendChallengeUrl, body, options)
             .map(ResponseExtractor.extractJson)
-            .catch(ResponseExtractor.handleError);
+            .catch(ResponseExtractor.handleSimpleError);
     }
 
     getNewChallenges(page: number, pageSize: number): Observable<any> {

@@ -40,9 +40,9 @@ export class HomeService {
     logout(): Observable<string>{
         let headers = new Headers({});
         let options = new RequestOptions({headers: headers, withCredentials: true});
-
+            console.log("LOOGING OUT");
         return this.http.post(this.logoutUrl, null, options)
-            .map(ResponseExtractor.extractString)
+            .map(ResponseExtractor.extractSucces)
             .catch(ResponseExtractor.extractString)
     }
 

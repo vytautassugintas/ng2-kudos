@@ -14,17 +14,23 @@
        href="#">Kudos</a>
     <ul class="nav navbar-nav">
       <li *ngFor="let item of navbarItems" class="nav-item"
-          [class.pull-xs-right]="item.title === 'Logout'"
           (click)="onSelect(item)">
         <a class="nav-link"
            [class.active]="item === selectedItem"
-           [ngClass]="item.title === 'Logout' ? 'pull-xs-right' : ''"
+           [ngClass]="item.title === 'Logout' ? 'pull-md-right' : ''"
            routerLink="{{item.link}}">
           <i class="{{item.icon}}"
              aria-hidden="true"></i> {{item.title}}
         </a>
       </li>
-      <li class="nav-item pull-xs-right">
+      <li class="nav-item pull-md-right"
+      (click)="logout()">
+        <a class="nav-link" href="javascript:">
+          <i class="fa fa-power-off"
+             aria-hidden="true"></i> Logout
+        </a>
+      </li>
+      <li class="nav-item pull-md-right">
         <div class="dropdown open">
             <input type="email"
                    class="form-control"

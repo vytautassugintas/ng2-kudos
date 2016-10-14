@@ -26,7 +26,7 @@ export class AuthenticationService {
 
         return this.http.post(this.loginUrl, body, options)
             .map(ResponseExtractor.extractSucces)
-            .catch(ResponseExtractor.handleError);
+            .catch(ResponseExtractor.handleSimpleError);
     }
 
     register(email: string, fullName: string, password: string): Observable<string> {

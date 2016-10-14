@@ -14,20 +14,20 @@ export class GiveChallengeComponent implements OnInit {
     showPredicates: boolean;
     predicatedEmails: any;
 
-    challengeReceiverEmail: string;
+    receiverEmail: string;
     challengeAmount: number;
     challengeTitle: string;
     challengeDescription: string;
+
+    showErrorMessage: boolean;
+    errorMessage: string;
 
     constructor(private homeService: HomeService, private challengesService: ChallengesService, private notificationService: NotificationsService) {
     }
 
     ngOnInit() {
         this.showPredicates = false;
-        this.challengeReceiverEmail = '';
-        this.challengeTitle = '';
-        this.challengeDescription = '';
-        this.challengeAmount = 1;
+        this.showErrorMessage = false;
     }
 
     onSubmit() {
@@ -37,29 +37,49 @@ export class GiveChallengeComponent implements OnInit {
                 this.notificationService.success('Success', 'Challenge sent', true);
                 this.challengesService.challengeSent(resp);
             },
-            error => console.log(error)
+            error => this.handleFormError(error)
         )
     }
 
     predicateEmail() {
-        if (this.challengeReceiverEmail.length > 2) {
-            this.homeService.getEmailPredicates(this.challengeReceiverEmail).subscribe(
-                resp => this.predicatedEmails = resp
-            );
-            this.showPredicates = this.predicatedEmails.length > 0;
-        } else {
+        if (this.receiverEmail.length < 2) {
             this.showPredicates = false;
+        } else {
+            this.homeService.getEmailPredicates(this.receiverEmail).subscribe(
+                resp => {
+                    this.predicatedEmails = resp;
+                    this.showPredicates = this.predicatedEmails.length > 0;
+                },
+                error => this.showPredicates = false
+            );
         }
     }
 
     selectReceiver(receiver) {
-        this.challengeReceiverEmail = receiver;
+        this.receiverEmail = receiver;
         this.showPredicates = false;
+    }
+
+    handleFormError(error: any) {
+        let errorJson = JSON.parse(error);
+
+        if (errorJson.fieldError){
+            this.showError(errorJson.fieldError.message);
+        }
+
+        if (errorJson.fieldErrors){
+            this.showError(errorJson.fieldErrors[0].message);
+        }
+    }
+
+    showError(message: string) {
+        this.showErrorMessage = true;
+        this.errorMessage = message;
     }
 
     getFormValues(): any {
         return {
-            receiverEmail: this.challengeReceiverEmail,
+            receiverEmail: this.receiverEmail,
             name: this.challengeTitle,
             description: this.challengeDescription,
             expirationDate: null,

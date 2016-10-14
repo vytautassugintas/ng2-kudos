@@ -52,22 +52,22 @@ export class LoginComponent implements OnInit {
                 error => this.handleErrors(error))
     }
 
-    handleErrors(error) {
-        this.showErrorMessage = true;
-        switch (error._body) {
-            case "user_not_exist" :
-                this.errorMessage = "User not exist.";
-                break;
-            case "email_password_mismatch" :
-                this.errorMessage = "Password is incorrect.";
-                break;
-            case "user_not_confirmed" :
-                this.errorMessage = "User not confirmed. Check email for confirmation code";
-                break;
-            default :
-                this.errorMessage = "Something went wrong";
-                break;
+    handleErrors(error: any) {
+        console.log(error);
+        let errorJson = JSON.parse(error);
+
+        if (errorJson.fieldError){
+            this.showError(errorJson.fieldError.message);
         }
+
+        if (errorJson.fieldErrors){
+            this.showError(errorJson.fieldErrors[0].message);
+        }
+    }
+
+    showError(message: string) {
+        this.showErrorMessage = true;
+        this.errorMessage = message;
     }
 
     navigateHome(isLogged) {

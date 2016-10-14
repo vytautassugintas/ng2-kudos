@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeService} from "../../services/home.service";
 import {Route, Router} from "@angular/router";
+declare var jQuery: any;
 
 @Component({
     selector: 'kudos-nav-bar',
@@ -77,16 +78,15 @@ export class NavBarComponent implements OnInit {
     }
 
     selectReceiver(receiver) {
+        jQuery('#exCollapsingNavbar2').collapse('hide');
         this.router.navigate(['user/' + receiver.id]);
         this.receiverEmail = receiver.firstName + ' ' + receiver.lastName;
         this.showPredicates = false;
     }
 
     onSelect(navItem) {
+        jQuery('#exCollapsingNavbar2').collapse('hide');
         this.selectedItem = navItem;
-        if (navItem.title == "Logout"){
-            this.logout();
-        }
     }
 
     initNavbarItems() {
@@ -105,19 +105,14 @@ export class NavBarComponent implements OnInit {
                 title: "Challenges",
                 link: "/challenge",
                 icon: "fa fa-gamepad"
-            },
-            {
-                title: "Logout",
-                link: "/login",
-                icon: "fa fa-power-off",
-                onClick: "logout"
             }
         ]
     }
 
     logout() {
+        jQuery('#exCollapsingNavbar2').collapse('hide');
         this.homeService.logout().subscribe(
-            resp => this.router.navigate(['login'])
+            resp => this.router.navigate(['login']),
         )
     }
 
