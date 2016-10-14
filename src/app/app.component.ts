@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import './rxjs-operators'
 import {NotificationsService} from "angular2-notifications";
-
+declare var jQuery: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

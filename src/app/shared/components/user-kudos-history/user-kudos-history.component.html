@@ -2,7 +2,7 @@
   <div class="card-block">
 
     <h4 class="card-title">Recent transactions
-      <span class="pull-xs-right hidden-xs-down">
+      <span class="pull-xs-right hidden-xs-down" *ngIf="page + 1 == totalPages">
         <div class="btn-group">
           <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-list" aria-hidden="true"></i> {{pageSize}}
@@ -15,6 +15,10 @@
         </div>
       </span>
     </h4>
+
+    <div *ngIf="userKudosCollection.length === 0" class="alert alert-info text-xs-center" role="alert">
+      <strong>Whoops!</strong> there is kudos history.
+    </div>
 
     <div *ngIf="showLoader" class="loader">Loading...</div>
 
@@ -39,7 +43,7 @@
 
     </div>
 
-    <div class="m-x-auto text-xs-center">
+    <div *ngIf="page + 1 == totalPages" class="m-x-auto text-xs-center">
       <ul class="nav nav-inline">
         <li class="nav-item">
           <a class="nav-link active" [ngClass]="isFirstPage ? 'disabled' : ''" (click)="loadPreviousPage()" href="javascript:">Previous</a>

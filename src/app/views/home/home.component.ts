@@ -7,6 +7,7 @@ import {ChallengesService} from "../../shared/services/challenges.service";
 import {AuthGuard} from "../../shared/auth-guard.service";
 import {AuthenticationService} from "../../shared/services/authentication.service";
 import {NotificationsService} from "angular2-notifications";
+declare var jQuery: any;
 
 @Component({
     selector: 'app-home',
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
             this.showPasswordError = false;
             this.authService.changePassword(this.userNewPassword).subscribe(
                 resp => {
+                    jQuery('#settingsModal').modal('hide');
                     this.notificationService.success('Success', 'Password changed', true);
                     this.userNewPassword = '';
                 }

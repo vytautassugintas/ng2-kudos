@@ -5,6 +5,10 @@
 
     <h4 class="card-title">Challenges</h4>
 
+      <div *ngIf="userChallengesCollection.length === 0" class="alert alert-info text-xs-center" role="alert">
+        <strong>Whoops!</strong> there is no challenges history.
+      </div>
+
     <div *ngFor="let challenge of userChallengesCollection; let chIndex = index">
 
       <p *ngIf="challenge.status === 'ACCOMPLISHED'">
@@ -22,7 +26,7 @@
         <span class="message"><br>{{challenge.description}}</span>
       </p>
 
-      <kudos-comments-holder [id]="challenge.id"></kudos-comments-holder>
+      <!--<kudos-comments-holder [id]="challenge.id"></kudos-comments-holder>-->
 
     </div>
   </div>
