@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
     showPassword = false;
     signUpErrorMessage: string;
 
-    model = new RegistrationCredentials("vytautas.sugintas@swedbank.lt", "vytautas", "vytautas sugintas");
+    model = new RegistrationCredentials("", "", "");
 
     ngOnInit() {
 
