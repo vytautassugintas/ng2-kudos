@@ -1,0 +1,57 @@
+@import "variables";
+
+$panel_bg_color: #ffffff;
+$panel_base_padding: 10px;
+$panel_base_margin: 10px;
+$panel_base_border_radius: 14px;
+
+a{
+  text-decoration: none;
+  color: #1abc9c;
+
+  &:hover{
+    color: #16a085;
+  }
+}
+
+.container{
+  margin: auto;
+  max-width: 1024px;
+}
+
+.panel {
+  background: $panel_bg_color;
+  padding: $panel_base_padding;
+  margin: $panel_base_margin;
+  border-radius: $panel_base_border_radius;
+  border: #e8e8e8 1px solid;
+
+  h2{
+    font-weight: 500;
+    font-size: 32px;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  p{
+    font-weight: 300;
+    color: #656469;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  .message{
+    padding-top: 3px;
+    display: block;
+    color: #aaaaaa;
+  }
+
+  .footer{
+
+    a{
+
+    }
+
+  }
+
+}

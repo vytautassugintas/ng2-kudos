@@ -9,6 +9,7 @@ import {ProfileComponent} from "./views/profile/profile.component";
 import {PeopleComponent} from "./views/people/people.component";
 import {AuthGuard} from "./shared/auth-guard.service";
 import {UserComponent} from "./views/user/user.component";
+import {HomeReworkComponent} from "./views/home-rework/home-rework.component";
 
 const appRoutes: Routes = [
     {
@@ -27,6 +28,11 @@ const appRoutes: Routes = [
         path: 'home',
         canActivate: [AuthGuard],
         component: HomeComponent
+    },
+    {
+        path: 'home-rework',
+        canActivate: [AuthGuard],
+        component: HomeReworkComponent
     },
     {
         path: 'challenge',

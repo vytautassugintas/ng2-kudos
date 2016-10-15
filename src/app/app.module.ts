@@ -32,6 +32,7 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { UserKudosHistoryComponent } from './shared/components/user-kudos-history/user-kudos-history.component';
 import { UserChallengesHistoryComponent } from './shared/components/user-challenges-history/user-challenges-history.component';
 import { CommentsHolderComponent } from './shared/components/comments-holder/comments-holder.component';
+import { HomeReworkComponent } from './views/home-rework/home-rework.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import { CommentsHolderComponent } from './shared/components/comments-holder/com
         NavBarComponent,
         UserKudosHistoryComponent,
         UserChallengesHistoryComponent,
-        CommentsHolderComponent
+        CommentsHolderComponent,
+        HomeReworkComponent
     ],
     imports: [
         BrowserModule,
