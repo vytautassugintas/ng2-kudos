@@ -4,9 +4,23 @@
   text-overflow: ellipsis;
 }
 
+p{
+  font-size: 18px;
+}
+
+.footer{
+
+  .left{
+    text-align: left;
+  }
+
+  .right{
+    text-align: right;
+  }
+}
+
 .message{
   color: #7f7f7f;
-  font-size: 14px;
 }
 
 .page-indicator {

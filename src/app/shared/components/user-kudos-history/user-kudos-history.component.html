@@ -1,59 +1,49 @@
-<div class="card">
-  <div class="card-block">
+<div class="panel">
 
-    <h4 class="card-title">Recent transactions
-      <span class="pull-xs-right hidden-xs-down" *ngIf="page + 1 == totalPages">
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-list" aria-hidden="true"></i> {{pageSize}}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="javascript:" (click)="changePageSize(10)">10</a>
-            <a class="dropdown-item" href="javascript:" (click)="changePageSize(20)">20</a>
-            <a class="dropdown-item" href="javascript:" (click)="changePageSize(50)">50</a>
-          </div>
-        </div>
-      </span>
-    </h4>
+  <div class="panel-title">
+    <h2>Kudos Transactions</h2>
+  </div>
 
-    <div *ngIf="userKudosCollection.length === 0" class="alert alert-info text-xs-center" role="alert">
-      <strong>Whoops!</strong> there is kudos history.
-    </div>
-
-    <div *ngIf="showLoader" class="loader">Loading...</div>
-
+  <div class="panel-body">
     <div *ngFor="let item of userKudosCollection; let chIndex = index">
       <p *ngIf="item.type === 'RECEIVED'">Received
-        <span class="tag tag-default in">{{item.amount}} kudos</span> from
+        <span class="badge in">{{item.amount}} kudos</span> from
         <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
-        <span class="message"><br>{{item.message}}</span>
+        <span class="message">{{item.message}}</span>
       </p>
 
       <p *ngIf="item.type === 'GIVEN'">Given
-        <span class="tag tag-default">{{item.amount}} kudos</span> to
+        <span class="badge">{{item.amount}} kudos</span> to
         <a class="user-name" href="javascript:" routerLink="/user/{{item.receiverId}}">{{item.receiverFullName}}</a>
-        <span class="message"><br>{{item.message}}</span>
+        <span class="message">{{item.message}}</span>
       </p>
 
       <p *ngIf="item.type === 'UNKNOWN'">Received
-        <span class="tag tag-default in">{{item.amount}} kudos</span> from
+        <span class="badge in">{{item.amount}} kudos</span> from
         <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
-        <span class="message"><br>{{item.message}}</span>
+        <span class="message">{{item.message}}</span>
       </p>
-
     </div>
 
-    <div *ngIf="page + 1 == totalPages" class="m-x-auto text-xs-center">
-      <ul class="nav nav-inline">
-        <li class="nav-item">
-          <a class="nav-link active" [ngClass]="isFirstPage ? 'disabled' : ''" (click)="loadPreviousPage()" href="javascript:">Previous</a>
-        </li>
-        <span class="message page-indicator">Page {{page + 1}} of {{totalPages}}</span>
-        <li class="nav-item" [ngClass]="isLastPage ? 'disabled' : ''" >
-          <a class="nav-link" (click)="loadNextPage()" href="javascript:">Next</a>
-        </li>
-      </ul>
+    <div class="footer m-x-auto text-xs-center">
+
+      <div class="pagination" *ngIf="showMore">
+          <ul class="nav nav-inline">
+            <li class="nav-item">
+              <a class="nav-link active" [ngClass]="isFirstPage ? 'disabled' : ''" (click)="loadPreviousPage()" href="javascript:">Previous</a>
+            </li>
+            <span class="page-indicator">Page {{page + 1}} of {{totalPages}}</span>
+            <li class="nav-item" [ngClass]="isLastPage ? 'disabled' : ''" >
+              <a class="nav-link" (click)="loadNextPage()" href="javascript:">Next</a>
+            </li>
+          </ul>
+      </div>
+
+      <div>
+        <a href="javascript:" (click)="showMoreToggle()">{{showMoreLabel}}</a>
+      </div>
     </div>
 
   </div>
+
 </div>

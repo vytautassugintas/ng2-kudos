@@ -20,6 +20,8 @@ export class UserKudosHistoryComponent implements OnInit {
     userKudosCollection = [];
 
     showLoader: boolean;
+    showMore: boolean;
+    showMoreLabel: string;
 
     page: number;
     pageSize: number;
@@ -36,6 +38,7 @@ export class UserKudosHistoryComponent implements OnInit {
 
     getUserKudosHistory(userId, page, pageSize) {
         this.showLoader = true;
+        this.pageSize = pageSize;
         this.kudosService.getUserHistory(userId, page, pageSize).subscribe(
             response => {
                 this.userKudosCollection = response.content;
@@ -46,6 +49,18 @@ export class UserKudosHistoryComponent implements OnInit {
             },
             error => this.userKudosCollection = []
         )
+    }
+
+    showMoreToggle(){
+        if (!this.showMore){
+            this.showMore = !this.showMore;
+            this.showMoreLabel = "Show Less";
+            this.getUserKudosHistory(this._id, this.page, 5);
+        } else {
+            this.showMore = !this.showMore;
+            this.showMoreLabel = "Show More";
+            this.getUserKudosHistory(this._id, this.page, 3);
+        }
     }
 
     loadNextPage(){
@@ -70,8 +85,10 @@ export class UserKudosHistoryComponent implements OnInit {
 
     initHistory(userId) {
         this.showLoader = true;
+        this.showMore = false;
+        this.showMoreLabel = "Show More";
         this.page = 0;
-        this.pageSize = 10;
+        this.pageSize = 3;
         this.isFirstPage = false;
         this.isLastPage = false;
         this.totalPages = 0;

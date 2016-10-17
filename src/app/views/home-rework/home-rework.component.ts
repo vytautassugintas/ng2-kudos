@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {HomeService} from "../../shared/services/home.service";
 import {User} from "../../shared/models/user";
+import {ChallengesService} from "../../shared/services/challenges.service";
 
 @Component({
   selector: 'kudos-home-rework',
   templateUrl: './home-rework.component.html',
   styleUrls: ['./home-rework.component.scss'],
-  providers: [HomeService]
+  providers: [HomeService, ChallengesService]
 })
 export class HomeReworkComponent implements OnInit {
 
@@ -14,7 +15,7 @@ export class HomeReworkComponent implements OnInit {
   usersActions: any;
   userLoading: boolean;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private challengesService: ChallengesService) { }
 
   ngOnInit() {
     this.userLoading = true;
