@@ -48,14 +48,14 @@ a {
   color: $color-primary;
   &:hover{
     text-decoration: none;
-    color: $color-primary-lighter;
+    color: $color-primary-dark;
   }
   &:focus{
     outline:none!important;
-    color: $color-primary-lighter;
+    color: $color-primary-dark;
   }
   &:active{
-    color: $color-primary-lighter;
+    color: $color-primary-dark;
     border: 0;
   }
 }

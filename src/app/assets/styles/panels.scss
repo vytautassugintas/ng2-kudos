@@ -5,15 +5,6 @@ $panel_base_padding: 10px;
 $panel_base_margin: 10px;
 $panel_base_border_radius: 4px;
 
-a {
-  text-decoration: none;
-  color: #1abc9c;
-
-  &:hover {
-    color: #16a085;
-  }
-}
-
 .panel {
   margin: $panel_base_margin $panel_base_margin / 2;
 

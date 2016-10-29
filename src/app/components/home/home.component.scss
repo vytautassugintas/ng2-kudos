@@ -3,3 +3,29 @@ label{
   padding: 0;
   margin: 0;
 }
+
+.main-actions{
+  margin-bottom: 12px;
+}
+
+.home-container{
+  /* Extra small */
+  @media only screen and (min-width : 480px) {
+
+  }
+
+  /* Small */
+  @media only screen and (min-width : 768px) {
+
+  }
+
+  /* Medium */
+  @media only screen and (min-width : 992px) {
+    max-width: 760px;
+  }
+
+  /* Large */
+  @media only screen and (min-width : 1200px) {
+    width: 1024px;
+  }
+}

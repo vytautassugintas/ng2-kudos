@@ -1,0 +1,25 @@
+@import "../../../assets/styles/variables";
+
+$color-secondary-text: #aaaaaa;
+
+.header-user-name {
+  * {
+    display: inline-block;
+  }
+  h4 {
+    line-height: 64px;
+  }
+}
+
+.header-body {
+
+}
+
+.header-secondary-text {
+  color: $color-secondary-text;
+}
+
+.header-num {
+  font-weight: 500;
+  color: $loud-color;
+}

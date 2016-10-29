@@ -1,129 +1,30 @@
-<div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <div *ngIf="userLoading" class="card-loader">Loading...</div>
-                <div class="card-header">
-                    <h5><i class="fa fa-user" aria-hidden="true"></i> {{user?.firstName}} {{user?.lastName}}</h5>
-                </div>
-                <div class="card-block">
-                    <p class="bold">Total Kudos <span class="tag tag-default">{{user?.totalKudos}}</span></p>
-                    <p class="bold">Weekly Kudos <span class="tag tag-default">{{user?.weeklyKudos}}</span></p>
-                    <div class="d-inline">
-                        <!--<a href=""><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>-->
-                        <a href="#settingsModal" data-toggle="modal"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
-                    </div>
-                </div>
-            </div>
+<div class="col-md-8 offset-md-2">
 
-            <div class="hidden-xs-down">
-                <kudos-global-feed></kudos-global-feed>
-            </div>
-        </div>
+    <kudos-user-header [user]="user" [showSettings]="true"></kudos-user-header>
 
-        <div class="col-md-6">
-            <div class="row"
-                 style="padding-top: 10px; padding-bottom: 10px">
-                <div class="col-sm-6"
-                     style="padding-top: 5px; padding-bottom: 5px">
-                    <app-give-kudos></app-give-kudos>
-                </div>
-                <div class="col-sm-6"
-                     style="padding-top: 5px; padding-bottom: 5px">
-                    <kudos-give-challenge></kudos-give-challenge>
-                </div>
-            </div>
-
-            <kudos-challenges-panel></kudos-challenges-panel>
-
-
-            <div class="card">
-                <div class="card-header">
-                    <h5>Your recent actions</h5>
-                </div>
-                <div class="card-block">
-                    <app-action-item *ngFor="let action of usersActions;"
-                                     [action]="action"
-                                     [noShadow]="true">
-                    </app-action-item>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="col-md-3">
-
-
-            <app-leaderboard></app-leaderboard>
-
-            <app-wisdom-wall></app-wisdom-wall>
-
-        </div>
-
+    <div class="main-actions">
+        <app-give-kudos></app-give-kudos>
+        <kudos-give-challenge></kudos-give-challenge>
     </div>
 
-    <!-- Settings modal -->
-    <div class="modal fade"
-         id="settingsModal"
-         tabindex="-1"
-         role="dialog"
-         aria-labelledby="settingsModal"
-         aria-hidden="true">
-        <div class="modal-dialog"
-             role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title"
-                        id="myModalLabel">Settings</h4>
-                </div>
-                <div class="modal-body">
-                    <h5>Preferences</h5>
-                    <div class="form-group custom-checkbox">
-                        <p>
-                        <input type="checkbox" id="receiveNotifications" name="receiveNotifications"
-                               [(ngModel)]="isSubscribing"
-                               (ngModelChange)="isSubscribing = $event">
-                            Receive emails about new challenges
-                        </p>
-                    </div>
+    <kudos-challenges-panel></kudos-challenges-panel>
 
-                    <button class="btn btn-primary" (click)="changeSubscription()">Save</button>
+    <kudos-global-feed></kudos-global-feed>
 
-                    <hr>
-
-                    <h5>Change password</h5>
-                    <form (submit)="changePassword()">
-                        <label for="userNewPassword">New password</label>
-
-                        <div class="form-group input-group">
-                            <input type="{{!showPassword ? 'password' : 'text'}}"
-                                   class="form-control"
-                                   id="userNewPassword"
-                                   [(ngModel)]="userNewPassword" (ngModelChange)="userNewPassword = $event"
-                                   name="userNewPassword">
-                            <span class="input-group-addon"
-                                  (click)="showPassword = !showPassword">
-                                <i [ngClass]="!showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'" aria-hidden="true"></i></span>
-                        </div>
-
-                        <div *ngIf="showPasswordError" class="alert alert-danger" role="alert">
-                            {{passwordError}}
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            Change password
-                        </button>
-                    </form>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <h5>Your recent actions</h5>
+        </div>
+        <div class="card-block">
+            <app-action-item *ngFor="let action of usersActions;"
+                             [action]="action"
+                             [noShadow]="true">
+            </app-action-item>
         </div>
     </div>
+
+    <app-leaderboard></app-leaderboard>
+
+    <app-wisdom-wall></app-wisdom-wall>
 
 </div>

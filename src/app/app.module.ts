@@ -33,6 +33,8 @@ import {ChallengeItemComponent} from "./components/challenge/challenges-panel/ch
 import {GlobalFeedComponent} from "./components/home/global-feed/global-feed.component";
 import {UserComponent} from "./components/user/user.component";
 import {HomeReworkComponent} from "./components/home-rework/home-rework.component";
+import { UserHeaderComponent } from './components/home/user-header/user-header.component';
+import { UserIconComponent } from './shared/components/user-icon/user-icon.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +63,9 @@ import {HomeReworkComponent} from "./components/home-rework/home-rework.componen
         UserKudosHistoryComponent,
         UserChallengesHistoryComponent,
         CommentsHolderComponent,
-        HomeReworkComponent
+        HomeReworkComponent,
+        UserHeaderComponent,
+        UserIconComponent
     ],
     imports: [
         BrowserModule,

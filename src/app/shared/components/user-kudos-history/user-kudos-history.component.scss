@@ -4,10 +4,6 @@
   text-overflow: ellipsis;
 }
 
-p{
-  font-size: 18px;
-}
-
 .footer{
 
   .left{
@@ -20,6 +16,7 @@ p{
 }
 
 .message{
+  display: block;
   color: #7f7f7f;
 }
 

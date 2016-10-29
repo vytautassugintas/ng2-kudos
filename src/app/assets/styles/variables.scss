@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,600,700&subset=latin-ext');
 
+/* Urban Humanity Color Palette */
+$urban_humanity_palette_sky: #8199A3;
+$urban_humanity_palette_night: #444B54;
+$urban_humanity_palette_ground: #B5AFA2;
+$urban_humanity_palette_powder: #E1B493;
+$urban_humanity_palette_powder_light: #F7D6B5;
+
 $color_clouds: #ecf0f1;
 
 $body_bg_color: #f9f9f9;
 $text_primary_color: #555459;
 
-$color-primary:             #1abc9c;
-$color-primary-dark:        #16a085;
-$color-primary-light:       #f39c12;
-$color-primary-lighter:     #FF7740;
+$color-primary:             $urban_humanity_palette_sky;
+$color-primary-dark:        $urban_humanity_palette_night;
+$color-primary-light:       $urban_humanity_palette_powder;
+$color-primary-lighter:     $urban_humanity_palette_powder_light;
+$color-primary-neutral:     $urban_humanity_palette_ground;
 
 $color-clouds: #ecf0f1;
 

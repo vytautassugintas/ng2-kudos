@@ -55,11 +55,11 @@ export class UserKudosHistoryComponent implements OnInit {
         if (!this.showMore){
             this.showMore = !this.showMore;
             this.showMoreLabel = "Show Less";
-            this.getUserKudosHistory(this._id, this.page, 5);
+            this.getUserKudosHistory(this._id, this.page, 10);
         } else {
             this.showMore = !this.showMore;
             this.showMoreLabel = "Show More";
-            this.getUserKudosHistory(this._id, this.page, 3);
+            this.getUserKudosHistory(this._id, this.page, 7);
         }
     }
 
@@ -88,7 +88,7 @@ export class UserKudosHistoryComponent implements OnInit {
         this.showMore = false;
         this.showMoreLabel = "Show More";
         this.page = 0;
-        this.pageSize = 3;
+        this.pageSize = 7;
         this.isFirstPage = false;
         this.isLastPage = false;
         this.totalPages = 0;
