@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import Any = jasmine.Any;
 import {Router} from "@angular/router";
 import {HomeService} from "../../shared/services/home.service";
 import {User} from "../../shared/models/user";
 import {ChallengesService} from "../../shared/services/challenges.service";
-import {AuthGuard} from "../../shared/auth-guard.service";
 import {AuthenticationService} from "../../shared/services/authentication.service";
 import {NotificationsService} from "angular2-notifications";
 declare var jQuery: any;
