@@ -7,8 +7,16 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class UserIconComponent implements OnInit {
 
-  @Input() firstName: string;
-  @Input() lastName: string;
+  firstName: string;
+  lastName: string;
+
+  @Input()
+  set fullName(fullName: string) {
+    this.firstName = fullName.split(' ')[0];
+    this.lastName = fullName.split(' ')[1];
+    this.ngOnInit();
+  }
+
   @Input() size: number;
 
   initials: string;
@@ -21,7 +29,7 @@ export class UserIconComponent implements OnInit {
 
   ngOnInit() {
     this.initials = this.firstName.charAt(0) + " " + this.lastName.charAt(0);
-    this.backgroundColor = this.backgroundColors[this.firstName.charCodeAt(0) % 8];
+    this.backgroundColor = this.backgroundColors[(this.firstName.charCodeAt(0) + this.lastName.charCodeAt(0)) % 8];
   }
 
 }

@@ -7,12 +7,55 @@ $color-secondary-text: #aaaaaa;
     display: inline-block;
   }
   h4 {
+    padding-left: 5px;
     line-height: 64px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    * {
+      display: block;
+    }
+    h4 {
+      padding-left: 0;
+      line-height: 42px;
+      text-align: center;
+    }
+    .user-image {
+      * {
+        margin-left: auto;
+        margin-right: auto;
+        width: 64px;
+      }
+    }
   }
 }
 
 .header-body {
 
+  padding-left: 74px;
+
+  div {
+    padding-right: $padding-small;
+    padding-bottom: $padding-small;
+    display: inline-block;
+  }
+
+  span {
+    display: block;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+.header-footer{
+  padding-left: 74px;
+  @media only screen and (max-width: 768px) {
+    text-align: center;
+    padding-left: 0;
+  }
 }
 
 .header-secondary-text {

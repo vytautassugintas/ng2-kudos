@@ -9,7 +9,12 @@
             <i *ngIf="action.type == 'ADDED_NEW_IDEA'" class="fa fa-graduation-cap" aria-hidden="true"></i>
             <i *ngIf="action.type == 'KUDOS_GIVEN'" class="fa fa-gift" aria-hidden="true"></i>
 
+          <!--<span class="inline">
+            <kudos-user-icon [fullName]="action.userFullName" [size]="1"></kudos-user-icon>
             <a href="javascript:" routerLink="/user/{{action.userId}}">{{action.userFullName}}</a>
+          </span>-->
+
+          <a href="javascript:" routerLink="/user/{{action.userId}}">{{action.userFullName}}</a>
 
             <span *ngIf="action.type == 'COMMENTED'"> commented on </span>
             <span *ngIf="action.type == 'ACCEPTED_CHALLENGE'"> accepted challenge from <a href="javascript:" routerLink="/user/{{action.challengeResponse.creatorId}}">{{action.challengeResponse.creatorFullName}}</a></span>

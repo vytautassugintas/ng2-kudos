@@ -1,48 +1,25 @@
 <div class="card" *ngIf="user">
-
-  <div class="header-user-name">
-      <kudos-user-icon [firstName]="user.firstName" [lastName]="user.lastName" [size]="2"></kudos-user-icon>
-      <h4>{{user.firstName}} {{user.lastName}}</h4>
-  </div>
-
-  <div class="header-body">
-
-  </div>
-
-</div>
-
-<div class="card" *ngIf="user">
-
-  <div class="row">
-
-    <div class="col-md-2">
-      <kudos-user-icon [firstName]="user.firstName" [lastName]="user.lastName" [size]="2"></kudos-user-icon>
-    </div>
-    <div class="col-md-10">
-      <div class="d-inline">
-        <h4 class="text-md-left text-xs-center">{{user.firstName}} {{user.lastName}}</h4>
-      </div>
-
-    </div>
-
-  </div>
-
   <div class="card-block">
-
-    <div class="row text-xs-center">
-      <div class="col-xs-6">
-        <p class="header-secondary-text">Total Kudos <br><span class="header-num">{{user.totalKudos}}</span></p>
+    <div class="header-user-name">
+      <div class="user-image">
+        <kudos-user-icon [fullName]="user.firstName + ' ' + user.lastName" [size]="2"></kudos-user-icon>
       </div>
-      <div class="col-xs-6">
-        <p class="header-secondary-text">Weekly Kudos <br><span class="header-num">{{user.weeklyKudos}}</span></p>
+      <h4>{{user.firstName}} {{user.lastName}}</h4>
+    </div>
+    <div class="header-body">
+      <div class="header-body-item">
+        <span class="header-secondary-text">Total Kudos</span>
+        <span class="header-num">{{user.totalKudos}}</span>
+      </div>
+      <div class="header-body-item">
+        <span class="header-secondary-text">Weekly Kudos</span>
+        <span class="header-num">{{user.weeklyKudos}}</span>
       </div>
     </div>
-
-    <div *ngIf="showSettings">
+    <div class="header-footer" *ngIf="showSettings">
       <a href="#settingsModal" data-toggle="modal"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
     </div>
   </div>
-
 </div>
 
 <!-- Settings modal -->

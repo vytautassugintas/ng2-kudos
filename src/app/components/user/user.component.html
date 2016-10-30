@@ -2,31 +2,25 @@
 
 <div class="container">
 
-    <div *ngIf="showLoader" class="loader">Loading...</div>
+  <div *ngIf="showLoader" class="loader">Loading...</div>
 
-    <div class="card">
-        <div class="card-block">
-            <p>{{user?.firstName}} {{user?.lastName}}<br>
-            <span class="message">{{user?.email}}</span><br>
-            <span>Total Kudos: <span class="tag tag-default">{{user?.totalKudos}}</span></span>
-        </div>
-    </div>
+  <kudos-user-header [user]="user" [showSettings]="false"></kudos-user-header>
 
-    <div class="row">
+  <div class="row">
 
-        <div class="col-md-6">
+    <div class="col-md-6">
 
-            <kudos-user-kudos-history [id]="userId"></kudos-user-kudos-history>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <kudos-user-challenges-history [id]="userId"> </kudos-user-challenges-history>
-
-        </div>
+      <kudos-user-kudos-history [id]="userId"></kudos-user-kudos-history>
 
     </div>
+
+    <div class="col-md-6">
+
+      <kudos-user-challenges-history [id]="userId"></kudos-user-challenges-history>
+
+    </div>
+
+  </div>
 
 </div>
 

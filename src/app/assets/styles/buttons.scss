@@ -1,14 +1,14 @@
 @import "variables";
 
-.btn{
+.btn {
   border-radius: 2px;
   padding: 10px;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   color: $color-primary;
   border-color: $color-primary;
-  &:hover,&:active,&:focus,&:active:focus{
+  &:hover, &:active, &:focus, &:active:focus {
     color: #ffffff;
     border-color: $color-primary;
     background: $color-primary;
@@ -16,16 +16,37 @@
   }
 }
 
-.btn-primary{
+.btn-primary {
   border-radius: 20px;
   color: $color-white;
   background: $color-primary;
   border-color: $color-primary;
-  &:hover,&:active,&:focus,&:active:focus{
+  &:hover, &:active, &:focus, &:active:focus {
     color: #ffffff;
     background: $color-primary-dark;
     border-color: $color-primary-dark;
     outline: none;
+  }
+}
+
+.btn-action {
+  display: inline-block;
+  border-radius: 4px;
+  background: $color-primary;
+  color: $color-white;
+  width: 48%;
+  height: 64px;
+  border-bottom: 3px solid $color-primary-dark;
+
+  &:hover, &:active, &:focus, &:active:focus {
+    background: $color-primary-dark;
+    border-color: $color-primary-dark;
+    outline: none;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 48%;
+    margin: 1px;
   }
 }
 

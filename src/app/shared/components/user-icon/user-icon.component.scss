@@ -1,7 +1,7 @@
 @import "../../../assets/styles/variables";
 
 $regular-icon-size: 64px;
-$small-icon-size: 44px;
+$small-icon-size: 24px;
 $icon-font-size: 20px;
 $icon-border-radius: 2px;
 $icon-text-color: $color-white;
@@ -24,4 +24,5 @@ $icon-text-color: $color-white;
   width: $small-icon-size;
   height: $small-icon-size;
   line-height: $small-icon-size;
+  font-size: 12px;
 }

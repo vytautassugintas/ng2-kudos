@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 import {HomeService} from "../../shared/services/home.service";
-import {User} from "../../shared/models/user";
 import {ChallengesService} from "../../shared/services/challenges.service";
 import {KudosService} from "../../shared/services/kudos.service";
+import {User} from "../../shared/models/user";
 
 @Component({
     selector: 'kudos-user',
