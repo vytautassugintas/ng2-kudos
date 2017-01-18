@@ -35,9 +35,13 @@
         <span class="message"><br>{{item.message}}</span>
       </p>
 
-      <p *ngIf="item.type === 'UNKNOWN'">Received
-        <span class="tag tag-default in">{{item.amount}} kudos</span> from
-        <a class="user-name" href="javascript:" routerLink="/user/{{item.senderId}}">{{item.senderFullName}}</a>
+      <p *ngIf="item.type === 'UNKNOWN'">Unknown
+        <span class="tag tag-default in">{{item.amount}} kudos</span>
+        <span class="message"><br>{{item.message}}</span>
+      </p>
+
+      <p *ngIf="item.type === 'SHOP'">Shop
+        <span class="tag tag-default">{{item.amount}} kudos</span>
         <span class="message"><br>{{item.message}}</span>
       </p>
 

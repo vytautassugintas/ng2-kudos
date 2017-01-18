@@ -9,6 +9,7 @@ export class User {
     weeklyKudos: number;
     subscribing: boolean;
     completed: boolean;
+    role: string;
 
     constructor(response: any) {
         this.birthday = response.birthday;
@@ -20,6 +21,7 @@ export class User {
         this.totalKudos = response.totalKudos;
         this.weeklyKudos = response.weeklyKudos;
         this.subscribing = response.subscribing;
+        this.role = response.role;
     }
 
 }

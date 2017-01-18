@@ -71,6 +71,10 @@ export class NavBarComponent implements OnInit {
                 this.hideNavbar = false;
                 this.selectedItem = this.navbarItems[2];
                 break;
+            case "/shop":
+                this.hideNavbar = false;
+                this.selectedItem = this.navbarItems[3];
+                break;
             default:
                 this.hideNavbar = false;
                 break;
@@ -105,6 +109,11 @@ export class NavBarComponent implements OnInit {
                 title: "Challenges",
                 link: "/challenge",
                 icon: "fa fa-gamepad"
+            },
+            {
+                title: "Shop",
+                link: "/shop",
+                icon: "fa fa-shopping-cart"
             }
         ]
     }

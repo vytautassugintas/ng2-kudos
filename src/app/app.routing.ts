@@ -9,6 +9,7 @@ import {ProfileComponent} from "./views/profile/profile.component";
 import {PeopleComponent} from "./views/people/people.component";
 import {AuthGuard} from "./shared/auth-guard.service";
 import {UserComponent} from "./views/user/user.component";
+import {ShopComponent} from "./views/shop/shop.component";
 
 const appRoutes: Routes = [
     {
@@ -52,6 +53,11 @@ const appRoutes: Routes = [
         path: 'people',
         canActivate: [AuthGuard],
         component: PeopleComponent
+    },
+    {
+        path: 'shop',
+        canActivate: [AuthGuard],
+        component: ShopComponent
     }
 ];
 
