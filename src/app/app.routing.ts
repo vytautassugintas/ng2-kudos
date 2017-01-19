@@ -1,14 +1,14 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from "./views/login/login.component";
-import {HomeComponent} from "./views/home/home.component";
-import {SignUpComponent} from "./views/sign-up/sign-up.component";
-import {KudosComponent} from "./views/kudos/kudos.component";
-import {ChallengeComponent} from "./views/challenge/challenge.component";
-import {ProfileComponent} from "./views/profile/profile.component";
-import {PeopleComponent} from "./views/people/people.component";
+import {LoginComponent} from "./components/login/login.component";
+import {HomeComponent} from "./components/home/home.component";
+import {SignUpComponent} from "./components/sign-up/sign-up.component";
+import {KudosComponent} from "./components/kudos/kudos.component";
+import {ChallengeComponent} from "./components/challenge/challenge.component";
+import {ProfileComponent} from "./components/profile/profile.component";
+import {PeopleComponent} from "./components/people/people.component";
 import {AuthGuard} from "./shared/auth-guard.service";
-import {UserComponent} from "./views/user/user.component";
+import {UserComponent} from "./components/user/user.component";
 
 const appRoutes: Routes = [
     {
