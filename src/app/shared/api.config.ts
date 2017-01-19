@@ -8,7 +8,7 @@ export class API {
       HOME : API.URL + "challenge",
       KUDOS : API.URL + "kudos",
       RELATION : API.URL + "relation",
-      LEADERS : API.URL + "relation",
-      WISDOM : API.URL + "relation"
+      LEADERS : API.URL + "leaderboard",
+      WISDOM : API.URL + "wisdomwall"
     }
 }

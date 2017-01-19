@@ -11,7 +11,6 @@ export class Challenge {
     participantId: string;
     status: string;
 
-
     constructor(resp: any) {
         this.actions = resp.actions;
         this.amount = resp.amount;
