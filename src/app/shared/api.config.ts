@@ -3,6 +3,12 @@ export class API {
     // Entrypoints
     public static readonly ENTRY = {
       AUTHENTICATION : API.URL + "authentication",
-      CHALLENGE : API.URL + "challenge"
+      CHALLENGE : API.URL + "challenge",
+      USER : API.URL + "user",
+      HOME : API.URL + "challenge",
+      KUDOS : API.URL + "kudos",
+      RELATION : API.URL + "relation",
+      LEADERS : API.URL + "relation",
+      WISDOM : API.URL + "relation"
     }
 }

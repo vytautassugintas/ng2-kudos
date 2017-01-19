@@ -1,6 +1,6 @@
-import {Injectable}     from '@angular/core';
-import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import {Observable}     from 'rxjs/Observable';
+import {Injectable}     from "@angular/core";
+import {Http, Response, Headers, RequestOptions, URLSearchParams} from "@angular/http";
+import {Observable}     from "rxjs/Observable";
 import {ResponseExtractor} from "./utils/ResponseExtractor";
 import {API} from "../api.config";
 
@@ -10,17 +10,19 @@ export class HomeService {
     constructor(private http: Http) {
     }
 
-    private currentUserProfileUrl = API.URL + 'user/profile';
-    private userProfileUrl = API.URL + 'user/profile/';
-    private logoutUrl = API.URL + 'authentication/logout';
-    private userActionsUrl = API.URL + 'user/actions/';
-    private actionsUrl = API.URL + 'relation/feed';
-    private emailPredicateUrl = API.URL + 'user/email/';
-    private subscribeUrl = API.URL + 'user/subscribe/';
-    private unsubscribeUrl = API.URL + 'user/unsubscribe/';
+    private currentUserProfileUrl = API.ENTRY.USER + "/profile";
+    private userProfileUrl = API.ENTRY.USER + "/profile/";
+    private userActionsUrl = API.ENTRY.USER + "/actions/";
+    private emailPredicateUrl = API.ENTRY.USER + "/email/";
+    private subscribeUrl = API.ENTRY.USER + "/subscribe/";
+    private unsubscribeUrl = API.ENTRY.USER + "/unsubscribe/";
+
+    private logoutUrl = API.ENTRY.AUTHENTICATION + "/logout";
+
+    private actionsUrl = API.ENTRY.RELATION + "/feed";
 
     home(): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.get(this.currentUserProfileUrl, options)
@@ -29,7 +31,7 @@ export class HomeService {
     }
 
     userProfile(userId: string): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.get(this.userProfileUrl + userId, options)
@@ -47,10 +49,10 @@ export class HomeService {
     }
 
     actions(userId: string, page: number, pageSize: number): Observable<string> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.userActionsUrl + userId, options)
@@ -59,10 +61,10 @@ export class HomeService {
     }
 
     globalActions(page: number, pageSize: number): Observable<string> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.actionsUrl, options)
@@ -71,7 +73,7 @@ export class HomeService {
     }
 
     getEmailPredicates(predicate: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.get(this.emailPredicateUrl + predicate, options)
@@ -80,7 +82,7 @@ export class HomeService {
     }
 
     changeSubscription(subscribe: boolean){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         if (subscribe){

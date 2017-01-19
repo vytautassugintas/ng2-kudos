@@ -6,11 +6,12 @@ import {API} from "../api.config";
 
 @Injectable()
 export class WisdomWallService {
+
     constructor(private http: Http) {
     }
 
-    private randomIdeaUrl = API.URL +  "wisdomwall/randomIdea";
-    private addIdeaUrl = API.URL + "wisdomwall/add";
+    private randomIdeaUrl = API.ENTRY.WISDOM +  "/randomIdea";
+    private addIdeaUrl = API.ENTRY.WISDOM + "/add";
 
     addNewIdea(author: string, phrase: string): Observable<string> {
         let body = JSON.stringify({author, phrase});
