@@ -1,5 +1,14 @@
 export class API {
-    //public static readonly URL = 'http://212.24.96.238:8080/open-kudos-0.1.0/';
-    public static readonly URL = 'https://test.openkudos.com/api/';
-    //public static readonly URL = 'http://localhost:8080/';
+    public static readonly URL = "https://test.openkudos.com/api/";
+    // Entrypoints
+    public static readonly ENTRY = {
+      AUTHENTICATION : API.URL + "authentication",
+      CHALLENGE : API.URL + "challenge",
+      USER : API.URL + "user",
+      HOME : API.URL + "challenge",
+      KUDOS : API.URL + "kudos",
+      RELATION : API.URL + "relation",
+      LEADERS : API.URL + "leaderboard",
+      WISDOM : API.URL + "wisdomwall"
+    }
 }

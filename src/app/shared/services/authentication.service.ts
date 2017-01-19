@@ -1,27 +1,27 @@
-import {Injectable}     from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {Observable}     from 'rxjs/Observable';
+import {Injectable}     from "@angular/core";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Observable}     from "rxjs/Observable";
 import {API} from "../api.config";
 import {ResponseExtractor} from "./utils/ResponseExtractor";
 
 @Injectable()
 export class AuthenticationService {
 
+    private loginUrl = API.ENTRY.AUTHENTICATION + "/login";
+    private registrationUrl = API.ENTRY.AUTHENTICATION + "/register";
+    private confirmationUrl = API.ENTRY.AUTHENTICATION + "/confirm/";
+    private resetUrl = API.ENTRY.AUTHENTICATION + "/reset";
+    private changePasswordUrl = API.URL + API.ENTRY.AUTHENTICATION + "/change/password";
+    private checkUserUrl = API.URL;
+
     isAuthenticated:boolean;
 
     constructor(private http: Http) {
     }
 
-    private loginUrl = API.URL + 'authentication/login';
-    private registrationUrl = API.URL + 'authentication/register';
-    private confirmationUrl = API.URL + 'authentication/confirm/';
-    private resetUrl = API.URL + 'authentication/reset';
-    private changePasswordUrl = API.URL + 'authentication/change/password';
-    private checkUserUrl = API.URL;
-
     login(email: string, password: string): Observable<any> {
         let body = JSON.stringify({email, password});
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.loginUrl, body, options)
@@ -30,12 +30,12 @@ export class AuthenticationService {
     }
 
     register(email: string, fullName: string, password: string): Observable<string> {
-        let splittedName = fullName.split(' ');
+        let splittedName = fullName.split(" ");
         let firstName = splittedName[0];
         let lastName = splittedName[1];
         let confirmPassword = password;
         let body = JSON.stringify({firstName, lastName, password, confirmPassword, email});
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.registrationUrl, body, options)
@@ -44,7 +44,7 @@ export class AuthenticationService {
     }
 
     confirmAccount(confirmationCode: string): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.confirmationUrl + confirmationCode, null, options)
@@ -54,7 +54,7 @@ export class AuthenticationService {
 
     changePassword(newPassword: string): Observable<any> {
         let body = JSON.stringify({newPassword});
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.changePasswordUrl, body, options)
@@ -64,7 +64,7 @@ export class AuthenticationService {
 
     reset(email: string): Observable<any> {
         let body = JSON.stringify({email});
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.resetUrl, body, options)
@@ -82,7 +82,7 @@ export class AuthenticationService {
 
     private extractLogged(response: Response) {
         if (!response.json().logged) {
-            throw 'User not logged in';
+            throw "User not logged in";
         } else {
             return response.json().logged;
         }

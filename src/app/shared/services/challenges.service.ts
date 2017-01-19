@@ -1,32 +1,29 @@
-import {Injectable}     from '@angular/core';
-import {Http, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import {Observable, Subject}     from 'rxjs';
+import {Injectable}     from "@angular/core";
+import {Http, Headers, RequestOptions, URLSearchParams} from "@angular/http";
+import {Observable, Subject}     from "rxjs";
 import {ResponseExtractor} from "./utils/ResponseExtractor";
 import {API} from "../api.config";
 
 @Injectable()
 export class ChallengesService {
 
+    private sendChallengeUrl = API.ENTRY.CHALLENGE + "/give";
+    private newChallengesUrl = API.ENTRY.CHALLENGE + "/sentAndReceived";
+    private ongoingChallengesUrl = API.ENTRY.CHALLENGE + "/ongoing";
+    private challengesUrl = API.ENTRY.CHALLENGE + "/";
+    private challengesHistoryUrl = API.ENTRY.CHALLENGE + "/history";
+    private challengesAccomplishedHistoryUrl = API.ENTRY.CHALLENGE + "/history/accomplished";
+    private challengesFailedHistoryUrl = API.ENTRY.CHALLENGE + "/history/failed";
+    private userChallengesHistoryUrl = API.ENTRY.CHALLENGE + "/history/";
+    private userChallengesAccomplishedHistoryUrl = API.ENTRY.CHALLENGE + "/history/accomplished/";
+    private userChallengesFailedHistoryUrl = API.ENTRY.CHALLENGE + "/history/failed/";
+    private challengeCommentsUrl = API.ENTRY.CHALLENGE + "/";
+
     private challengeAcceptedSource = new Subject<any>();
     private challengeSentSource = new Subject<any>();
 
     challengeAccepted$ = this.challengeAcceptedSource.asObservable();
     challengeSent$ = this.challengeSentSource.asObservable();
-
-    private sendChallengeUrl = API.URL + 'challenge/give';
-    private newChallengesUrl = API.URL + 'challenge/sentAndReceived';
-    private ongoingChallengesUrl = API.URL + 'challenge/ongoing';
-    private challengesUrl = API.URL + 'challenge/';
-    private challengesHistoryUrl = API.URL + 'challenge/history';
-    private challengesAccomplishedHistoryUrl = API.URL + 'challenge/history/accomplished';
-    private challengesFailedHistoryUrl = API.URL + 'challenge/history/failed';
-
-    private userChallengesHistoryUrl = API.URL + 'challenge/history/';
-    private userChallengesAccomplishedHistoryUrl = API.URL + 'challenge/history/accomplished/';
-    private userChallengesFailedHistoryUrl = API.URL + 'challenge/history/failed/';
-
-    private challengeCommentsUrl = API.URL + 'challenge/'; //{/{challengeId}/comments}
-
 
     constructor(private http: Http) {
     }
@@ -40,10 +37,10 @@ export class ChallengesService {
     }
 
     getUserChallengesHistory(id: string, page: number, pageSize: number, type: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.getUserHistoryUrl(type) + id, options)
@@ -52,20 +49,20 @@ export class ChallengesService {
     }
 
     getComments(challengeId: string, page: number, pageSize: number) : Observable<any>{
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
-        return this.http.get(this.challengeCommentsUrl + challengeId + '/comments', options)
+        return this.http.get(this.challengeCommentsUrl + challengeId + "/comments", options)
             .map(ResponseExtractor.extractJson)
             .catch(ResponseExtractor.handleError);
     }
 
     sendChallenge(challengeForm: any): Observable<any>{
         let body = JSON.stringify(challengeForm);
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.sendChallengeUrl, body, options)
@@ -74,10 +71,10 @@ export class ChallengesService {
     }
 
     getNewChallenges(page: number, pageSize: number): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.newChallengesUrl, options)
@@ -86,10 +83,10 @@ export class ChallengesService {
     }
 
     getOngoingChallenges(page: number, pageSize: number): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.ongoingChallengesUrl, options)
@@ -98,10 +95,10 @@ export class ChallengesService {
     }
 
     getHistory(page: number, pageSize: number): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.challengesHistoryUrl, options)
@@ -112,10 +109,10 @@ export class ChallengesService {
 
 
     getAccomplishedHistory(page: number, pageSize: number): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.challengesAccomplishedHistoryUrl, options)
@@ -124,10 +121,10 @@ export class ChallengesService {
     }
 
     getFailedHistory(page: number, pageSize: number): Observable<any> {
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let params: URLSearchParams = new URLSearchParams();
-        params.set('page', page.toString());
-        params.set('size', pageSize.toString());
+        params.set("page", page.toString());
+        params.set("size", pageSize.toString());
         let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
         return this.http.get(this.challengesFailedHistoryUrl, options)
@@ -136,7 +133,7 @@ export class ChallengesService {
     }
 
     acceptChallenge(challengeId: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.challengesUrl + challengeId + "/accept", null, options)
@@ -145,7 +142,7 @@ export class ChallengesService {
     }
 
     declineChallenge(challengeId: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.challengesUrl + challengeId + "/decline", null, options)
@@ -154,7 +151,7 @@ export class ChallengesService {
     }
 
     cancelChallenge(challengeId: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.challengesUrl + challengeId + "/cancel", null, options)
@@ -163,7 +160,7 @@ export class ChallengesService {
     }
 
     completeChallenge(challengeId: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.challengesUrl + challengeId + "/markAsCompleted", null, options)
@@ -172,7 +169,7 @@ export class ChallengesService {
     }
 
     markAsFailedChallenge(challengeId: string){
-        let headers = new Headers({'Content-Type': 'application/json'});
+        let headers = new Headers({"Content-Type": "application/json"});
         let options = new RequestOptions({headers: headers, withCredentials: true});
 
         return this.http.post(this.challengesUrl + challengeId + "/markAsFailed", null, options)
@@ -181,9 +178,9 @@ export class ChallengesService {
     }
 
     private getUserHistoryUrl(type:string){
-        if (type == 'ACCOMPLISHED'){
+        if (type == "ACCOMPLISHED"){
             return this.userChallengesAccomplishedHistoryUrl;
-        } else if (type == 'FAILED'){
+        } else if (type == "FAILED"){
             return this.userChallengesFailedHistoryUrl;
         } else {
             return this.userChallengesHistoryUrl;

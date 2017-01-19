@@ -6,11 +6,12 @@ import {API} from "../api.config";
 
 @Injectable()
 export class LeaderboardService {
+
     constructor(private http: Http) {
     }
 
-    private receiversUrl = API.URL + "leaderboard/receivers?";
-    private sendersUrl = API.URL + "leaderboard/senders?";
+    private receiversUrl = API.ENTRY.LEADERS + "/receivers?";
+    private sendersUrl = API.ENTRY.LEADERS + "/senders?";
 
     getTopReceivers(periodInDays: string): Observable<string> {
         return this.http.get(this.receiversUrl, this.getRequestOptions(periodInDays))
