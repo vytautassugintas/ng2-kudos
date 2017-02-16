@@ -1,20 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule, JsonpModule} from '@angular/http';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {SignInComponent} from './authentication/sign-in/sign-in.component';
+import {SignUpComponent} from './authentication/sign-up/sign-up.component';
+import {AppRoutingProviders, Routing} from "./app.routing";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    Routing,
+    HttpModule,
+    JsonpModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [AppRoutingProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
