@@ -1,13 +1,13 @@
-<section>
+<section *ngIf="isReady">
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
       <h1 class="title has-text-centered">Sign in</h1>
       <div class="card">
         <div class="card-content">
-          <form>
+          <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
             <label class="label">Email</label>
             <p class="control has-icon has-icon-right">
-              <input class="input" type="email" placeholder="Text input" value="bulma">
+              <input class="input" type="email" name="email" [(ngModel)]="signInFormModel.email" placeholder="Text input">
               <!--<span class="icon is-small">
                 <i class="fa fa-check"></i>
               </span>
@@ -15,7 +15,7 @@
             </p>
             <label class="label">Password</label>
             <p class="control has-icon has-icon-right">
-              <input class="input" type="password" placeholder="Email input" value="hello@">
+              <input class="input" type="password" name="password" [(ngModel)]="signInFormModel.password" placeholder="Email input">
               <!--<span class="icon is-small">
                 <i class="fa fa-warning"></i>
               </span>

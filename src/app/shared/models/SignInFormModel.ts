@@ -1,4 +1,12 @@
 export class SignInFormModel{
   email: string;
-  passwrod: string;
+  password: string;
+
+  toJSON(){
+    return {
+      email: this.email,
+      password: this.password
+    }
+  }
+
 }
