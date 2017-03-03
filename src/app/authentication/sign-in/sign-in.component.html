@@ -1,0 +1,37 @@
+<section *ngIf="isReady">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="title has-text-centered">Sign in</h1>
+      <div class="card">
+        <div class="card-content">
+          <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+            <label class="label">Email</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input" type="email" name="email" [(ngModel)]="signInFormModel.email" placeholder="Text input">
+              <!--<span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="help is-success">This username is available</span>-->
+            </p>
+            <label class="label">Password</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input" type="password" name="password" [(ngModel)]="signInFormModel.password" placeholder="Email input">
+              <!--<span class="icon is-small">
+                <i class="fa fa-warning"></i>
+              </span>
+              <span class="help is-danger">This email is invalid</span>-->
+            </p>
+            <div class="has-text-centered">
+              <button type="submit" class="button is-primary is-outlined">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="has-text-centered">
+    Not a member? <a routerLink="/sign-up" href="javascript:">Sign Up</a>
+  </div>
+</section>
+
