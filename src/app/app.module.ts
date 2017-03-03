@@ -9,13 +9,17 @@ import {SignUpComponent} from './authentication/sign-up/sign-up.component';
 import {AppRoutingProviders, Routing} from "./app.routing";
 import {RouterModule} from "@angular/router";
 import { HomeComponent } from './core/home/home.component';
+import { GiveComponent } from './core/home/give/give.component';
+import { UserPanelComponent } from './core/home/user-panel/user-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    GiveComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,

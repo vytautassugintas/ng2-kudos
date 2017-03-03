@@ -1,0 +1,24 @@
+<div *ngIf="isReady" class="column is-half">
+  <div class="card">
+    <div class="card-content">
+      <form (ngSubmit)="onSubmit()" #giveKudosForm="ngForm">
+        <label class="label">Receiver email</label>
+        <p class="control has-icon has-icon-right">
+          <input class="input" type="email" name="email" [(ngModel)]="email">
+        </p>
+        <label class="label">Amount</label>
+        <p class="control has-icon has-icon-right">
+          <input class="input" type="number" name="amount" [(ngModel)]="amount">
+        </p>
+        <label class="label">Message</label>
+        <p class="control has-icon has-icon-right">
+            <textarea class="textarea" type="text" name="message" [(ngModel)]="message"></textarea>
+        </p>
+        <div class="block has-text-right">
+          <a class="button is-white">Clear</a>
+          <a class="button is-primary">Give</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
