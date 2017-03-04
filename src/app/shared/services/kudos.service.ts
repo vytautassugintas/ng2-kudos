@@ -18,7 +18,7 @@ export class KudosService {
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
     return this.http.post(this.giveKudosUrl, body, options)
-      .map(ResponseExtractor.extractSucces)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleSimpleError);
   }
 

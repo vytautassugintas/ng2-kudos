@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GiveKudosFormModel} from "../../../shared/models/GiveKudosFormModel";
 import {KudosService} from "../../../shared/services/kudos.service";
+import {NotificationsService} from "angular2-notifications/lib/notifications.service";
 
 @Component({
   selector: 'app-give',
@@ -14,7 +15,7 @@ export class GiveComponent implements OnInit {
   isExpanded: boolean = false;
   formModel: GiveKudosFormModel;
 
-  constructor(private kudosService: KudosService) {
+  constructor(private kudosService: KudosService, private notificationService: NotificationsService) {
     this.formModel = new GiveKudosFormModel();
   }
 
@@ -22,10 +23,16 @@ export class GiveComponent implements OnInit {
     this.isExpanded = true;
     this.isReady = true;
   }
+
   onSubmit() {
     this.kudosService.give(this.formModel).subscribe( response =>{
+      this.notificationService.success("Success", response.amount + " kudos sent to " + response.receiverFullName);
       this.clearForm();
     })
+  }
+
+  onClearClick(){
+    this.clearForm();
   }
 
   onExpandToggle(){
