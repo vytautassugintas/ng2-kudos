@@ -1,8 +1,17 @@
 <div class="card" *ngIf="isReady">
   <div class="card-content">
-    <p class="bold">{{currentUser.name}}</p>
-    <p>{{currentUser.email}}</p>
-      <span>Total <span class="tag is-primary">{{currentUser.totalKudos}}</span></span>
-      <span>Weekly <span class="tag is-primary">{{currentUser.weeklyKudos}}</span></span>
+    <p class="title is-5"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong></p>
+    <p class="subtitle is-6 email">{{currentUser.email}}</p>
+    <div class="columns">
+      <div class="column">
+        <p class="heading">Total</p>
+        <p class="title">{{currentUser.totalKudos}}</p>
+      </div>
+      <div class="column">
+        <p class="heading">Weekly</p>
+        <p class="title">{{currentUser.weeklyKudos}}</p>
+      </div>
+
+
   </div>
 </div>
