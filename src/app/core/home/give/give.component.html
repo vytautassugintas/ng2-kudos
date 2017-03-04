@@ -1,31 +1,27 @@
 <div *ngIf="isReady" class="card">
   <header class="card-header">
-    <p class="card-header-title">
-      Component
-    </p>
-    <a class="card-header-icon">
-      <span class="icon">
-        <i class="fa fa-angle-down"></i>
-      </span>
+    <p class="card-header-title">Give Kudos</p>
+    <a (click)="onExpandToggle()" class="card-header-icon">
+      <span class="icon"><i  [ngClass]="{ 'fa-angle-down': !isExpanded, 'fa-angle-up': isExpanded}" class="fa"></i></span>
     </a>
   </header>
-  <div class="card-content">
+  <div *ngIf="isExpanded" class="card-content">
     <form (ngSubmit)="onSubmit()" #giveKudosForm="ngForm">
       <label class="label">Receiver email</label>
       <p class="control has-icon has-icon-right">
-        <input class="input" type="email" name="email" [(ngModel)]="email">
+        <input class="input" type="email" name="email" [(ngModel)]="formModel.receiverEmail">
       </p>
       <label class="label">Amount</label>
       <p class="control has-icon has-icon-right">
-        <input class="input" type="number" name="amount" [(ngModel)]="amount">
+        <input class="input" type="number" name="amount" [(ngModel)]="formModel.amount">
       </p>
       <label for="message" class="label">Message</label>
       <p class="control has-icon has-icon-right">
-        <textarea class="textarea" type="text" name="message" [(ngModel)]="message"></textarea>
+        <textarea class="textarea" type="text" name="message" [(ngModel)]="formModel.message"></textarea>
       </p>
       <div class="block has-text-right">
-        <a class="button is-white">Clear</a>
-        <a class="button is-primary">Give</a>
+        <button class="button is-white">Clear</button>
+        <button type="submit" class="button is-primary">Give</button>
       </div>
     </form>
   </div>
