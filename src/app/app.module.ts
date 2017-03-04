@@ -12,6 +12,9 @@ import {HomeComponent} from './core/home/home.component';
 import {GiveComponent} from './core/home/give/give.component';
 import {UserPanelComponent} from './core/home/user-panel/user-panel.component';
 import {SimpleNotificationsModule} from "angular2-notifications/lib/simple-notifications.module";
+import {UserComponent} from './core/user/user.component';
+import {TransactionsComponent} from './core/user/transactions/transactions.component';
+import {FeedPanelComponent} from './core/home/feed-panel/feed-panel.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {SimpleNotificationsModule} from "angular2-notifications/lib/simple-notif
     SignUpComponent,
     HomeComponent,
     GiveComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    UserComponent,
+    TransactionsComponent,
+    FeedPanelComponent
   ],
   imports: [
     BrowserModule,

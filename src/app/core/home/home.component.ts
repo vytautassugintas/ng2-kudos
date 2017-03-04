@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
+import {HomeService} from "../../shared/services/home.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [UserService]
+  providers: [UserService, HomeService]
 })
 export class HomeComponent implements OnInit {
 
