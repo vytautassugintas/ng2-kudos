@@ -50,19 +50,19 @@ export class KudosService {
 
   public getUserHistory(userId: string, page: number, pageSize: number): Observable<any> {
     return this.http.get(this.userHistory + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
-      .map(ResponseExtractor.extractPage)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
 
   public getUserGivenHistory(userId: string, page: number, pageSize: number): Observable<any> {
     return this.http.get(this.userHistoryGivenUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
-      .map(ResponseExtractor.extractPage)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
 
   public getUserReceivedHistory(userId: string, page: number, pageSize: number): Observable<any> {
     return this.http.get(this.userHistoryReceivedUrl + userId, RequestHelper.getPageableRequestOptions(page, pageSize))
-      .map(ResponseExtractor.extractPage)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
 
