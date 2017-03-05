@@ -7,7 +7,7 @@ import {KudosService} from "../../shared/services/kudos.service";
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [UserService, HomeService, KudosService]
+  providers: [HomeService]
 })
 export class HomeComponent implements OnInit {
 

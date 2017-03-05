@@ -14,4 +14,7 @@
       </div>
     </article>
   </div>
+  <div *ngIf="isLoading || !isReady" class="loader-wrapper">
+    <div class="loading"></div>
+  </div>
 </div>

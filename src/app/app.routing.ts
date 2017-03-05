@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {SignUpComponent} from "./authentication/sign-up/sign-up.component";
 import {SignInComponent} from "./authentication/sign-in/sign-in.component";
 import {HomeComponent} from "./core/home/home.component";
+import {HistoryComponent} from "./core/history/history.component";
 
 const AppRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ const AppRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'history',
+    component: HistoryComponent
   }
 
 ];

@@ -13,12 +13,12 @@ export class HistoryPanelComponent implements OnInit {
   selectedHistory: string;
   transactions: Array<any>;
   isReady: boolean;
+  isLoading: boolean;
 
   isFirstPage: boolean;
   isLastPage: boolean;
   totalPages: number;
   currentPage: number;
-  buttonsDisabled: boolean;
 
   @Input()
   set id(value: string) {
@@ -32,7 +32,7 @@ export class HistoryPanelComponent implements OnInit {
     this.currentPage = 1;
     this.selectedHistory = "";
     this.transactions = [];
-    this.buttonsDisabled = true;
+    this.isLoading = false;
   }
 
   ngOnInit() {
@@ -41,18 +41,21 @@ export class HistoryPanelComponent implements OnInit {
 
   getAllHistory(id: string){
     this.selectedHistory = "ALL";
+    this.isLoading = true;
     this.kudosService.getUserHistory(id, this.currentPage - 1, 10)
       .subscribe(transactions => this.extractTransactions(transactions));
   }
 
   getGivenHistory(id: string){
     this.selectedHistory = "GIVEN";
+    this.isLoading = true;
     this.kudosService.getUserGivenHistory(id, this.currentPage - 1, 10)
       .subscribe(transactions => this.extractTransactions(transactions));
   }
 
   getReceivedHistory(id: string){
     this.selectedHistory = "RECEIVED";
+    this.isLoading = true;
     this.kudosService.getUserReceivedHistory(id, this.currentPage - 1, 10)
       .subscribe(transactions => this.extractTransactions(transactions));
   }
@@ -63,13 +66,11 @@ export class HistoryPanelComponent implements OnInit {
   }
 
   nextPage(){
-    this.buttonsDisabled = true;
     this.currentPage = this.currentPage + 1;
     this.loadSelectedHistory();
   }
 
   previousPage(){
-    this.buttonsDisabled = true;
     this.currentPage = this.currentPage - 1;
     this.loadSelectedHistory();
   }
@@ -89,7 +90,7 @@ export class HistoryPanelComponent implements OnInit {
     this.isFirstPage = transactions.first;
     this.isLastPage = transactions.last;
     this.totalPages = transactions.totalPages;
-    this.buttonsDisabled = false;
+    this.isLoading = false;
     this.isReady = true;
   }
 

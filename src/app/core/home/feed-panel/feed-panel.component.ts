@@ -9,17 +9,19 @@ import {HomeService} from "../../../shared/services/home.service";
 export class FeedPanelComponent implements OnInit {
 
   transactions: Array<any>;
-  isReady: boolean = false;
+  isReady: boolean;
+  isLoading: boolean;
 
   constructor(private homeService: HomeService) {
     this.transactions = [];
-    this.isReady = true;
+    this.isReady = false;
+    this.isLoading = true;
   }
 
   ngOnInit() {
     this.homeService.getGlobalTransactions(0, 10).subscribe( transactions => {
       this.isReady = true;
-      console.log(transactions);
+      this.isLoading = false;
       this.transactions = transactions;
     })
   }

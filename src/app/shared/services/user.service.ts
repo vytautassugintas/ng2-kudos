@@ -7,6 +7,8 @@ import {ResponseExtractor} from "./helpers/response.helper";
 @Injectable()
 export class UserService {
 
+  public currentUser: any;
+
   constructor(private http: Http) {
   }
 
@@ -26,7 +28,10 @@ export class UserService {
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
     return this.http.get(this.currentUserProfileUrl, options)
-      .map(ResponseExtractor.extractJson)
+      .map(response => {
+        this.currentUser = response.json();
+        return response.json();
+      })
       .catch(ResponseExtractor.handleError);
   }
 

@@ -16,6 +16,8 @@ import {UserComponent} from './core/user/user.component';
 import {TransactionsComponent} from './core/user/transactions/transactions.component';
 import {FeedPanelComponent} from './core/home/feed-panel/feed-panel.component';
 import { HistoryPanelComponent } from './core/home/history-panel/history-panel.component';
+import { HistoryComponent } from './core/history/history.component';
+import {InfiniteScrollModule} from "angular2-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { HistoryPanelComponent } from './core/home/history-panel/history-panel.c
     UserComponent,
     TransactionsComponent,
     FeedPanelComponent,
-    HistoryPanelComponent
+    HistoryPanelComponent,
+    HistoryComponent
   ],
   imports: [
-    BrowserModule,
     SimpleNotificationsModule.forRoot(),
+    BrowserModule,
+    InfiniteScrollModule,
     FormsModule,
     Routing,
     HttpModule,

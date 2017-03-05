@@ -5,6 +5,7 @@
         KUDOS
       </a>
       <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile" routerLink="/history">History</a>
     </div>
     <span class="nav-toggle">
       <span></span>
@@ -27,9 +28,6 @@
         <app-give></app-give>
       </div>
       <div class="column is-half">
-        <div class="margin-bottom">
-          <app-history-panel [id]="currentUser?.id"></app-history-panel>
-        </div>
         <app-feed-panel></app-feed-panel>
       </div>
     </div>
