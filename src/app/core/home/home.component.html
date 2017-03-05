@@ -1,25 +1,4 @@
-<nav class="nav has-shadow">
-  <div class="container">
-    <div class="nav-left">
-      <a class="nav-item">
-        KUDOS
-      </a>
-      <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-      <a class="nav-item is-tab is-hidden-mobile" routerLink="/history">History</a>
-    </div>
-    <span class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-    <div class="nav-right nav-menu">
-      <a class="nav-item">Log out</a>
-    </div>
-  </div>
-</nav>
-
 <section *ngIf="isReady">
-  <div class="container">
     <div class="columns">
       <div class="column is-one-quarter">
         <div class="margin-bottom">
@@ -31,5 +10,4 @@
         <app-feed-panel></app-feed-panel>
       </div>
     </div>
-  </div>
 </section>

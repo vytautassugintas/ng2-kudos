@@ -1,0 +1,20 @@
+<nav *ngIf="!isHidden" class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">KUDOS</a>
+      <a *ngFor="let item of items"
+         class="nav-item is-tab is-hidden-mobile"
+         [class.is-active]="item === selectedItem"
+         routerLink="{{item.link}}">{{item.title}}
+      </a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <a class="nav-item">Log out</a>
+    </div>
+  </div>
+</nav>
