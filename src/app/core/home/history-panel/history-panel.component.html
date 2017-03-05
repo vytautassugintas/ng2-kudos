@@ -1,0 +1,36 @@
+<div class="tabs is-centered is-medium">
+  <ul>
+    <li (click)="currentPage = 1; getAllHistory(_id)" [class.is-active]="selectedHistory === 'ALL'"><a>All</a></li>
+    <li (click)="currentPage = 1; getReceivedHistory(_id)" [class.is-active]="selectedHistory === 'RECEIVED'"><a>Received</a></li>
+    <li (click)="currentPage = 1; getGivenHistory(_id)" [class.is-active]="selectedHistory === 'GIVEN'"><a>Sent</a></li>
+  </ul>
+</div>
+<div *ngIf="isReady">
+  <div *ngIf="!transactions.length" class="notification is-info">No transactions found.</div>
+  <div *ngFor="let transaction of transactions">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{transaction.senderFullName}}</strong>
+            <small>{{transaction.date | date:'medium'}}</small>
+            <br><span>Sent <span class="tag">{{transaction.amount}}</span> kudos to <a href=":javascript">{{transaction.receiverFullName}}</a></span>
+            with message: <span><strong>{{transaction.message}}</strong></span>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<nav *ngIf="transactions.length" class="pagination is-centered margin-top">
+  <a [class.is-disabled]="isFirstPage || buttonsDisabled" (click)="previousPage()" class="pagination-previous">Previous</a>
+  <a [class.is-disabled]="isLastPage || buttonsDisabled" (click)="nextPage()" class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li *ngIf="!isFirstPage" (click)="loadPage(1)"><a class="pagination-link">1</a></li>
+    <li *ngIf="!isFirstPage"><span class="pagination-ellipsis">&hellip;</span></li>
+    <li><a class="pagination-link is-current">{{currentPage}}</a></li>
+    <li *ngIf="currentPage != totalPages"><span class="pagination-ellipsis">&hellip;</span></li>
+    <li *ngIf="currentPage != totalPages" (click)="loadPage(totalPages)"><a class="pagination-link">{{totalPages}}</a></li>
+  </ul>
+</nav>

@@ -1,5 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-section{
-  padding-left: 16px;
-  padding-right: 16px;
+$base_unit: 4px;
+$small_unit: $base_unit * 2;
+$medium_unit: $base_unit * 3;
+$normal_unit: $base_unit * 4;
+
+section {
+  padding-left: $normal_unit;
+  padding-right: $normal_unit;
+}
+
+.padding-top {
+  padding-top: $medium_unit;
+}
+
+.padding-bottom {
+  padding-bottom: $medium_unit;
+}
+
+.margin-top {
+  margin-top: $medium_unit;
+}
+
+.margin-bottom {
+  margin-bottom: $medium_unit;
 }

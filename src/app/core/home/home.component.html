@@ -17,14 +17,20 @@
   </div>
 </nav>
 
-<section>
+<section *ngIf="isReady">
   <div class="container">
     <div class="columns">
       <div class="column is-one-quarter">
-        <app-user-panel></app-user-panel>
-      </div>
-      <div class="column">
+        <div class="margin-bottom">
+          <app-user-panel></app-user-panel>
+        </div>
         <app-give></app-give>
+      </div>
+      <div class="column is-half">
+        <div class="margin-bottom">
+          <app-history-panel [id]="currentUser?.id"></app-history-panel>
+        </div>
+        <app-feed-panel></app-feed-panel>
       </div>
     </div>
   </div>

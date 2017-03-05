@@ -6,7 +6,7 @@ export class API {
     AUTHENTICATION : API.URL + "authentication",
     CHALLENGE : API.URL + "challenge",
     USER : API.URL + "user",
-    HOME : API.URL + "challenge",
+    HOME : API.URL + "home",
     KUDOS : API.URL + "kudos",
     RELATION : API.URL + "relation",
     LEADERS : API.URL + "leaderboard",
