@@ -15,7 +15,6 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       this.userId = params['id'];
-      console.log(this.userId);
       //TODO: Get user profile
     });
   }

@@ -22,6 +22,7 @@ export class NavComponent implements OnInit {
   }
 
   activate(url) {
+    console.log(url);
     switch (url) {
       case "/":
         this.isHidden = true;
@@ -45,6 +46,7 @@ export class NavComponent implements OnInit {
         break;
       default:
         this.isHidden = false;
+        this.selectedItem = null;
         break;
     }
   }
