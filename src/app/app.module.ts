@@ -36,8 +36,8 @@ import { NavComponent } from './nav/nav.component';
     NavComponent
   ],
   imports: [
-    SimpleNotificationsModule.forRoot(),
     BrowserModule,
+    SimpleNotificationsModule.forRoot(),
     InfiniteScrollModule,
     FormsModule,
     Routing,

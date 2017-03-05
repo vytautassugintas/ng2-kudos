@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Params, Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  userId: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      this.userId = params['id'];
+      console.log(this.userId);
+      //TODO: Get user profile
+    });
   }
 
 }
