@@ -1,15 +1,17 @@
 <h4 class="title is-4">What's happening?</h4>
-<div *ngIf="isReady">
-  <div *ngFor="let transaction of transactions">
-    <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>{{transaction.senderFullName}}</strong> <small>{{transaction.date | date:'medium'}}</small>
-          <br><span>Sent <span class="tag">{{transaction.amount}}</span> kudos to <a href=":javascript">{{transaction.receiverFullName}}</a></span>
-        </p>
+<div *ngIf="isReady" class="card">
+  <div class="card-content">
+    <div *ngFor="let transaction of transactions">
+      <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{transaction.senderFullName}}</strong> <small>{{transaction.date | date:'medium'}}</small>
+            <br><span>Sent <span class="tag">{{transaction.amount}}</span> kudos to <a href=":javascript">{{transaction.receiverFullName}}</a></span>
+          </p>
+        </div>
       </div>
+      </article>
     </div>
-  </article>
   </div>
 </div>

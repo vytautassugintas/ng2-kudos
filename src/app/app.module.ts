@@ -15,6 +15,7 @@ import {SimpleNotificationsModule} from "angular2-notifications/lib/simple-notif
 import {UserComponent} from './core/user/user.component';
 import {TransactionsComponent} from './core/user/transactions/transactions.component';
 import {FeedPanelComponent} from './core/home/feed-panel/feed-panel.component';
+import { HistoryPanelComponent } from './core/home/history-panel/history-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FeedPanelComponent} from './core/home/feed-panel/feed-panel.component';
     UserPanelComponent,
     UserComponent,
     TransactionsComponent,
-    FeedPanelComponent
+    FeedPanelComponent,
+    HistoryPanelComponent
   ],
   imports: [
     BrowserModule,

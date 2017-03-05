@@ -1,14 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-$base_unit : 4px;
-$small_unit : $base_unit * 2;
-$medium_unit : $base_unit * 3;
+$base_unit: 4px;
+$small_unit: $base_unit * 2;
+$medium_unit: $base_unit * 3;
 $normal_unit: $base_unit * 4;
 
-section{
+section {
   padding-left: $normal_unit;
   padding-right: $normal_unit;
 }
-
 
 .padding-top {
   padding-top: $medium_unit;
