@@ -20,7 +20,7 @@ export class GiveComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isExpanded = true;
+    this.isExpanded = false;
     this.isReady = true;
   }
 

@@ -4,9 +4,17 @@ $small_unit: $base_unit * 2;
 $medium_unit: $base_unit * 3;
 $normal_unit: $base_unit * 4;
 
+html {
+  background-color: #f5f8fa;
+}
+
 section {
   padding-left: $normal_unit;
   padding-right: $normal_unit;
+}
+
+.card {
+  border-color: rgb(225, 232, 237);
 }
 
 .padding-top {
@@ -24,3 +32,58 @@ section {
 .margin-bottom {
   margin-bottom: $medium_unit;
 }
+
+$base-line-height: 24px;
+$white: rgb(255, 255, 255);
+$off-white: rgba($white, 0.2);
+$spin-duration: 1s;
+$pulse-duration: 750ms;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: $medium_unit;
+}
+
+.loading {
+  border-radius: 50%;
+  width: $base-line-height;
+  height: $base-line-height;
+  border: .25rem solid #ecf0f1;
+  border-top-color: #1abc9c;
+  animation: spin $spin-duration infinite linear;
+  &--double {
+    border: .5rem double;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+
+.appear {
+  animation: .5s ease 0s normal forwards 1 fadein;
+  -webkit-animation: .5s ease 0s normal forwards 1 fadein;
+  opacity: 1
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+

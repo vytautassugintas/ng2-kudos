@@ -1,3 +1,18 @@
-<p>
-  user works!
-</p>
+<div *ngIf="isReady" class="column is-half is-offset-one-quarter">
+  <div *ngIf="isReady" class="columns padding-top">
+    <div class="column">
+      <p class="title is-5"><strong>{{user.firstName}} {{user.lastName}}</strong></p>
+      <p class="subtitle is-6 email">{{user.email}}</p>
+    </div>
+
+    <div class="column has-text-centered">
+      <p class="heading">Total</p>
+      <p class="title">{{user.totalKudos}}</p>
+    </div>
+    <div class="column has-text-centered">
+      <p class="heading">Weekly</p>
+      <p class="title">{{user.weeklyKudos}}</p>
+    </div>
+  </div>
+  <app-history-panel [id]="userId"></app-history-panel>
+</div>
