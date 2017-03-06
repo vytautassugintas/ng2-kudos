@@ -19,6 +19,7 @@ import { HistoryPanelComponent } from './core/home/history-panel/history-panel.c
 import { HistoryComponent } from './core/history/history.component';
 import {InfiniteScrollModule} from "angular2-infinite-scroll";
 import { NavComponent } from './nav/nav.component';
+import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NavComponent } from './nav/nav.component';
     FeedPanelComponent,
     HistoryPanelComponent,
     HistoryComponent,
-    NavComponent
+    NavComponent,
+    LeadersPanelComponent
   ],
   imports: [
     BrowserModule,

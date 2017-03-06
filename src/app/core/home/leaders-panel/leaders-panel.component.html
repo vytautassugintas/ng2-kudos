@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-content">
+    <div class="tabs is-centered is-medium">
+      <ul>
+        <li (click)="selectTab('RECEIVERS')" [class.is-active]="selectedTab === 'RECEIVERS'"><a>Receivers</a></li>
+        <li (click)="selectTab('SENDERS')" [class.is-active]="selectedTab === 'SENDERS'"><a>Senders</a></li>
+      </ul>
+    </div>
+    <div *ngFor="let leader of leaders">
+      <a class="has-text-left" routerLink="/user/{{leader.userId}}">{{leader.fullName}}</a>
+      <span class="tag has-text-right">{{leader.kudosAmount}}</span>
+    </div>
+  </div>
+</div>
