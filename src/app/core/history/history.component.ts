@@ -16,8 +16,16 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.userService.currentUser;
-    this.isReady = true;
+    if (this.userService.currentUser) {
+      this.currentUser = this.userService.currentUser;
+      this.isReady = true;
+    } else {
+      this.userService.getCurrentUser().subscribe(user => {
+        this.currentUser = user;
+        this.isReady = true;
+      })
+    }
+
   }
 
 }

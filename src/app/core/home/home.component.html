@@ -1,13 +1,20 @@
 <section *ngIf="isReady">
     <div class="columns">
       <div class="column is-one-quarter">
-        <div class="margin-bottom">
-          <app-user-panel></app-user-panel>
-        </div>
-        <app-give></app-give>
+          <div class="margin-bottom">
+            <app-user-panel></app-user-panel>
+          </div>
       </div>
       <div class="column is-half">
+        <div class="margin-bottom">
+          <app-give></app-give>
+        </div>
         <app-feed-panel></app-feed-panel>
+      </div>
+      <div class="column">
+        <div class="margin-bottom">
+          <app-leaders-panel></app-leaders-panel>
+        </div>
       </div>
     </div>
 </section>

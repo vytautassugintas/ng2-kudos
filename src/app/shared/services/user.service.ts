@@ -10,6 +10,7 @@ export class UserService {
   public currentUser: any;
 
   constructor(private http: Http) {
+    this.currentUser = null;
   }
 
   private currentUserProfileUrl = API.ENTRY.USER + "/profile";

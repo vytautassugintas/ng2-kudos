@@ -1,6 +1,6 @@
 <div *ngIf="isReady" class="card">
   <header class="card-header">
-    <p class="card-header-title">Give Kudos</p>
+    <a (click)="onExpandToggle()" class="card-header-title">Give Kudos</a>
     <a (click)="onExpandToggle()" class="card-header-icon">
       <span class="icon"><i  [ngClass]="{ 'fa-angle-down': !isExpanded, 'fa-angle-up': isExpanded}" class="fa"></i></span>
     </a>
