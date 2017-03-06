@@ -22,7 +22,6 @@ export class NavComponent implements OnInit {
   }
 
   activate(url) {
-    console.log(url);
     switch (url) {
       case "/":
         this.isHidden = true;

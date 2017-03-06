@@ -35,7 +35,7 @@ export class UserService {
       .catch(ResponseExtractor.handleError);
   }
 
-  userProfile(userId: string): Observable<any> {
+  getUserProfile(userId: string): Observable<any> {
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});
 

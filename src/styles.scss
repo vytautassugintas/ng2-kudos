@@ -4,9 +4,17 @@ $small_unit: $base_unit * 2;
 $medium_unit: $base_unit * 3;
 $normal_unit: $base_unit * 4;
 
+html {
+  background-color: #f5f8fa;
+}
+
 section {
   padding-left: $normal_unit;
   padding-right: $normal_unit;
+}
+
+.card {
+  border-color: rgb(225, 232, 237);
 }
 
 .padding-top {
@@ -71,7 +79,11 @@ $pulse-duration: 750ms;
 }
 
 @keyframes fadein {
-  0% { opacity: 0 }
-  100% { opacity: 1 }
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
 }
 
