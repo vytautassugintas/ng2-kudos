@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LeadersPanelComponent} from './leaders-panel.component';
-import {RouterLinkStubDirective} from "../../../../test/router-stubs";
 import {LeadersService} from "../../../shared/services/leaders.service";
 import {Observable} from "rxjs";
+import {RouterLinkStubDirective} from "../../../../test/router-link-stub";
 
 describe('LeadersPanelComponent', () => {
   let component: LeadersPanelComponent;

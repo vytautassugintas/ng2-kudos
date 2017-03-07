@@ -4,15 +4,25 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FeedPanelComponent } from './feed-panel.component';
+import {RouterLinkStubDirective} from "../../../../test/router-link-stub";
+import {HomeService} from "../../../shared/services/home.service";
+import {HomeServiceSpy} from "../../../../test/home-service-spy";
 
-describe('FeedPanelComponent', () => {
+fdescribe('FeedPanelComponent', () => {
   let component: FeedPanelComponent;
   let fixture: ComponentFixture<FeedPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedPanelComponent ]
+      declarations: [ FeedPanelComponent, RouterLinkStubDirective]
     })
+      .overrideComponent(FeedPanelComponent, {
+        set: {
+          providers: [
+            {provide: HomeService, useClass: HomeServiceSpy}
+          ]
+        }
+      })
     .compileComponents();
   }));
 
