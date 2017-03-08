@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   userId: string;
   user: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private userService: UserService) {
     this.isReady = false;
   }
 

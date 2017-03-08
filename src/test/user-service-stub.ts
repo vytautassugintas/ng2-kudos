@@ -5,6 +5,6 @@ export class UserServiceSpy {
   currentUser: any = {fullName: "sender tester", userId: "312id"};
 
   getCurrentUser(): Observable<any> {
-    return this.currentUser;
+    return Observable.of(this.currentUser);
   }
 }

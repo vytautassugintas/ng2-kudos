@@ -1,9 +1,14 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
-import { HistoryPanelComponent } from './history-panel.component';
+import {HistoryPanelComponent} from './history-panel.component';
+import {RouterLinkStubDirective} from "../../../../test/router-link-stub";
+import {KudosServiceSpy} from "../../../../test/kudos-service-spy";
+import {KudosService} from "../../../shared/services/kudos.service";
+import {UserServiceSpy} from "../../../../test/user-service-stub";
+import {UserService} from "../../../shared/services/user.service";
 
 describe('HistoryPanelComponent', () => {
   let component: HistoryPanelComponent;
@@ -11,9 +16,17 @@ describe('HistoryPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HistoryPanelComponent ]
+      declarations: [HistoryPanelComponent, RouterLinkStubDirective]
     })
-    .compileComponents();
+      .overrideComponent(HistoryPanelComponent, {
+        set: {
+          providers: [
+            {provide: UserService, useClass: UserServiceSpy},
+            {provide: KudosService, useClass: KudosServiceSpy},
+          ]
+        }
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,7 +8,7 @@ import {RouterLinkStubDirective} from "../../../../test/router-link-stub";
 import {HomeService} from "../../../shared/services/home.service";
 import {HomeServiceSpy} from "../../../../test/home-service-spy";
 
-fdescribe('FeedPanelComponent', () => {
+describe('FeedPanelComponent', () => {
   let component: FeedPanelComponent;
   let fixture: ComponentFixture<FeedPanelComponent>;
 
