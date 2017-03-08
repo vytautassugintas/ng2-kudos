@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { UserPanelComponent } from './user-panel.component';
+import {UserService} from "../../../shared/services/user.service";
+import {UserServiceSpy} from "../../../../test/user-service-stub";
 
 describe('UserPanelComponent', () => {
   let component: UserPanelComponent;
@@ -13,6 +15,13 @@ describe('UserPanelComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UserPanelComponent ]
     })
+      .overrideComponent(UserPanelComponent, {
+        set: {
+          providers: [
+            {provide: UserService, useClass: UserServiceSpy}
+          ]
+        }
+      })
     .compileComponents();
   }));
 
