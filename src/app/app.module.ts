@@ -39,13 +39,13 @@ import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.c
   ],
   imports: [
     BrowserModule,
-    SimpleNotificationsModule.forRoot(),
     InfiniteScrollModule,
     FormsModule,
     Routing,
     HttpModule,
     JsonpModule,
-    RouterModule
+    RouterModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [AppRoutingProviders],
   bootstrap: [AppComponent]

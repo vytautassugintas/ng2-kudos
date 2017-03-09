@@ -20,7 +20,7 @@ export class ResponseExtractor{
   }
 
   static handleSimpleError(error: any){
-    return Observable.throw(error._body);
+    return Observable.throw(JSON.parse(error._body));
   }
 
   static extractCallback(res: Response) {
