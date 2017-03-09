@@ -35,6 +35,8 @@ export class GiveComponent implements OnInit {
     this.clearErrors();
     this.kudosService.give(this.formModel).subscribe(response => {
       this.notificationService.success("Success", response.amount + " kudos sent to " + response.receiverFullName);
+      this.userService.currentUser.weeklyKudos = this.userService.currentUser.weeklyKudos - this.formModel.amount;
+      this.userService.updateUser(this.userService.currentUser);
       this.clearForm();
     }, error => {
       if (error.fieldError) {

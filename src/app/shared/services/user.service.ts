@@ -3,15 +3,10 @@ import {Http, Response, Headers, RequestOptions, URLSearchParams} from "@angular
 import {Observable}     from "rxjs/Observable";
 import {API} from "../api.config";
 import {ResponseExtractor} from "./helpers/response.helper";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class UserService {
-
-  public currentUser: any;
-
-  constructor(private http: Http) {
-    this.currentUser = null;
-  }
 
   private currentUserProfileUrl = API.ENTRY.USER + "/profile";
   private userProfileUrl = API.ENTRY.USER + "/profile/";
@@ -19,10 +14,22 @@ export class UserService {
   private emailPredicateUrl = API.ENTRY.USER + "/email/";
   private subscribeUrl = API.ENTRY.USER + "/subscribe/";
   private unsubscribeUrl = API.ENTRY.USER + "/unsubscribe/";
-
   private logoutUrl = API.ENTRY.AUTHENTICATION + "/logout";
-
   private actionsUrl = API.ENTRY.RELATION + "/feed";
+
+  currentUser: any;
+  currentUserSource: Subject<any>;
+  userUpdated$: any;
+
+  constructor(private http: Http) {
+    this.currentUserSource = new Subject<any>();
+    this.userUpdated$ = this.currentUserSource.asObservable();
+  }
+
+  updateUser(user: any){
+    this.currentUser = user;
+    this.currentUserSource.next(user);
+  }
 
   getCurrentUser(): Observable<any> {
     let headers = new Headers({"Content-Type": "application/json"});
@@ -30,7 +37,7 @@ export class UserService {
 
     return this.http.get(this.currentUserProfileUrl, options)
       .map(response => {
-        this.currentUser = response.json();
+        this.updateUser(response.json());
         return response.json();
       })
       .catch(ResponseExtractor.handleError);
@@ -45,7 +52,7 @@ export class UserService {
       .catch(ResponseExtractor.handleError);
   }
 
-  logout(): Observable<string>{
+  logout(): Observable<string> {
     let headers = new Headers({});
     let options = new RequestOptions({headers: headers, withCredentials: true});
     console.log("LOOGING OUT");
@@ -59,7 +66,7 @@ export class UserService {
     let params: URLSearchParams = new URLSearchParams();
     params.set("page", page.toString());
     params.set("size", pageSize.toString());
-    let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+    let options = new RequestOptions({headers: headers, withCredentials: true, search: params});
 
     return this.http.get(this.userActionsUrl + userId, options)
       .map(ResponseExtractor.extractPage)
@@ -71,14 +78,14 @@ export class UserService {
     let params: URLSearchParams = new URLSearchParams();
     params.set("page", page.toString());
     params.set("size", pageSize.toString());
-    let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
+    let options = new RequestOptions({headers: headers, withCredentials: true, search: params});
 
     return this.http.get(this.actionsUrl, options)
       .map(ResponseExtractor.extractPage)
       .catch(ResponseExtractor.handleError);
   }
 
-  getEmailPredicates(predicate: string){
+  getEmailPredicates(predicate: string) {
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
@@ -87,11 +94,11 @@ export class UserService {
       .catch(ResponseExtractor.handleError);
   }
 
-  changeSubscription(subscribe: boolean){
+  changeSubscription(subscribe: boolean) {
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
-    if (subscribe){
+    if (subscribe) {
       return this.http.post(this.subscribeUrl, null, options)
         .map(ResponseExtractor.extractString)
         .catch(ResponseExtractor.extractString)
