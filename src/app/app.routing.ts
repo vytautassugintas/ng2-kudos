@@ -5,6 +5,8 @@ import {SignInComponent} from "./authentication/sign-in/sign-in.component";
 import {HomeComponent} from "./core/home/home.component";
 import {HistoryComponent} from "./core/history/history.component";
 import {UserComponent} from "./core/user/user.component";
+import {AdminModule} from "./admin/admin.module";
+import {AdminComponent} from "./admin/admin/admin.component";
 
 const AppRoutes: Routes = [
   {
@@ -30,6 +32,10 @@ const AppRoutes: Routes = [
   {
     path: 'user/:id',
     component: UserComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   }
 
 ];

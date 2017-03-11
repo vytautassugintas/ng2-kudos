@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -43,6 +43,10 @@ export class NavComponent implements OnInit {
         this.isHidden = false;
         this.selectedItem = this.items[1];
         break;
+      case "/admin":
+        this.isHidden = false;
+        this.selectedItem = this.items[2];
+        break;
       default:
         this.isHidden = false;
         this.selectedItem = null;
@@ -59,6 +63,10 @@ export class NavComponent implements OnInit {
       {
         title: "History",
         link: "/history"
+      },
+      {
+        title: "[TEST] Admin",
+        link: "/admin"
       }
     ]
   }
