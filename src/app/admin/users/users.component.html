@@ -5,6 +5,7 @@
     <th><abbr title="Total">Total</abbr></th>
     <th><abbr title="Weekly">Weekly</abbr></th>
     <th><abbr title="Status">Status</abbr></th>
+    <th><abbr title="Action"></abbr></th>
   </tr>
   </thead>
   <tbody>
@@ -12,7 +13,10 @@
     <td>{{user.firstName}} {{user.lastName}}</td>
     <td>{{user.totalKudos}}</td>
     <td>{{user.weeklyKudos}}</td>
-    <td>{{user.status}}</td>
+    <td><span class="tag" [ngClass]="getStatusTagClass(user.status)">{{user.status}}</span></td>
+    <td>
+      <a (click)="confirmUser(user)" *ngIf="user.status === 'NOT_CONFIRMED'">Confirm</a>
+    </td>
   </tr>
   </tbody>
   </table>
