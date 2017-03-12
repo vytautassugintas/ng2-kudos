@@ -1,0 +1,25 @@
+<figure *ngIf="formModel.pictureUrl" class="image">
+  <img src="{{formModel.pictureUrl}}">
+</figure>
+
+<form (ngSubmit)="onSubmit()" #addItem="ngForm">
+  <label class="label">Title
+    <input class="input" type="text" name="title" [(ngModel)]="formModel.name">
+  </label>
+  <label class="label">Image URL
+    <input class="input" type="text" name="imageUrl" [(ngModel)]="formModel.pictureUrl">
+  </label>
+  <label class="label">Description
+    <textarea class="textarea" type="text" name="description" [(ngModel)]="formModel.description"></textarea>
+  </label>
+  <label class="label">Price
+    <input class="input" type="number" name="price" [(ngModel)]="formModel.price">
+  </label>
+  <label class="label">Amount
+    <input class="input" type="number" name="amount" [(ngModel)]="formModel.amount">
+  </label>
+
+  <div class="has-text-centered">
+    <button type="submit" class="button is-primary is-outlined">Add item</button>
+  </div>
+</form>

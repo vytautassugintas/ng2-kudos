@@ -13,6 +13,7 @@ export class API {
     RELATION : API.URL + "relation",
     LEADERS : API.URL + "leaderboard",
     WISDOM : API.URL + "wisdomwall",
-    ADMIN : API.URL + "admin"
+    ADMIN : API.URL + "admin",
+    SHOP: API.URL + "shop"
   }
 }
