@@ -27,7 +27,7 @@ export class AdminService{
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
     return this.http.post(this.confirmationUrl + userHash, null, options)
-      .map(ResponseExtractor.extractSucces)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
 }
