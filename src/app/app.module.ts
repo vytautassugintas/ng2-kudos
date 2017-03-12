@@ -20,6 +20,7 @@ import { HistoryComponent } from './core/history/history.component';
 import {InfiniteScrollModule} from "angular2-infinite-scroll";
 import { NavComponent } from './nav/nav.component';
 import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.component';
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -39,13 +40,14 @@ import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.c
   ],
   imports: [
     BrowserModule,
-    SimpleNotificationsModule.forRoot(),
     InfiniteScrollModule,
     FormsModule,
     Routing,
     HttpModule,
     JsonpModule,
-    RouterModule
+    RouterModule,
+    SimpleNotificationsModule.forRoot(),
+    AdminModule
   ],
   providers: [AppRoutingProviders],
   bootstrap: [AppComponent]

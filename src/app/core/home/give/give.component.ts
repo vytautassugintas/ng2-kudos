@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GiveKudosFormModel} from "../../../shared/models/GiveKudosFormModel";
 import {KudosService} from "../../../shared/services/kudos.service";
 import {NotificationsService} from "angular2-notifications/lib/notifications.service";
+import {UserService} from "../../../shared/services/user.service";
 
 @Component({
   selector: 'app-give',
@@ -11,11 +12,17 @@ import {NotificationsService} from "angular2-notifications/lib/notifications.ser
 })
 export class GiveComponent implements OnInit {
 
-  isReady: boolean = false;
-  isExpanded: boolean = false;
+  isReady: boolean;
+  isExpanded: boolean;
+  hasErrors: boolean;
+  errorMessage: string;
   formModel: GiveKudosFormModel;
 
-  constructor(private kudosService: KudosService, private notificationService: NotificationsService) {
+  constructor(private kudosService: KudosService, private userService: UserService, private notificationService: NotificationsService) {
+    this.isReady = true;
+    this.isExpanded = false;
+    this.hasErrors = false;
+    this.errorMessage = null;
     this.formModel = new GiveKudosFormModel();
   }
 
@@ -25,22 +32,36 @@ export class GiveComponent implements OnInit {
   }
 
   onSubmit() {
-    this.kudosService.give(this.formModel).subscribe( response =>{
+    this.clearErrors();
+    this.kudosService.give(this.formModel).subscribe(response => {
       this.notificationService.success("Success", response.amount + " kudos sent to " + response.receiverFullName);
+      this.userService.currentUser.weeklyKudos = this.userService.currentUser.weeklyKudos - this.formModel.amount;
+      this.userService.updateUser(this.userService.currentUser);
       this.clearForm();
+    }, error => {
+      if (error.fieldError) {
+        this.hasErrors = true;
+        this.errorMessage = error.fieldError.message;
+      }
     })
   }
 
-  onClearClick(){
+  onClearClick() {
     this.clearForm();
+    this.clearErrors();
   }
 
-  onExpandToggle(){
+  onExpandToggle() {
     this.isExpanded === false ? this.isExpanded = true : this.isExpanded = false;
   }
 
-  clearForm(){
+  clearForm() {
     this.formModel = new GiveKudosFormModel();
+  }
+
+  clearErrors() {
+    this.hasErrors = false;
+    this.errorMessage = "";
   }
 
 }

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticationService} from "../shared/services/authentication.service";
+import {HomeService} from "../shared/services/home.service";
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
+  providers: [HomeService]
 })
 export class NavComponent implements OnInit {
 
@@ -12,7 +15,7 @@ export class NavComponent implements OnInit {
   items: any;
   selectedItem: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private homeService: HomeService) {
     router.events.subscribe((route) => this.activate(this.router.url))
   }
 
@@ -43,6 +46,10 @@ export class NavComponent implements OnInit {
         this.isHidden = false;
         this.selectedItem = this.items[1];
         break;
+      case "/admin":
+        this.isHidden = false;
+        this.selectedItem = this.items[2];
+        break;
       default:
         this.isHidden = false;
         this.selectedItem = null;
@@ -59,8 +66,18 @@ export class NavComponent implements OnInit {
       {
         title: "History",
         link: "/history"
+      },
+      {
+        title: "[TEST] Admin",
+        link: "/admin"
       }
     ]
+  }
+
+  logout(){
+    this.homeService.logout().subscribe( success => {
+      this.router.navigate(['sign-in']);
+    })
   }
 
 }

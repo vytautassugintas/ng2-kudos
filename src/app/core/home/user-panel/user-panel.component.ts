@@ -1,5 +1,6 @@
-import { UserService } from "../../../shared/services/user.service";
-import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../../shared/services/user.service";
+import {Component, OnInit} from '@angular/core';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-user-panel',
@@ -10,10 +11,15 @@ export class UserPanelComponent implements OnInit {
 
   isReady: boolean;
   currentUser: any;
+  userSubscription: Subscription;
 
   constructor(private userService: UserService) {
     this.isReady = false;
     this.currentUser = {};
+    this.userSubscription = userService.userUpdated$.subscribe(
+      user => {
+        this.currentUser = user;
+      });
   }
 
   ngOnInit() {

@@ -19,8 +19,11 @@
       <p class="control has-icon has-icon-right">
         <textarea class="textarea" type="text" name="message" [(ngModel)]="formModel.message"></textarea>
       </p>
+      <div *ngIf="showError" class="notification is-danger">
+        {{errorMessage}}
+      </div>
       <div class="block has-text-right">
-        <button (click)="onClearClick()" class="button is-white">Clear</button>
+        <button (click)="onClearClick()" type="reset" class="button is-white">Clear</button>
         <button type="submit" class="button is-primary">Give</button>
       </div>
     </form>
