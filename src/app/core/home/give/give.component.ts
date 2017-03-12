@@ -3,6 +3,7 @@ import {GiveKudosFormModel} from "../../../shared/models/GiveKudosFormModel";
 import {KudosService} from "../../../shared/services/kudos.service";
 import {NotificationsService} from "angular2-notifications/lib/notifications.service";
 import {UserService} from "../../../shared/services/user.service";
+import {NotificationService} from "../../../shared/components/notification/notification.service";
 
 @Component({
   selector: 'app-give',
@@ -18,7 +19,7 @@ export class GiveComponent implements OnInit {
   errorMessage: string;
   formModel: GiveKudosFormModel;
 
-  constructor(private kudosService: KudosService, private userService: UserService, private notificationService: NotificationsService) {
+  constructor(private kudosService: KudosService, private userService: UserService, private notificationService: NotificationService) {
     this.isReady = true;
     this.isExpanded = false;
     this.hasErrors = false;
@@ -40,6 +41,7 @@ export class GiveComponent implements OnInit {
       this.userService.updateUser(this.userService.currentUser);
       this.clearForm();
     }, error => {
+      console.log(error);
       if (error.fieldError) {
         this.hasErrors = true;
         this.errorMessage = error.fieldError.message;

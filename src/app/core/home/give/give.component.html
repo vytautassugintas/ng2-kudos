@@ -19,7 +19,7 @@
       <p class="control has-icon has-icon-right">
         <textarea class="textarea" type="text" name="message" [(ngModel)]="formModel.message"></textarea>
       </p>
-      <div *ngIf="showError" class="notification is-danger">
+      <div *ngIf="hasErrors" class="notification is-danger">
         {{errorMessage}}
       </div>
       <div class="block has-text-right">
