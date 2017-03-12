@@ -68,7 +68,7 @@ export class NavComponent implements OnInit {
         link: "/history"
       },
       {
-        title: "[TEST] Admin",
+        title: "Admin",
         link: "/admin"
       }
     ]

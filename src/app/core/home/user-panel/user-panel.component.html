@@ -1,15 +1,33 @@
 <div class="card" *ngIf="isReady">
-  <div class="card-content">
-    <p class="title is-5"><strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong></p>
-    <p class="subtitle is-6 email">{{currentUser.email}}</p>
-    <div class="columns">
+  <div class="card-content has-text-centered-mobile">
+    <p class="title is-5"><strong>{{user.firstName}} {{user.lastName}}</strong></p>
+    <p class="subtitle is-6 email">{{user.email}}</p>
+
+    <div class="columns is-mobile">
+      <div class="column is-3">
+        <div class="has-text-centered">
+          <div class="title is-4">{{user.level}}</div>
+          <div class="subtitle is-5"><small>Level</small></div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="progress-bar blue stripes">
+          <span [style.width]="experiencePointsPercentage + '%'"></span>
+        </div>
+        <div class="experience-counter">
+          {{user.experiencePoints}} / {{user.experiencePointsToLevelUp}} xp
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-mobile">
       <div class="column">
         <p class="heading">Total</p>
-        <p class="title">{{currentUser.totalKudos}}</p>
+        <p class="title">{{user.totalKudos}}</p>
       </div>
       <div class="column">
         <p class="heading">Weekly</p>
-        <p class="title">{{currentUser.weeklyKudos}}</p>
+        <p class="title">{{user.weeklyKudos}}</p>
       </div>
     </div>
   </div>
