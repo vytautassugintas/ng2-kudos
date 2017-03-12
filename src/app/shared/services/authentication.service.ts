@@ -32,6 +32,10 @@ export class AuthenticationService {
   }
 
   register(form: SignUpFormModel): Observable<string> {
+    let splittedName = form.fullName.split(" ");
+    let firstName = splittedName[0];
+    let lastName = splittedName[1];
+    let confirmPassword = form.password;
     let body = form.toJSON();
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});

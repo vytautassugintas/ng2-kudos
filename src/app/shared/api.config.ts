@@ -1,6 +1,8 @@
+import { environment } from '../../environments/environment';
+
 export class API {
-  //public static readonly URL = "https://test.openkudos.com/api/";
-  public static readonly URL = "http://localhost:8070/";
+
+  public static readonly URL = environment.url;
 
   public static readonly ENTRY = {
     AUTHENTICATION : API.URL + "authentication",
