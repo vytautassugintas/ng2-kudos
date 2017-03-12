@@ -19,7 +19,7 @@ export class FeedPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.homeService.getGlobalTransactions(0, 10).subscribe( transactions => {
+    this.homeService.getGlobalTransactions(0, 30).subscribe( transactions => {
       this.isReady = true;
       this.isLoading = false;
       this.transactions = transactions;

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './users/users.component';
+import { ShopComponent } from './shop/shop.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   imports: [
@@ -9,7 +11,9 @@ import { UsersComponent } from './users/users.component';
   ],
   declarations: [
     AdminComponent,
-    UsersComponent
+    UsersComponent,
+    ShopComponent,
+    OrdersComponent
   ],
   exports: [
     AdminComponent
