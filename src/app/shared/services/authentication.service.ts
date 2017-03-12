@@ -4,6 +4,7 @@ import {Observable}     from "rxjs/Observable";
 import {API} from "../api.config";
 import {ResponseExtractor} from "./helpers/response.helper";
 import {SignInFormModel} from "../models/SignInFormModel";
+import {SignUpFormModel} from "../models/SignUpFormModel";
 
 @Injectable()
 export class AuthenticationService {
@@ -30,12 +31,8 @@ export class AuthenticationService {
       .catch(ResponseExtractor.handleSimpleError);
   }
 
-  register(email: string, fullName: string, password: string): Observable<string> {
-    let splittedName = fullName.split(" ");
-    let firstName = splittedName[0];
-    let lastName = splittedName[1];
-    let confirmPassword = password;
-    let body = JSON.stringify({firstName, lastName, password, confirmPassword, email});
+  register(form: SignUpFormModel): Observable<string> {
+    let body = form.toJSON();
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminService} from "../admin.service";
 
 @Component({
   selector: 'kudos-admin-users',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  users: any;
+
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
+    this.adminService.getUsers().subscribe(users => this.users = users);
   }
 
 }

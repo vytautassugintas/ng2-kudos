@@ -1,3 +1,18 @@
-<p>
-  users works!
-</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th><abbr title="FullName">Name</abbr></th>
+    <th><abbr title="Total">Total</abbr></th>
+    <th><abbr title="Weekly">Weekly</abbr></th>
+    <th><abbr title="Status">Status</abbr></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.firstName}} {{user.lastName}}</td>
+    <td>{{user.totalKudos}}</td>
+    <td>{{user.weeklyKudos}}</td>
+    <td>{{user.status}}</td>
+  </tr>
+  </tbody>
+  </table>
