@@ -14,9 +14,11 @@ export class NavComponent implements OnInit {
   isHidden: boolean;
   items: any;
   selectedItem: any;
+  showDropDown: boolean;
 
   constructor(private router: Router, private homeService: HomeService) {
-    router.events.subscribe((route) => this.activate(this.router.url))
+    router.events.subscribe((route) => this.activate(this.router.url));
+    this.showDropDown = false;
   }
 
   ngOnInit() {
@@ -72,6 +74,32 @@ export class NavComponent implements OnInit {
         link: "/admin"
       }
     ]
+  }
+
+  toggleDropDown(){
+    this.showDropDown == true ? this.showDropDown = false : this.showDropDown = true;
+  }
+
+  receiverEmail: string;
+  showPredicates: boolean = false;
+  predicatedEmails: Array<any> =  [1, 2, 3];
+
+  predicateEmail() {
+    if (this.receiverEmail.length < 2) {
+      this.showPredicates = false;
+    } else {
+      this.homeService.getEmailPredicates(this.receiverEmail).subscribe(
+        resp => {
+          this.predicatedEmails = resp;
+          this.showPredicates = this.predicatedEmails.length > 0;
+        },
+        error => this.showPredicates = false
+      );
+    }
+  }
+
+  selectReceiver(user){
+
   }
 
   logout(){

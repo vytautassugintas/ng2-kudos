@@ -14,7 +14,55 @@
       <span></span>
     </span>
     <div class="nav-right nav-menu">
-      <a (click)="logout()" class="nav-item">Log out</a>
+      <div class="nav-item">
+        <div class="dropdown open">
+          <div class="control has-icon">
+            <input type="email"
+                   class="input users-search"
+                   id="receiverEmail"
+                   name="receiverEmail"
+                   placeholder="Search for other users"
+                   [(ngModel)]="receiverEmail"
+                   (ngModelChange)="predicateEmail()"
+                   maxlength="80"
+                   autocomplete="off">
+            <span class="icon is-small">
+            <i class="fa fa-search"></i>
+            </span>
+            <div *ngIf="showPredicates"
+                 class="predicate-box card">
+              <div class="card-content">
+                <a *ngFor="let user of predicatedEmails"
+                   class="dropdown-item"
+                   (click)="selectReceiver(user)"
+                   href="javascript:;">
+                  <span>{{user.firstName}} {{user.lastName}}</span><br>
+                  <small>{{user.email}}</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="nav-item">
+        <a class="button is-primary">
+          <span class="icon">
+            <i class="fa fa-twitter"></i>
+          </span>
+          <span>Give</span>
+        </a>
+       </span>
+      <div (click)="toggleDropDown()" class="nav-item dropdown">
+        <a class="button is-white dropbtn">
+          <span class="icon">
+            <i class="fa fa-caret-down"></i>
+          </span>
+        </a>
+        <div *ngIf="showDropDown" class="dropdown-content">
+          <a (click)="logout()" class="nav-item">Log out</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </nav>
