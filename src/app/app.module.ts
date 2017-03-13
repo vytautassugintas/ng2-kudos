@@ -20,6 +20,8 @@ import { NavComponent } from './nav/nav.component';
 import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.component';
 import {AdminModule} from "./admin/admin.module";
 import { NotificationComponent } from './shared/components/notification/notification.component';
+import { TransactionItemComponent } from './shared/components/transaction-item/transaction-item.component';
+import { ActionItemComponent } from './shared/components/action-item/action-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NotificationComponent } from './shared/components/notification/notifica
     HistoryComponent,
     NavComponent,
     LeadersPanelComponent,
-    NotificationComponent
+    NotificationComponent,
+    TransactionItemComponent,
+    ActionItemComponent
   ],
   imports: [
     BrowserModule,

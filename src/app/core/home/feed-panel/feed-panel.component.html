@@ -1,20 +1,21 @@
-<div *ngIf="isReady && transactions.length" class="card">
+<div *ngIf="isReady && actions.length" class="card">
   <div class="card-content">
     <h3 class="title is-3">What's happening?</h3>
-    <div *ngFor="let transaction of transactions">
-      <article class="media">
+    <div *ngFor="let action of actions">
+      <app-action-item [action]="action"></app-action-item>
+      <!--<article class="media">
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{transaction.senderFullName}}</strong>
-              <small>{{transaction.date | date:'medium'}}</small>
-              <br><span>Sent <span class="tag">{{transaction.amount}}</span> kudos to <a href=":javascript"
-                                                                                         routerLink="/user/{{transaction.receiverId}}">{{transaction.receiverFullName}}</a></span>
-              with message: <span><strong>{{transaction.message}}</strong></span>
+              <strong>{{action.senderFullName}}</strong>
+              <small>{{action.date | date:'medium'}}</small>
+              <br><span>Sent <span class="tag">{{action.amount}}</span> kudos to <a href=":javascript"
+                                                                                         routerLink="/user/{{action.receiverId}}">{{action.receiverFullName}}</a></span>
+              with message: <span><strong>{{action.message}}</strong></span>
             </p>
           </div>
         </div>
-      </article>
+      </article>-->
     </div>
     <div *ngIf="isLoading || !isReady" class="loader-wrapper">
       <div class="loading"></div>

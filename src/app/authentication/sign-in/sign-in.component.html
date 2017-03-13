@@ -7,12 +7,15 @@
           <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
             <label class="label">Email</label>
             <p class="control has-icon has-icon-right">
-              <input class="input" type="email" name="email" [(ngModel)]="signInFormModel.email" placeholder="Text input">
+              <input class="input" type="email" name="email" [(ngModel)]="signInFormModel.email" required>
             </p>
             <label class="label">Password</label>
             <p class="control has-icon has-icon-right">
-              <input class="input" type="password" name="password" [(ngModel)]="signInFormModel.password" placeholder="Email input">
+              <input class="input" type="password" name="password" [(ngModel)]="signInFormModel.password" required>
             </p>
+            <div *ngIf="hasErrors" class="notification is-danger">
+              {{errorMessage}}
+            </div>
             <div class="has-text-centered">
               <button type="submit" class="button is-primary is-outlined">Sign In</button>
             </div>

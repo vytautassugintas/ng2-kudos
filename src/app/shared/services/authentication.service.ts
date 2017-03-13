@@ -74,20 +74,11 @@ export class AuthenticationService {
       .catch(ResponseExtractor.handleError);
   }
 
-  isLogged(): Observable<boolean> {
+  isLogged(): Observable<any> {
     let headers = new Headers();
     let options = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.get(this.checkUserUrl, options)
-      .map(this.extractLogged)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
-
-  private extractLogged(response: Response) {
-    if (!response.json().logged) {
-      throw "User not logged in";
-    } else {
-      return response.json().logged;
-    }
-  }
-
 }
