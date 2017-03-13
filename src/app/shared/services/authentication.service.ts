@@ -42,7 +42,7 @@ export class AuthenticationService {
 
     return this.http.post(this.registrationUrl, body, options)
       .map(ResponseExtractor.extractSucces)
-      .catch(ResponseExtractor.handleError);
+      .catch(ResponseExtractor.handleSimpleError);
   }
 
   confirmAccount(confirmationCode: string): Observable<any> {
