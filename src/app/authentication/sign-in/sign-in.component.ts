@@ -50,10 +50,11 @@ export class SignInComponent implements OnInit {
       error => {
         this.isLoading = false;
         this.hasErrors = true;
-        if (error.fieldError.message)
+        if (error.fieldError) {
           this.errorMessage = error.fieldError.message;
-        else
+        } else {
           this.errorMessage = "Something went horribly wrong. If you see this message, most likely server is down";
+        }
       }
     );
   }

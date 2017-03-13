@@ -1,3 +1,9 @@
+.kudos-nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -9,7 +15,7 @@
   right: 0;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -20,13 +26,15 @@
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
 
 .users-search {
   min-width: 300px;
 }
 
-.predicate-box{
+.predicate-box {
   top: 32px;
   padding: 4px;
   width: 100%;
