@@ -98,8 +98,10 @@ export class NavComponent implements OnInit {
     }
   }
 
-  selectReceiver(user){
-
+  selectUser(){
+    this.receiverEmail = "";
+    this.showPredicates = false;
+    this.predicatedEmails = [];
   }
 
   logout(){

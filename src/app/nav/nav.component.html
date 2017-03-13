@@ -34,8 +34,8 @@
               <div class="card-content">
                 <a *ngFor="let user of predicatedEmails"
                    class="dropdown-item"
-                   (click)="selectReceiver(user)"
-                   href="javascript:;">
+                   (click)="selectUser()"
+                   routerLink="/user/{{user.id}}">
                   <span>{{user.firstName}} {{user.lastName}}</span><br>
                   <small>{{user.email}}</small>
                 </a>
