@@ -22,6 +22,7 @@ import {AdminModule} from "./admin/admin.module";
 import { NotificationComponent } from './shared/components/notification/notification.component';
 import { TransactionItemComponent } from './shared/components/transaction-item/transaction-item.component';
 import { ActionItemComponent } from './shared/components/action-item/action-item.component';
+import { ShopComponent } from './core/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ActionItemComponent } from './shared/components/action-item/action-item
     LeadersPanelComponent,
     NotificationComponent,
     TransactionItemComponent,
-    ActionItemComponent
+    ActionItemComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

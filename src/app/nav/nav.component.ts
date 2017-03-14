@@ -48,9 +48,13 @@ export class NavComponent implements OnInit {
         this.isHidden = false;
         this.selectedItem = this.items[1];
         break;
-      case "/admin":
+      case "/shop":
         this.isHidden = false;
         this.selectedItem = this.items[2];
+        break;
+      case "/admin":
+        this.isHidden = false;
+        this.selectedItem = this.items[3];
         break;
       default:
         this.isHidden = false;
@@ -68,6 +72,10 @@ export class NavComponent implements OnInit {
       {
         title: "History",
         link: "/history"
+      },
+      {
+        title: "Shop",
+        link: "/shop"
       },
       {
         title: "Admin",
