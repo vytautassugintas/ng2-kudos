@@ -1,5 +1,8 @@
-<div class="card" *ngIf="isReady">
-  <div class="card-content has-text-centered-mobile">
+<div class="card">
+  <div *ngIf="!isReady" class="loader-wrapper">
+    <div class="loading"></div>
+  </div>
+  <div class="card-content has-text-centered-mobile" *ngIf="isReady">
     <p class="title is-5"><strong>{{user.firstName}} {{user.lastName}}</strong></p>
     <p class="subtitle is-6 email">{{user.email}}</p>
 

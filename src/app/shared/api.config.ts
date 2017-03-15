@@ -14,6 +14,7 @@ export class API {
     LEADERS : API.URL + "leaderboard",
     WISDOM : API.URL + "wisdomwall",
     ADMIN : API.URL + "admin",
-    SHOP: API.URL + "shop"
+    SHOP: API.URL + "shop",
+    ORDERS: API.URL + "orders"
   }
 }
