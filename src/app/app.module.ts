@@ -23,6 +23,7 @@ import { NotificationComponent } from './shared/components/notification/notifica
 import { TransactionItemComponent } from './shared/components/transaction-item/transaction-item.component';
 import { ActionItemComponent } from './shared/components/action-item/action-item.component';
 import { ShopComponent } from './core/shop/shop.component';
+import { OrdersComponent } from './core/shop/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ShopComponent } from './core/shop/shop.component';
     NotificationComponent,
     TransactionItemComponent,
     ActionItemComponent,
-    ShopComponent
+    ShopComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

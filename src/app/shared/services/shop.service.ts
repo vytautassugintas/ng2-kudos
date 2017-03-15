@@ -10,7 +10,8 @@ export class ShopService {
 
   private getShopItemsUrl = API.ENTRY.SHOP + "/items";
   private getAvailableKudosPointsUrl = API.ENTRY.SHOP + "/available";
-  private ordersUrl = API.URL + API.ENTRY.SHOP + "get/";
+  private buyShopItemUrl = API.ENTRY.SHOP + "/buy/";
+  private ordersUrl = API.ENTRY.ORDERS + "/get/";
 
   constructor(private http: Http) { }
 
@@ -26,9 +27,15 @@ export class ShopService {
       .catch(ResponseExtractor.handleError);
   }
 
-  public getUserOrders(id: string, page: number, pageSize: number): Observable<any>{
+  buyItem(itemId: string): Observable<any> {
+    return this.http.post(this.buyShopItemUrl + itemId, null, RequestHelper.getBasicRequestOptions())
+      .map(ResponseExtractor.extractSucces)
+      .catch(ResponseExtractor.handleSimpleError);
+  }
+
+  getUserOrders(id: string, page: number, pageSize: number): Observable<any>{
     return this.http.get(this.ordersUrl + id, RequestHelper.getPageableRequestOptions(page, pageSize))
-      .map(ResponseExtractor.extractJson)
+      .map(ResponseExtractor.extractPage)
       .catch(ResponseExtractor.handleError);
   }
 

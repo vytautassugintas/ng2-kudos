@@ -47,7 +47,15 @@ export class ShopComponent implements OnInit {
   }
 
   orderItem(item) {
-    this.notificationService.success("Ordered", "You successfully ordered " + item.name + " someone will deliver your item.");
+    this.shopService.buyItem(item.id).subscribe(
+      success => {
+        this.notificationService.success("Ordered", "You successfully ordered " + item.name + " someone will deliver your item.");
+      },
+      error => {
+        this.notificationService.success("ERROR", error.fieldError.message.toString());
+      }
+    )
+
   }
 
 }
