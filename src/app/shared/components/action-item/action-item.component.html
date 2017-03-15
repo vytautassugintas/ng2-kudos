@@ -1,0 +1,19 @@
+<article class="media margin-bottom">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <a href="javascript:" routerLink="/user/{{action.userId}}">{{action.userFullName}}</a>
+        <small>{{action.timestamp | date:'medium'}}</small>
+        <br>
+        <span *ngIf="action.type == 'COMMENTED'"> commented on </span>
+        <span *ngIf="action.type == 'ADDED_NEW_IDEA'"> added new idea to wisdom wall</span>
+        <span *ngIf="action.type == 'KUDOS_GIVEN'"> Sent
+          <span class="tag">{{action.transactionResponse.amount}}</span> kudos to
+          <a href="javascript:" routerLink="/user/{{action.transactionResponse.receiverId}}">{{action.transactionResponse.receiverFullName}}</a>
+          <span *ngIf="action.transactionResponse.endorsement"> and endorsed for <span class="tag">{{action.transactionResponse.endorsement}}</span></span>
+          <span *ngIf="action.transactionResponse.message"> with message <strong>{{action.transactionResponse.message}}</strong></span>
+        </span>
+      </p>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,17 @@
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>{{transaction.senderFullName}}</strong>
+        <small>{{transaction.date | date:'medium'}}</small>
+        <br>
+        <span>
+          <span>Sent</span>
+            <span class="tag">{{transaction.amount}}</span> kudos to
+                  <a routerLink="/user/{{transaction.receiverId}}">{{transaction.receiverFullName}}</a></span>
+            with message: <span><strong>{{transaction.message}}</strong>
+      </span>
+      </p>
+    </div>
+  </div>
+</article>

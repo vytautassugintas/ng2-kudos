@@ -13,7 +13,7 @@ export class HomeService {
   private currentUserProfileUrl = API.URL + 'user/profile';
   private userProfileUrl = API.URL + 'user/profile/';
   private logoutUrl = API.URL + 'authentication/logout';
-  private allTransactionsUrl = API.URL + '/transactions';
+  private allTransactionsUrl = API.URL + '/actions';
   private userActionsUrl = API.URL + 'user/actions/';
   private actionsUrl = API.URL + 'relation/feed';
   private emailPredicateUrl = API.URL + 'user/email/';
@@ -59,7 +59,7 @@ export class HomeService {
       .catch(ResponseExtractor.handleError);
   }
 
-  globalActions(page: number, pageSize: number): Observable<any> {
+  getGlobalActions(page: number, pageSize: number): Observable<any> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page.toString());
@@ -67,7 +67,7 @@ export class HomeService {
     let options = new RequestOptions({headers: headers, withCredentials: true, search : params});
 
     return this.http.get(this.actionsUrl, options)
-      .map(ResponseExtractor.extractPage)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
 

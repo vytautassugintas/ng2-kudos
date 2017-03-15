@@ -5,7 +5,14 @@ $medium_unit: $base_unit * 3;
 $normal_unit: $base_unit * 4;
 
 html {
+  /*background-image: url("https://static.pexels.com/photos/1984/black-and-white-city-man-people.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;*/
   background-color: #f5f8fa;
+}
+
+body {
+  margin-top: 50px;
 }
 
 section {
@@ -27,6 +34,10 @@ section {
 
 .margin-top {
   margin-top: $medium_unit;
+}
+
+.margin-top-big {
+  margin-top: $medium_unit * 2;
 }
 
 .margin-bottom {

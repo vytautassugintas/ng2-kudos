@@ -1,1 +1,23 @@
-<kudos-admin-users></kudos-admin-users>
+<div class="card">
+  <div class="card-content">
+    <div class="tabs is-medium is-centered">
+      <ul>
+        <li (click)="selectTab('users')" [class.is-active]="selectedTab == 'users'"><a>Users</a></li>
+        <li (click)="selectTab('shop')" [class.is-active]="selectedTab == 'shop'"><a>Shop</a></li>
+        <li (click)="selectTab('orders')" [class.is-active]="selectedTab == 'orders'"><a>Orders</a></li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab == 'users'">
+      <kudos-admin-users></kudos-admin-users>
+    </div>
+    <div *ngIf="selectedTab == 'shop'">
+      <kudos-admin-shop></kudos-admin-shop>
+    </div>
+    <div *ngIf="selectedTab == 'orders'">
+      <kudos-admin-orders></kudos-admin-orders>
+    </div>
+
+  </div>
+</div>
+

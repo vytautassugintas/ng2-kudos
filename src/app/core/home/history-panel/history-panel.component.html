@@ -3,10 +3,8 @@
     <div class="tabs is-centered is-medium">
       <ul>
         <li (click)="currentPage = 1; getAllHistory(_id)" [class.is-active]="selectedHistory === 'ALL'"><a>All</a></li>
-        <li (click)="currentPage = 1; getReceivedHistory(_id)" [class.is-active]="selectedHistory === 'RECEIVED'"><a>Received</a>
-        </li>
-        <li (click)="currentPage = 1; getGivenHistory(_id)" [class.is-active]="selectedHistory === 'GIVEN'"><a>Sent</a>
-        </li>
+        <li (click)="currentPage = 1; getReceivedHistory(_id)" [class.is-active]="selectedHistory === 'RECEIVED'"><a>Received</a></li>
+        <li (click)="currentPage = 1; getGivenHistory(_id)" [class.is-active]="selectedHistory === 'GIVEN'"><a>Sent</a></li>
       </ul>
     </div>
     <div *ngIf="isLoading || !isReady" class="loader-wrapper">

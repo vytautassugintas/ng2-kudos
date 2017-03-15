@@ -7,18 +7,22 @@
           <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
             <label class="label">Full Name</label>
             <p class="control has-icon has-icon-right">
-              <input [(ngModel)]="formModel.fullName" name="fullName" class="input" type="text" placeholder="Full Name">
+              <input [(ngModel)]="formModel.fullName" name="fullName" class="input" type="text" placeholder="Full Name" required>
             </p>
             <label class="label">Email</label>
             <p class="control has-icon has-icon-right">
-              <input [(ngModel)]="formModel.email" name="email" class="input" type="email" placeholder="Email">
+              <input [(ngModel)]="formModel.email" name="email" class="input" type="email" placeholder="Email" required>
             </p>
             <label class="label">Password</label>
             <p class="control has-icon has-icon-right">
-              <input [(ngModel)]="formModel.password" name="password" class="input" type="password" placeholder="Password">
+              <input [(ngModel)]="formModel.password" name="password" class="input" type="password" placeholder="Password" required>
             </p>
+            <div *ngIf="hasErrors" class="notification is-danger">
+              <button class="delete" (click)="hasErrors = false"></button>
+              {{errorMessage}}
+            </div>
             <div class="has-text-centered">
-              <button type="" class="button is-primary is-outlined">Sign In</button>
+              <button type="submit" class="button is-primary is-outlined">Sign In</button>
             </div>
           </form>
         </div>

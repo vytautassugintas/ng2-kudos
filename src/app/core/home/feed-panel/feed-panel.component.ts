@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeService} from "../../../shared/services/home.service";
 
 @Component({
@@ -8,25 +8,25 @@ import {HomeService} from "../../../shared/services/home.service";
 })
 export class FeedPanelComponent implements OnInit {
 
-  transactions: Array<any>;
+  actions: Array<any>;
   isReady: boolean;
   isLoading: boolean;
 
   constructor(private homeService: HomeService) {
-    this.transactions = [];
+    this.actions = [];
     this.isReady = false;
     this.isLoading = true;
   }
 
   ngOnInit() {
-    this.homeService.getGlobalTransactions(0, 10).subscribe( transactions => {
+    this.homeService.getGlobalActions(0, 30).subscribe(actions => {
       this.isReady = true;
       this.isLoading = false;
-      this.transactions = transactions;
+      this.actions = actions.content;
     })
   }
 
-  getTransactions(){
+  getTransactions() {
 
   }
 

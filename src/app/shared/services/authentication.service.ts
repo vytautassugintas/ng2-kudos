@@ -32,13 +32,17 @@ export class AuthenticationService {
   }
 
   register(form: SignUpFormModel): Observable<string> {
+    let splittedName = form.fullName.split(" ");
+    let firstName = splittedName[0];
+    let lastName = splittedName[1];
+    let confirmPassword = form.password;
     let body = form.toJSON();
     let headers = new Headers({"Content-Type": "application/json"});
     let options = new RequestOptions({headers: headers, withCredentials: true});
 
     return this.http.post(this.registrationUrl, body, options)
       .map(ResponseExtractor.extractSucces)
-      .catch(ResponseExtractor.handleError);
+      .catch(ResponseExtractor.handleSimpleError);
   }
 
   confirmAccount(confirmationCode: string): Observable<any> {
@@ -70,20 +74,11 @@ export class AuthenticationService {
       .catch(ResponseExtractor.handleError);
   }
 
-  isLogged(): Observable<boolean> {
+  isLogged(): Observable<any> {
     let headers = new Headers();
     let options = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.get(this.checkUserUrl, options)
-      .map(this.extractLogged)
+      .map(ResponseExtractor.extractJson)
       .catch(ResponseExtractor.handleError);
   }
-
-  private extractLogged(response: Response) {
-    if (!response.json().logged) {
-      throw "User not logged in";
-    } else {
-      return response.json().logged;
-    }
-  }
-
 }

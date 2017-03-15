@@ -7,6 +7,7 @@ import {HistoryComponent} from "./core/history/history.component";
 import {UserComponent} from "./core/user/user.component";
 import {AdminModule} from "./admin/admin.module";
 import {AdminComponent} from "./admin/admin/admin.component";
+import {ShopComponent} from "./core/shop/shop.component";
 
 const AppRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ const AppRoutes: Routes = [
   {
     path: 'history',
     component: HistoryComponent
+  },
+  {
+    path: 'shop',
+    component: ShopComponent
   },
   {
     path: 'user/:id',

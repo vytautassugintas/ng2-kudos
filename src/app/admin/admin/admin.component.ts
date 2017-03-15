@@ -9,9 +9,16 @@ import {AdminService} from "../admin.service";
 })
 export class AdminComponent implements OnInit {
 
+  selectedTab: string = "users";
+
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  selectTab(tabName){
+    this.selectedTab = tabName;
   }
 
 }

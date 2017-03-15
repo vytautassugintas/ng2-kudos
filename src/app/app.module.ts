@@ -11,16 +11,19 @@ import {RouterModule} from "@angular/router";
 import {HomeComponent} from './core/home/home.component';
 import {GiveComponent} from './core/home/give/give.component';
 import {UserPanelComponent} from './core/home/user-panel/user-panel.component';
-import {SimpleNotificationsModule} from "angular2-notifications/lib/simple-notifications.module";
 import {UserComponent} from './core/user/user.component';
 import {TransactionsComponent} from './core/user/transactions/transactions.component';
 import {FeedPanelComponent} from './core/home/feed-panel/feed-panel.component';
 import { HistoryPanelComponent } from './core/home/history-panel/history-panel.component';
 import { HistoryComponent } from './core/history/history.component';
-import {InfiniteScrollModule} from "angular2-infinite-scroll";
 import { NavComponent } from './nav/nav.component';
 import { LeadersPanelComponent } from './core/home/leaders-panel/leaders-panel.component';
 import {AdminModule} from "./admin/admin.module";
+import { NotificationComponent } from './shared/components/notification/notification.component';
+import { TransactionItemComponent } from './shared/components/transaction-item/transaction-item.component';
+import { ActionItemComponent } from './shared/components/action-item/action-item.component';
+import { ShopComponent } from './core/shop/shop.component';
+import { OrdersComponent } from './core/shop/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -36,17 +39,20 @@ import {AdminModule} from "./admin/admin.module";
     HistoryPanelComponent,
     HistoryComponent,
     NavComponent,
-    LeadersPanelComponent
+    LeadersPanelComponent,
+    NotificationComponent,
+    TransactionItemComponent,
+    ActionItemComponent,
+    ShopComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
-    InfiniteScrollModule,
     FormsModule,
     Routing,
     HttpModule,
     JsonpModule,
     RouterModule,
-    SimpleNotificationsModule.forRoot(),
     AdminModule
   ],
   providers: [AppRoutingProviders],

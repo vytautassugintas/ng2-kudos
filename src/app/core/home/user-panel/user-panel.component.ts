@@ -10,28 +10,51 @@ import {Subscription} from "rxjs";
 export class UserPanelComponent implements OnInit {
 
   isReady: boolean;
-  currentUser: any;
+  user: any;
   userSubscription: Subscription;
+  experiencePointsPercentage = 0;
 
   constructor(private userService: UserService) {
     this.isReady = false;
-    this.currentUser = {};
+    this.user = {};
     this.userSubscription = userService.userUpdated$.subscribe(
       user => {
-        this.currentUser = user;
+        this.increaseUserExperiencePoints((this.user.weeklyKudos - user.weeklyKudos) * 2);
+        this.user = user;
       });
   }
 
   ngOnInit() {
+    this.getUserInformation();
+  }
+
+  getUserInformation() {
     this.userService.getCurrentUser().subscribe(
       user => {
-        this.currentUser = user;
+        this.user = user;
         this.isReady = true;
-      },
-      error => {
+        this.calculateExperiencePointsPercentage(user.experiencePoints, user.experiencePointsToLevelUp, user.previousLevelExperiencePoints);
+      });
+  }
 
-      }
-    )
+  calculateExperiencePointsPercentage(number, amount, previous) {
+    let percentage = (number - previous) / (amount - previous) * 100;
+    if (percentage <= 100) {
+      this.experiencePointsPercentage = (number - previous) / (amount - previous) * 100;
+    } else {
+      this.experiencePointsPercentage = 100;
+    }
+  }
+
+  increaseUserExperiencePoints(experiencePoints) {
+    this.user.experiencePoints += experiencePoints;
+    this.calculateExperiencePointsPercentage(this.user.experiencePoints, this.user.experiencePointsToLevelUp, this.user.previousLevelExperiencePoints);
+    if (this.user.experiencePoints >= this.user.experiencePointsToLevelUp) {
+      setTimeout(() => {
+        this.experiencePointsPercentage = 0;
+        this.getUserInformation();
+      }, 800);
+    }
   }
 
 }
