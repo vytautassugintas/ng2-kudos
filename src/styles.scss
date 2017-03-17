@@ -20,6 +20,10 @@ section {
   padding-right: $normal_unit;
 }
 
+.input, .textarea {
+  box-shadow: none;
+}
+
 .card {
   border-color: rgb(225, 232, 237);
 }

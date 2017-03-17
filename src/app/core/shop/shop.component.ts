@@ -10,11 +10,13 @@ import {NotificationService} from "../../shared/components/notification/notifica
 export class ShopComponent implements OnInit {
 
   isReady: boolean;
+  selectedTab: string;
   shopItems: Array<any>;
   availablePoints: any;
 
   constructor(private shopService: ShopService, private notificationService: NotificationService) {
     this.isReady = false;
+    this.selectedTab = "shop";
     this.shopItems = [];
   }
 
@@ -55,7 +57,10 @@ export class ShopComponent implements OnInit {
         this.notificationService.success("ERROR", error.fieldError.message.toString());
       }
     )
+  }
 
+  selectTab(tabName){
+    this.selectedTab = tabName;
   }
 
 }

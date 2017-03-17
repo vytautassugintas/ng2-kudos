@@ -1,25 +1,30 @@
-<div *ngIf="!orders.length" class="notification is-info">
-  You haven't ordered anything.
+<div *ngIf="!isReady" class="loader-wrapper">
+  <div class="loading"></div>
 </div>
+<div *ngIf="isReady">
+  <div *ngIf="!orders.length" class="notification is-info">
+    You haven't ordered anything.
+  </div>
 
-<div *ngIf="orders.length">
-  <div *ngFor="let order of orders" class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="{{order.item.pictureUrl}}">
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p><strong>{{order.item.name}}</strong><br>
-          {{order.item.description}} {{order.item.price}}
+  <div *ngIf="orders.length">
+    <div *ngFor="let order of orders" class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img src="{{order.item.pictureUrl}}">
         </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p><strong>{{order.item.name}}</strong><br>
+            {{order.item.description}} {{order.item.price}}
+          </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <span class="tag">{{order.status}}</span>
       </div>
     </div>
-    <div class="media-right">
-      <span class="tag">{{order.status}}</span>
-    </div>
   </div>
-  </div>
+</div>
 
 
