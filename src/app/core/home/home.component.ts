@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
 import {HomeService} from "../../shared/services/home.service";
 import {KudosService} from "../../shared/services/kudos.service";
+import {ModalGiveKudosService} from "../../shared/components/modal-give-kudos/modal-give-kudos.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [HomeService]
+  providers: [HomeService, ModalGiveKudosService]
 })
 export class HomeComponent implements OnInit {
 

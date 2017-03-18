@@ -1,0 +1,77 @@
+<button (click)="openModal()" type="button">Open</button>
+
+<div class="modal" [ngClass]="{ '': !isModalOpened, 'is-active': isModalOpened}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="card-header">
+      <a (click)="onExpandToggle()" class="card-header-title">Give Kudos</a>
+      <a (click)="onExpandToggle()" class="card-header-icon">
+      <span class="icon"><i [ngClass]="{ 'fa-angle-down': !isExpanded, 'fa-angle-up': isExpanded}"
+                            class="fa"></i></span>
+      </a>
+    </header>
+    <div *ngIf="isExpanded" class="card-content">
+      <form (ngSubmit)="onSubmit()" #giveKudosForm="ngForm">
+        <label class="label">Receiver email
+          <input class="input" type="email" name="email" [(ngModel)]="formModel.receiverEmail" required>
+        </label>
+        <label class="label">Amount
+          <input class="input" type="number" name="amount" [(ngModel)]="formModel.amount" required>
+        </label>
+        <div *ngIf="!formModel.endorsement" class="margin-top margin-bottom">
+          <a (click)="toggleModal()">+ Add endorsement</a>
+        </div>
+        <div *ngIf="formModel.endorsement" class="margin-top margin-bottom">
+          <span class="tag is-primary is-medium">
+            {{formModel.endorsement}}
+            <a class="delete is-small" (click)="clearEndorsement()"></a>
+          </span>
+        </div>
+        <label class="label">Message
+          <textarea class="textarea" type="text" name="message" [(ngModel)]="formModel.message"></textarea>
+        </label>
+        <div *ngIf="hasErrors" class="notification is-danger">
+          {{errorMessage}}
+        </div>
+        <div class="block has-text-right">
+          <button (click)="onClearClick()" type="reset" class="button is-white">Clear</button>
+          <button type="submit" class="button is-primary">Give</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--<div class="modal" [ngClass]="{ '': !isModalOpened, 'is-active': isModalOpened}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Endorsements</p>
+      <button class="delete" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p class="control has-icon">
+        <input [ngModel]="endorsementSearchValue" #item (ngModelChange)="searchItems(item.value)" class="input" type="text" name="endorsement"
+               placeholder="Search endorsement">
+        <span class="icon is-small"><i class="fa fa-search"></i></span>
+      </p>
+      <div *ngIf="endorsements[0]?.group">
+        <div *ngFor="let endorsementGroup of endorsements">
+          <div class="panel-block">
+            <strong>{{endorsementGroup.group}}</strong>
+          </div>
+          <a *ngFor="let endorsement of endorsementGroup.endorsements" (click)="selectEndorsement(endorsement.endorsement)" class="panel-block is-active">
+            {{endorsement.endorsement}}
+          </a>
+        </div>
+      </div>
+
+      <div *ngIf="!endorsements[0]?.group">
+        <a *ngFor="let filteredItem of endorsements" class="panel-block is-active"
+           (click)="selectEndorsement(filteredItem)">
+          {{filteredItem}}
+        </a>
+      </div>
+    </section>
+  </div>
+</div>-->
