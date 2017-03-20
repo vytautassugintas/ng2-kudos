@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KudosService} from "../../services/kudos.service";
 import {ModalGiveKudosService} from "./modal-give-kudos.service";
-import {Component, OnInit} from '@angular/core';
 import {GiveKudosFormModel} from "../../../shared/models/GiveKudosFormModel";
 import {KudosService} from "../../../shared/services/kudos.service";
 import {UserService} from "../../../shared/services/user.service";

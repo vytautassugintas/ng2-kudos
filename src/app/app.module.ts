@@ -26,6 +26,8 @@ import { ShopComponent } from './core/shop/shop.component';
 import { OrdersComponent } from './core/shop/orders/orders.component';
 import { ModalGiveKudosComponent } from './shared/components/modal-give-kudos/modal-give-kudos.component';
 import { ModalEndorsementsComponent } from './shared/components/modal-endorsements/modal-endorsements.component';
+import {AuthGuard} from "./shared/auth-guard.service";
+import {AuthenticationService} from "./shared/services/authentication.service";
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { ModalEndorsementsComponent } from './shared/components/modal-endorsemen
     RouterModule,
     AdminModule
   ],
-  providers: [AppRoutingProviders],
+  providers: [AuthenticationService, AuthGuard, AppRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

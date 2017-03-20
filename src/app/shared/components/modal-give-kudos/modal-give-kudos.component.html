@@ -3,14 +3,11 @@
 <div class="modal" [ngClass]="{ '': !isModalOpened, 'is-active': isModalOpened}">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="card-header">
-      <a (click)="onExpandToggle()" class="card-header-title">Give Kudos</a>
-      <a (click)="onExpandToggle()" class="card-header-icon">
-      <span class="icon"><i [ngClass]="{ 'fa-angle-down': !isExpanded, 'fa-angle-up': isExpanded}"
-                            class="fa"></i></span>
-      </a>
+    <header class="modal-card-head">
+      <p class="modal-card-title">Give Kudos</p>
+      <button class="delete" (click)="toggleModal()"></button>
     </header>
-    <div *ngIf="isExpanded" class="card-content">
+    <div class="modal-card-body">
       <form (ngSubmit)="onSubmit()" #giveKudosForm="ngForm">
         <label class="label">Receiver email
           <input class="input" type="email" name="email" [(ngModel)]="formModel.receiverEmail" required>

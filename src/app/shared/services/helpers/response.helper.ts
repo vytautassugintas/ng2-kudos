@@ -11,6 +11,10 @@ export class ResponseExtractor{
     return res.json();
   }
 
+  static extractIsLogged(res: Response) {
+    return res.json().logged;
+  }
+
   static extractPage(res: Response) {
     return res.json().content;
   }

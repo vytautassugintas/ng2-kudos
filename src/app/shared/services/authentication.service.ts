@@ -78,7 +78,7 @@ export class AuthenticationService {
     let headers = new Headers();
     let options = new RequestOptions({headers: headers, withCredentials: true});
     return this.http.get(this.checkUserUrl, options)
-      .map(ResponseExtractor.extractJson)
+      .map(ResponseExtractor.extractIsLogged)
       .catch(ResponseExtractor.handleError);
   }
 }
