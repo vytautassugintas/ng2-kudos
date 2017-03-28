@@ -24,6 +24,10 @@ import { TransactionItemComponent } from './shared/components/transaction-item/t
 import { ActionItemComponent } from './shared/components/action-item/action-item.component';
 import { ShopComponent } from './core/shop/shop.component';
 import { OrdersComponent } from './core/shop/orders/orders.component';
+import { ModalGiveKudosComponent } from './shared/components/modal-give-kudos/modal-give-kudos.component';
+import { ModalEndorsementsComponent } from './shared/components/modal-endorsements/modal-endorsements.component';
+import {AuthGuard} from "./shared/auth-guard.service";
+import {AuthenticationService} from "./shared/services/authentication.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { OrdersComponent } from './core/shop/orders/orders.component';
     TransactionItemComponent,
     ActionItemComponent,
     ShopComponent,
-    OrdersComponent
+    OrdersComponent,
+    ModalGiveKudosComponent,
+    ModalEndorsementsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,7 @@ import { OrdersComponent } from './core/shop/orders/orders.component';
     RouterModule,
     AdminModule
   ],
-  providers: [AppRoutingProviders],
+  providers: [AuthenticationService, AuthGuard, AppRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
